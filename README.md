@@ -17,9 +17,9 @@ library(ggplot2)
 ### Acknowledgments and Authors
 
 #### Acknowledgments
-William Kyle Hamilton would like to thank the Health Communications and Interventions Lab at UC Merced for their comments and beta testing efforts on this application as well as Kathleen Coburn for her feedback and evaluation of the statistical methods related to this project.
+William Kyle Hamilton would like to thank the [Health Communications and Interventions Lab at UC Merced](http://cameronhcilab.com/) for their comments and beta testing efforts on this application as well as [Kathleen Coburn](http://psychology.ucmerced.edu/content/kathleen-coburn) for her feedback and evaluation of the statistical methods related to this project.
 
-Atsushi Mizumoto would like to thank Dr. Luke Plonsky and Dr. Yo In'nami for their support and feedback to create this web application.
+Atsushi Mizumoto would like to thank [Dr. Luke Plonsky](http://oak.ucc.nau.edu/ldp3/) and [Dr. Yo In'nami](https://sites.google.com/site/yoinnami/) for their support and feedback to create this web application.
 
 
 #### Authors
