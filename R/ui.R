@@ -19,7 +19,7 @@ library(ggplot2)
 shinyUI(bootstrapPage(
   
   
-  headerPanel("MAVIS: Meta Analysis Via Shiny v0.2"),
+  headerPanel("MAVIS: Meta Analysis Via Shiny v0.2a"),
  
   
   sidebarPanel(
@@ -30,7 +30,8 @@ shinyUI(bootstrapPage(
                       "Correlations (n, r)" = "cor"
                  ),
     ),
-    
+    helpText("Press Quit to exit the application"),
+    actionButton("quit", "Quit"),
     br()
     
   ),
@@ -91,7 +92,7 @@ shinyUI(bootstrapPage(
                
                
                h3("Forest plot (Fixed effects model)"),
-               
+               downloadButton('downloadfePlot', 'Download the plot as pdf'),
                plotOutput("fePlot", height = "550px"),
                
                
@@ -99,20 +100,20 @@ shinyUI(bootstrapPage(
                br(),
                
                h3("Forest plot (Random effects model)"),
-               
+               downloadButton('downloadrePlot', 'Download the plot as pdf'),
                plotOutput("rePlot", height = "550px"),
                
                br(),
                
                h3("Funnel plot (Fixed effects model)"),
-               
+               downloadButton('downloadFunFixPlot', 'Download the plot as pdf'),
                plotOutput("FunFixPlot"),
                p('Open circles (if any) on the right side show missing NULL studies estimated with the trim-and-fill method, added in the funnel plot.'),
                
                br(),
                
                h3("Funnel plot (Random effects model)"),
-               
+               downloadButton('downloadFunRandPlot', 'Download the plot as pdf'),
                plotOutput("FunRandPlot"),
                p('Open circles (if any) on the right side show missing NULL studies estimated with the trim-and-fill method, added in the funnel plot.'),
                br(),
@@ -200,6 +201,16 @@ shinyUI(bootstrapPage(
                
       ),
       
+      tabPanel("Output Options",
+               
+               radioButtons("height", strong("Height of output plots"),
+                            c("500 Pixals" = "500",                  
+                              "1000 Pixals" = "1000"
+                            ), selected = "500"),
+               p(h6("I'll fix this later")),
+               verbatimTextOutput('height.out')
+               
+      ),  
       
       
       

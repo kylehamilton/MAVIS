@@ -19,6 +19,13 @@ shinyServer(function(input, output, session) {
   
   options(warn=-1)
   
+  
+  q <- observe({
+    # Stop the app when the quit button is clicked
+    if (input$quit == 1) stopApp()
+  })
+  
+  
   # 
   #reme <- reactive({input$model})
   
@@ -860,6 +867,8 @@ shinyServer(function(input, output, session) {
   ################################################
   output$model.out <- renderPrint({ input$model })
 
+  output$height.out <- renderPrint({paste(input$height,"px", sep ="")})
+
   output$info.out <- renderPrint({
     info()
   })
@@ -883,5 +892,47 @@ shinyServer(function(input, output, session) {
   output$modAnalysis.out <- renderPrint({
     modAnalysis()
   })
-  
+
+
+
+output$downloadfePlot <- downloadHandler(
+  filename = function() {
+    paste('fePlot', Sys.Date(), '.pdf', sep='')
+  },
+  content = function(FILE=NULL) {
+    pdf(file=FILE)
+    print(makefePlot())
+    dev.off()
+  }
+)
+output$downloadrePlot <- downloadHandler(
+  filename = function() {
+    paste('rePlot', Sys.Date(), '.pdf', sep='')
+  },
+  content = function(FILE=NULL) {
+    pdf(file=FILE)
+    print(makerePlot())
+    dev.off()
+  }
+)
+output$downloadFunFixPlot <- downloadHandler(
+  filename = function() {
+    paste('FunFixPlot', Sys.Date(), '.pdf', sep='')
+  },
+  content = function(FILE=NULL) {
+    pdf(file=FILE)
+    print(makeFunFixPlot())
+    dev.off()
+  }
+)
+output$downloadFunRandPlot <- downloadHandler(
+  filename = function() {
+    paste('FunRandPlot', Sys.Date(), '.pdf', sep='')
+  },
+  content = function(FILE=NULL) {
+    pdf(file=FILE)
+    print(makeFunRandPlot())
+    dev.off()
+  }
+)
 })
