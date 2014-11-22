@@ -1,0 +1,16 @@
+{
+    "contents" : "Package: MAVIS\nType: Package\nTitle: Meta Analysis via Shiny\nVersion: 0.2\nDate: 2014-11-19\nAuthor: William Kyle Hamilton <kyle.hamilton@gmail.com>\nMaintainer: William Kyle Hamilton <kyle.hamilton@gmail.com>\nDescription: Interactive shiny application for running a meta-analysis, provides support for both random effects and fixed effects models.\nLicense: GPL-3",
+    "created" : 1416464253935.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2259126378",
+    "id" : "74E82608",
+    "lastKnownWriteTime" : 1416464311,
+    "path" : "~/GitHub/MAVIS/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "dcf"
+}

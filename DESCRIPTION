@@ -3,9 +3,7 @@ Type: Package
 Title: Meta Analysis via Shiny
 Version: 0.2
 Date: 2014-11-19
-Authors@R: c(
-person("William Kyle", "Hamilton", email = "kyle.hamilton@gmail.com", role = c("aut", "cre"),
-person("Atsushi", "Mizumoto", email = "atsushi@mizumot.com", role = "aut"))
+Author: William Kyle Hamilton <kyle.hamilton@gmail.com>
 Maintainer: William Kyle Hamilton <kyle.hamilton@gmail.com>
 Description: Interactive shiny application for running a meta-analysis, provides support for both random effects and fixed effects models.
 License: GPL-3
