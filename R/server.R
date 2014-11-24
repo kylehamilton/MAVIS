@@ -1,9 +1,24 @@
-
-# This is the server logic for a Shiny web application.
-# You can find out more about building applications with Shiny here:
-# 
-# http://www.rstudio.com/shiny/
-#
+#            *     ,MMM8&&&.            *
+#                  MMMM88&&&&&    .
+#                 MMMM88&&&&&&&
+#     *           MMM88&&&&&&&&
+#                 MMM88&&&&&&&&
+#                 'MMM88&&&&&&'
+#                   'MMM8&&&'      *    
+#          |\___/|     /\___/\
+#          )     (     )    ~( .              '
+#         =\     /=   =\~    /=
+#           )===(       ) ~ (
+#          /     \     /     \
+#          |     |     ) ~   (
+#         /       \   /     ~ \
+#         \       /   \~     ~/
+#  jgs_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_
+#  |  |  |  |( (  |  |  | ))  |  |  |  |  |  |
+#  |  |  |  | ) ) |  |  |//|  |  |  |  |  |  |
+#  |  |  |  |(_(  |  |  (( |  |  |  |  |  |  |
+#  |  |  |  |  |  |  |  |\)|  |  |  |  |  |  |
+#  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 
 library(shiny)
 library(shinyAce)
