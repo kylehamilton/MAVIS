@@ -14,9 +14,11 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v0.2",
                                    "Correlations (n, r)" = "cor"
                               ),
                  ),
+                 helpText("Click here to update your results"),
+                 submitButton("Update View"),
                  helpText("Press Quit to exit the application"),
-                 actionButton("quit", "Quit"),
-                 br()
+                 actionButton("quit", "Quit")
+               
                  
                ),
                br(),
