@@ -1,33 +1,30 @@
 
-shinyUI(bootstrapPage(
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v0.2",
 
 
-  headerPanel("MAVIS: Meta Analysis Via Shiny v0.2"),
+ # headerPanel("MAVIS: Meta Analysis Via Shiny v0.2"),
 
-
-  sidebarPanel(
-
-    radioButtons("type", strong("Analysis and data input type:"),
-                 list("Mean Differences (n, M, SD)" = "mdms",
-                      "Mean Differences (n, Effect size d)" = "mdes",
-                      "Correlations (n, r)" = "cor"
-                 ),
-    ),
-    helpText("Press Quit to exit the application"),
-    actionButton("quit", "Quit"),
-    br()
-
-  ),
-  mainPanel(
-
-
-
-    tabsetPanel(
 
       tabPanel("Main",
+               sidebarPanel(
+                 
+                 radioButtons("type", strong("Analysis and data input type:"),
+                              list("Mean Differences (n, M, SD)" = "mdms",
+                                   "Mean Differences (n, Effect size d)" = "mdes",
+                                   "Correlations (n, r)" = "cor"
+                              ),
+                 ),
+                 helpText("Click here to update your results"),
+                 submitButton("Update View"),
+                 helpText("Press Quit to exit the application"),
+                 actionButton("quit", "Quit")
+               
+                 
+               ),
+               br(),
 
                p('Note: Input values must be separated by tabs. Copy and paste from Excel.'),
-               p(HTML("<b><div style='background-color:#FADDF2;border:1px solid black;'>Your data needs to have exactly the same header (variable names) in the first row.</div></b>")),
+               p("Your data needs to have exactly the same header (variable names) in the first row."),
 
                strong('Option:'),
                checkboxInput("moderator", label = strong("The data contains a categorical moderator (subgroup) variable."), value = T),
@@ -161,7 +158,7 @@ shinyUI(bootstrapPage(
                br()
 
       ),
-
+ navbarMenu("Model Estimators",
       tabPanel("Random-effects model estimators",
 
                radioButtons("model", strong("Random-effects model estimators"),
@@ -178,8 +175,8 @@ shinyUI(bootstrapPage(
                
                verbatimTextOutput('model.out')
 
-      ),
-
+     ) ),
+ navbarMenu("Publication Bias Options",
       tabPanel("Trim and Fill Options",
 
                radioButtons("trimfillopt", strong("Trim and Fill Estimator"),
@@ -229,7 +226,74 @@ described in Rosenberg (2005).'),
                
                verbatimTextOutput('filedraweranalysis.out')
                
-      ),
+      )),
+navbarMenu("Effect Size Calculator",
+          tabPanel("One Study with Means, SDs, Ns)",
+         
+                   verticalLayout(
+                     
+                     wellPanel(
+                       fluidRow(
+                         column(3,
+                      p(strong("Group 1:")),
+                     
+                     numericInput("nx", " Sample size (n)", 21),
+                     
+                     numericInput("mx", " Mean", 61.33),
+                     
+                     numericInput("sdx", " SD", 16.43),
+                     
+                     p(br())
+                         ),
+                     column(4, offset = 1,
+                     p(strong("Group 2:")),
+                     
+                     numericInput("ny", " Sample size (n)", 24),
+                     
+                     numericInput("my", " Mean", 59.79),
+                     
+                     numericInput("sdy", " SD", 18.50),
+                     
+                     p(br())
+                       ),
+                     column(4,
+                     strong('Option:'),
+                     
+                     
+                     checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+                     
+                     
+                     checkboxInput("vartest", "Show test for equality of variances", FALSE)
+                     )
+                     
+                   )),
+                   
+                     h3("Checking the input data"),
+                     tableOutput("values"),
+                                
+                    br(),
+                                
+                     h3("Mean of the differences and 95% CI"),
+                     verbatimTextOutput("difference.out"),
+                                
+                     br(),
+                                
+                     h3("t-test"),
+                     verbatimTextOutput("ttest.out"),
+                     h3(""),
+                     verbatimTextOutput("vartest.out"),
+                                
+                     br(),
+                                
+                     h3("Effect size indices"),
+                     verbatimTextOutput("es.out"),
+                                
+                     br()
+                                
+                       )
+         
+)),
+
       tabPanel("About",
 
                strong('MAVIS: Meta Analysis Via Shiny'),
@@ -296,4 +360,4 @@ described in Rosenberg (2005).'),
       )
     )
   )
-))
+
