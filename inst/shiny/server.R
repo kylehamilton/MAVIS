@@ -1,14 +1,14 @@
 
 
 shinyServer(function(input, output, session) {
- # library(shiny)
- # library(shinyAce)
- # library(meta)
- # library(metafor)
-  # library(MAd)
-  # library(MAc)
-  # library(quantreg)
-  # library(ggplot2)
+#  library(shiny)
+#  library(shinyAce)
+#  library(meta)
+#  library(metafor)
+#   library(MAd)
+#   library(MAc)
+#   library(quantreg)
+#   library(ggplot2)
   options(warn=-1)
 
 
@@ -472,7 +472,7 @@ output$rePlot <- renderPlot(
 
 
 ################################################
-# Funnel plot
+# Funnel plot removed trimfillplot UI input 
 ################################################
 
 makeFunFixPlot <- function(){
@@ -560,7 +560,6 @@ output$FunRandPlot <- renderPlot(
   })
   print(makeFunRandPlot())
 })
-
 
 
 
