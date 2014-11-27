@@ -14,8 +14,9 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v0.2",
                                    "Correlations (n, r)" = "cor"
                               ),
                  ),
-                 helpText("Click here to update your results"),
+                 helpText("Click here to update your results, you need to do this after you change the data, model, or setting"),
                  submitButton("Update View"),
+                 br(),
                  helpText("Press Quit to exit the application"),
                  actionButton("quit", "Quit")
                
@@ -241,7 +242,7 @@ described in Rosenberg (2005).'),
                
       )),
 navbarMenu("Effect Size Calculator",
-          tabPanel("One Study with Means, SDs, Ns)",
+          tabPanel("One Study with Means, SDs, Ns",
          
                    verticalLayout(
                      
@@ -305,8 +306,787 @@ navbarMenu("Effect Size Calculator",
                                 
                        )
          
-)),
-
+#           ),
+#           
+#           tabPanel("Mean Values from ANCOVA F-statistic to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("ancovaf", " F value from ANCOVA", 21),
+#                                 
+#                                 numericInput("ancovafn1", " Treatment group sample size", 50),
+#                                 
+#                                 numericInput("ancovafn2", " Comparison group sample size", 50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("anovafcovar", " Covariate outcome correlation or multiple correlation", 0.24),
+#                                 
+#                                 numericInput("anovafcovarnum", " Number of covariates", 3),
+#                                 
+#                                # numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("ANCOVA F-statistic to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("Mean Values from ANCOVA F-statistic with Pooled SD to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("One or Two-tailed p-value from ANCOVA to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("t-test Value from ANCOVA to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("Chi-Squared Statistic to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("F-test to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("Log Odds Ratio to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("p-value to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("Proportions to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("Correlation coefficient (r) to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#           
+#           tabPanel("t-test Value to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("nx", " Sample size (n)", 21),
+#                                 
+#                                 numericInput("mx", " Mean", 61.33),
+#                                 
+#                                 numericInput("sdx", " SD", 16.43),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("ny", " Sample size (n)", 24),
+#                                 
+#                                 numericInput("my", " Mean", 59.79),
+#                                 
+#                                 numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4,
+#                                 strong('Option:'),
+#                                 
+#                                 
+#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+#                                 
+#                                 
+#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
+#                          )
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("difference.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+          )),
       tabPanel("About",
 
                strong('MAVIS: Meta Analysis Via Shiny'),
