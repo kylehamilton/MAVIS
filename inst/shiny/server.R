@@ -962,6 +962,17 @@ output$vartest.out <- renderPrint({
   vartest()
 })
 
+################################################
+# Mean Values from ANCOVA F-statistic to Effect Size
+################################################
+
+  a.fesoutput <- reactive({
+    a.fes(input$ancovaf, input$ancovafn1, input$ancovafn2, input$anovafcovar, input$anovafcovarnum)
+   })
+
+  output$ancovaf.out <- renderPrint({
+    a.fesoutput()
+  })
 
 ################################################
 # R session info

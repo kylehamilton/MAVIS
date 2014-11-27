@@ -307,7 +307,63 @@ navbarMenu("Effect Size Calculator",
                        )
          
 #           ),
-#           
+#           tabPanel("ANCOVA F-statistic to Effect Size",
+#                    verticalLayout(
+#                      
+#                      wellPanel(
+#                        fluidRow(
+#                          column(3,
+#                                 p(strong("Group 1:")),
+#                                 
+#                                 numericInput("ancovaf", " F value from ANCOVA", 21),
+#                                 
+#                                 numericInput("ancovafn1", " Treatment group sample size", 50),
+#                                 
+#                                 numericInput("ancovafn2", " Comparison group sample size", 50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          column(4, offset = 1,
+#                                 p(strong("Group 2:")),
+#                                 
+#                                 numericInput("anovafcovar", " Covariate outcome correlation or multiple correlation", 0.24),
+#                                 
+#                                 numericInput("anovafcovarnum", " Number of covariates", 3),
+#                                 
+#                                # numericInput("sdy", " SD", 18.50),
+#                                 
+#                                 p(br())
+#                          ),
+#                          
+#                          
+#                        )),
+#                      
+#                      h3("Checking the input data"),
+#                      tableOutput("values"),
+#                      
+#                      br(),
+#                      
+#                      h3("Mean of the differences and 95% CI"),
+#                      verbatimTextOutput("ancovaf.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("t-test"),
+#                      verbatimTextOutput("ttest.out"),
+#                      h3(""),
+#                      verbatimTextOutput("vartest.out"),
+#                      
+#                      br(),
+#                      
+#                      h3("Effect size indices"),
+#                      verbatimTextOutput("es.out"),
+#                      
+#                      br()
+#                      
+#                    )
+#                    
+#           ),
+#
 #           tabPanel("Mean Values from ANCOVA F-statistic to Effect Size",
 #                    verticalLayout(
 #                      
@@ -373,70 +429,6 @@ navbarMenu("Effect Size Calculator",
 #                    
 #           ),
 #           
-#           tabPanel("ANCOVA F-statistic to Effect Size",
-#                    verticalLayout(
-#                      
-#                      wellPanel(
-#                        fluidRow(
-#                          column(3,
-#                                 p(strong("Group 1:")),
-#                                 
-#                                 numericInput("nx", " Sample size (n)", 21),
-#                                 
-#                                 numericInput("mx", " Mean", 61.33),
-#                                 
-#                                 numericInput("sdx", " SD", 16.43),
-#                                 
-#                                 p(br())
-#                          ),
-#                          column(4, offset = 1,
-#                                 p(strong("Group 2:")),
-#                                 
-#                                 numericInput("ny", " Sample size (n)", 24),
-#                                 
-#                                 numericInput("my", " Mean", 59.79),
-#                                 
-#                                 numericInput("sdy", " SD", 18.50),
-#                                 
-#                                 p(br())
-#                          ),
-#                          column(4,
-#                                 strong('Option:'),
-#                                 
-#                                 
-#                                 checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
-#                                 
-#                                 
-#                                 checkboxInput("vartest", "Show test for equality of variances", FALSE)
-#                          )
-#                          
-#                        )),
-#                      
-#                      h3("Checking the input data"),
-#                      tableOutput("values"),
-#                      
-#                      br(),
-#                      
-#                      h3("Mean of the differences and 95% CI"),
-#                      verbatimTextOutput("difference.out"),
-#                      
-#                      br(),
-#                      
-#                      h3("t-test"),
-#                      verbatimTextOutput("ttest.out"),
-#                      h3(""),
-#                      verbatimTextOutput("vartest.out"),
-#                      
-#                      br(),
-#                      
-#                      h3("Effect size indices"),
-#                      verbatimTextOutput("es.out"),
-#                      
-#                      br()
-#                      
-#                    )
-#                    
-#           ),
 #           
 #           tabPanel("Mean Values from ANCOVA F-statistic with Pooled SD to Effect Size",
 #                    verticalLayout(
