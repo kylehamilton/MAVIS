@@ -60,7 +60,7 @@ shinyServer(function(input, output, session) {
 
     else if (input$type == "cor") {
 
-      dat <- escalc(measure="ZCOR", ni=N, ri=r, data=dat, append=TRUE)
+      dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
       dat$FZ <- dat$yi
       dat$yi <- NULL
       dat$SV <- dat$vi # SV=sampling variances
@@ -120,7 +120,7 @@ shinyServer(function(input, output, session) {
 
       dat <- read.csv(text=input$text, sep="\t")
 
-      dat <- escalc(measure="ZCOR", ni=N, ri=r, data=dat, append=TRUE)
+      dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
       dat$FZ <- dat$yi
       dat$yi <- NULL
       dat$SV <- dat$vi # SV=sampling variances
@@ -180,7 +180,7 @@ shinyServer(function(input, output, session) {
 
       dat <- read.csv(text=input$text, sep="\t")
 
-      dat <- escalc(measure="ZCOR", ni=N, ri=r, data=dat, append=TRUE)
+      dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
       dat$FZ <- dat$yi
       dat$yi <- NULL
       dat$SV <- dat$vi # SV=sampling variances
@@ -247,7 +247,7 @@ shinyServer(function(input, output, session) {
 
     else if (input$type == "cor") {
 
-      dat <- escalc(measure="ZCOR", ni=N, ri=r, data=dat, append=TRUE)
+      dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
       dat$FZ <- round(dat$yi,3)
       dat$yi <- NULL
       dat$SV <- round(dat$vi, 3) # SV=sampling variances
@@ -676,7 +676,7 @@ modAnalysis <- reactive({
 
     dat <- read.csv(text=input$text, sep="\t")
 
-    dat <- escalc(measure="ZCOR", ni=N, ri=r, data=dat, append=TRUE)
+    dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
     dat$FZ <- dat$yi
     dat$yi <- NULL
     dat$SV <- dat$vi
@@ -1003,6 +1003,8 @@ info <- reactive({
 # server.R and ui.R connection
 ################################################
 output$model.out <- renderPrint({ input$model })
+
+output$cormeasures.out <- renderPrint({ input$cormeasures })
 
 output$trimfillopt.out <- renderPrint({paste("Selected method is:", input$trimfillopt )})
 

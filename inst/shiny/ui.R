@@ -158,6 +158,19 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v0.2",
                br()
 
       ),
+ navbarMenu("Correlation model measures",
+            tabPanel("Correlation model options",
+                     
+                     radioButtons("cormeasures", strong("Correlation model measures"),
+                                  c("raw correlation coefficient" = "COR",
+                                    "raw correlation coefficient corrected for its slight negative bias" = "UCOR",
+                                    "Fisher’s r-to-z transformed correlation coefficient" = "ZCOR"
+                                  ), selected = "ZCOR"),
+                     p(h6('Fisher’s r-to-z transformed correlation coefficient is the default estimator for the metafor package')),
+                     
+                     verbatimTextOutput('cormeasures.out')
+                     
+            ) ),
  navbarMenu("Model Estimators",
       tabPanel("Random-effects model estimators",
 
