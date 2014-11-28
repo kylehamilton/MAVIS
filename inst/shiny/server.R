@@ -975,6 +975,18 @@ output$vartest.out <- renderPrint({
   })
 
 ################################################
+# Chi-Squared Statistic to Effect Size
+################################################
+
+  chisquaredes <- reactive({
+     chies(input$chisquaredstat, input$chisquaredn1)
+  })
+
+  output$chisquared.out <- renderPrint({
+    chisquaredes()
+  })
+
+################################################
 # R session info
 ################################################
 

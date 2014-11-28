@@ -348,7 +348,42 @@ navbarMenu("Effect Size Calculator",
                      
                    )
                    
-          )),
+          ),
+tabPanel("Chi-Squared Statistic to Effect Size",
+         verticalLayout(
+           
+           wellPanel(
+             fluidRow(
+               column(3,
+                      p(strong("Chi-Squared Statistic to Effect Size")),
+                      
+                      numericInput("chisquaredstat", " Chi squared statistic from primary study.", 5.3),
+                      
+                      numericInput("chisquaredn1", " Sample size in primary study.", 50),
+                      
+                      numericInput("ancovafn2", " Comparison group sample size", 50),
+                      
+                      p(br())
+               ),
+               column(4, offset = 1,
+                      helpText("Click here to update your results"),
+                      submitButton("Update View"),
+                      p(br())
+               )
+               
+               
+             )),
+           
+           
+           h3("Effect size indices"),
+           verbatimTextOutput("chisquared.out"),
+           
+           p(br())
+           
+         )
+         
+)),
+
       tabPanel("About",
 
                strong('MAVIS: Meta Analysis Via Shiny'),
