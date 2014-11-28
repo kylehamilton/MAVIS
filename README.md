@@ -20,6 +20,7 @@ The first production release of MAVIS is now available! v1.0 has been named "Gob
 ![2063839197_ad08f77773_z](https://cloud.githubusercontent.com/assets/2274317/5225143/dc868ea4-7694-11e4-94bf-2c465f7d497c.jpg)
 
 Photo by https://www.flickr.com/photos/rdeetz/
+
 Image Licensed under https://creativecommons.org/licenses/by/2.0/
 
 
