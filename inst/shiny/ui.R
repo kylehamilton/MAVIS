@@ -1,5 +1,5 @@
 
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v0.2",
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0",
 
 
  # headerPanel("MAVIS: Meta Analysis Via Shiny v0.2"),
@@ -301,9 +301,7 @@ navbarMenu("Effect Size Calculator",
                                 
                      br(),
                                 
-                     h3("Effect size indices"),
-                     verbatimTextOutput("es.out"),
-                                
+                     h3("Effect size indices"),      
                      br()
                                 
                        )
@@ -343,7 +341,6 @@ navbarMenu("Effect Size Calculator",
                      
                      h3("Effect size indices"),
                      verbatimTextOutput("ancovaf.out"),
-                     
                      p(br())
                      
                    )
@@ -361,8 +358,6 @@ tabPanel("Chi-Squared Statistic to Effect Size",
                       
                       numericInput("chisquaredn1", " Sample size in primary study.", 50),
                       
-                      numericInput("ancovafn2", " Comparison group sample size", 50),
-                      
                       p(br())
                ),
                column(4, offset = 1,
@@ -377,7 +372,42 @@ tabPanel("Chi-Squared Statistic to Effect Size",
            
            h3("Effect size indices"),
            verbatimTextOutput("chisquared.out"),
+           p(br())
            
+         )
+         
+),
+tabPanel("p-value to Effect Size",
+         verticalLayout(
+           
+           wellPanel(
+             fluidRow(
+               column(3,
+                      p(strong("p-value to Effect Size")),
+                      
+                      numericInput("pvaluenum", " p-value.", 0.01),
+                      numericInput("pvaluen1", " Sample size of treatment group.", 50),                      
+                      numericInput("pvaluen2", " Sample size of comparison group.", 50),
+                      
+                      radioButtons("pvaluetail", strong("One or two-tailed p-value."),
+                                   c("One tail" = "one",
+                                     "Two tail" = "two"
+                                   ), selected = "two"),
+                      
+                      p(br())
+               ),
+               column(4, offset = 1,
+                      helpText("Click here to update your results"),
+                      submitButton("Update View"),
+                      p(br())
+               )
+               
+               
+             )),
+           
+           
+           h3("Effect size indices"),
+           verbatimTextOutput("pvaluees.out"),
            p(br())
            
          )
@@ -406,6 +436,7 @@ tabPanel("Chi-Squared Statistic to Effect Size",
                code('library(MAc)'),br(),
                code('library(quantreg)'),br(),
                code('library(ggplot2)'),br(),
+               code('library(compute.es)'),br(),
 
 
                br(),

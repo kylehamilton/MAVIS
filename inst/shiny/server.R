@@ -987,6 +987,18 @@ output$vartest.out <- renderPrint({
   })
 
 ################################################
+# p-value to Effect Size
+################################################
+
+pvaluees <- reactive({
+  pes(input$pvaluenum, input$pvaluen1, input$pvaluen2, tail = input$pvaluetail)
+})
+
+output$pvaluees.out <- renderPrint({
+  pvaluees()
+})
+
+################################################
 # R session info
 ################################################
 
