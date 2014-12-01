@@ -1,10 +1,6 @@
 
 shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0",
 
-
- # headerPanel("MAVIS: Meta Analysis Via Shiny v0.2"),
-
-
       tabPanel("Main",
                sidebarPanel(
                  
