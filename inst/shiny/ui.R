@@ -342,6 +342,49 @@ navbarMenu("Effect Size Calculator",
                    )
                    
           ),
+          tabPanel("Mean Values from ANCOVA F-statistic to Effect Size",
+                   verticalLayout(
+                     
+                     wellPanel(
+                       fluidRow(
+                         column(3,
+                                p(strong("Mean Values from ANCOVA F-statistic to Effect Size")),
+                                
+                                numericInput("ancovamean1", " Adjusted mean of treatment group from ANCOVA", 21.7),
+                                
+                                numericInput("ancovamean2", " Adjusted mean of comparison group from ANCOVA", 33.5),
+                                
+                                numericInput("ancovameansd", " Adjusted standard deviation", 50),
+                                
+                                p(br())
+                         ),
+                         column(4, offset = 1,
+                                
+                                numericInput("ancovameann1", " Treatment group sample size", 142),
+                                
+                                numericInput("ancovameann2", " Comparison group sample size", 133),
+                                
+                                numericInput("ancovameancovar", " Covariate outcome correlation or multiple correlation", 0.24),
+
+                                numericInput("ancovameancovarnumber", " Number of covariate", 3),
+                                
+                                
+                                helpText("Click here to update your results"),
+                                submitButton("Update View"),
+                                p(br())
+                         )
+                         
+                         
+                       )),
+                     
+                     
+                     h3("Effect size indices"),
+                     verbatimTextOutput("ancovamean.out"),
+                     p(br())
+                     
+                   )
+                   
+          ),
 tabPanel("Chi-Squared Statistic to Effect Size",
          verticalLayout(
            

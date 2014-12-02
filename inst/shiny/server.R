@@ -1,14 +1,15 @@
 
 
 shinyServer(function(input, output, session) {
-#  library(shiny)
-#  library(shinyAce)
-#  library(meta)
-#  library(metafor)
-#   library(MAd)
-#   library(MAc)
-#   library(quantreg)
-#   library(ggplot2)
+# library(shiny)
+# library(shinyAce)
+# library(meta)
+# library(metafor)
+# library(MAd)
+# library(MAc)
+# library(quantreg)
+# library(ggplot2)
+# library(compute.es) 
   options(warn=-1)
 
 
@@ -963,7 +964,7 @@ output$vartest.out <- renderPrint({
 })
 
 ################################################
-# Mean Values from ANCOVA F-statistic to Effect Size
+# ANCOVA F-statistic to Effect Size
 ################################################
 
   a.fesoutput <- reactive({
@@ -974,6 +975,17 @@ output$vartest.out <- renderPrint({
     a.fesoutput()
   })
 
+################################################
+# Mean Values from ANCOVA F-statistic to Effect Size
+################################################
+
+a.mesoutput <- reactive({
+  a.mes(input$ancovamean1, input$ancovamean2, input$ancovameansd, input$ancovameann1, input$ancovameann2, input$ancovameancovar, input$ancovameancovarnumber)
+})
+
+output$ancovamean.out <- renderPrint({
+  a.mesoutput()
+})
 ################################################
 # Chi-Squared Statistic to Effect Size
 ################################################
@@ -997,6 +1009,7 @@ pvaluees <- reactive({
 output$pvaluees.out <- renderPrint({
   pvaluees()
 })
+
 
 ################################################
 # R session info
