@@ -449,7 +449,50 @@ tabPanel("p-value to Effect Size",
            verbatimTextOutput("pvaluees.out"),
            p(br())
            
-         )
+#          ),
+#          tabPanel("single case designs",
+#                   verticalLayout(
+#                     
+#                     wellPanel(
+#                       fluidRow(
+#                         column(3,
+#                                p(strong("single case designs")),
+#                                
+#                                numericInput("pvaluenum", " p-value.", 0.01),
+#                                numericInput("pvaluen1", " Sample size of treatment group.", 50),                      
+#                                numericInput("pvaluen2", " Sample size of comparison group.", 50),
+#                                
+#                                radioButtons("pvaluetail", strong("One or two-tailed p-value."),
+#                                             c("One tail" = "one",
+#                                               "Two tail" = "two"
+#                                             ), selected = "two"),
+#                                
+#                                p(br())
+#                         ),
+#                         radioButtons("scd", strong("Type of single-case design"),
+#                                      c("AB" = "AB",
+#                                        "ABA" = "ABA",
+#                                        "ABAB" = "ABAB",
+#                                        "Completely Random Design" = "CRD",
+#                                        "Randomized Block Design" = "RBD",
+#                                        "Alternating Treatments Design" = "ATD",
+#                                        "Multiple-baseline AB design" = "MBD"
+#                                      ), selected = "AB"),
+#                         p(h6('Type of single-case design')),
+#                         
+#                         verbatimTextOutput('scd.out')
+#                         column(4, offset = 1,
+#                                helpText("Click here to update your results"),
+#                                submitButton("Update View"),
+#                                p(br())
+#                         )
+#                         
+#                         
+#                       )),
+#    
+#                     p(br())
+                    
+                  )
          
 )),
 
