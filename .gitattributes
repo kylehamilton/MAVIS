@@ -20,3 +20,9 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+# History files
+.Rhistory
+
+
+# Example code in package build process
+*-Ex.R
