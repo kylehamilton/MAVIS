@@ -297,7 +297,8 @@ navbarMenu("Effect Size Calculator",
                                 
                      br(),
                                 
-                     h3("Effect size indices"),      
+                     h3("Effect size indices"),
+                     verbatimTextOutput("es.out"),                   
                      br()
                                 
                        )

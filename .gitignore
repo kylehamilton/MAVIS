@@ -6,6 +6,8 @@
 
 # R data files from past sessions
 .Rdata
+.Rproj.user
+.Rproj
 
 # =========================
 # Operating System Files
@@ -19,7 +21,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -53,6 +56,33 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-*.Rhistory
-*.RData
+.Rproj.user/4A243815/build_options
 *.pper
+.Rproj.user/4A243815/sdb/prop/15A0533A
+.Rproj.user/4A243815/sdb/prop/2084CB19
+.Rproj.user/4A243815/sdb/prop/29477796
+.Rproj.user/4A243815/sdb/s-635DC756/lock_file
+.Rproj.user/4A243815/sdb/s-635DC756/C5AC8D95
+.Rproj.user/4A243815/sdb/s-635DC756/EC75B718
+.Rproj.user/4A243815/sdb/prop/4F1EFD6F
+.Rproj.user/4A243815/sdb/prop/D550748B
+.Rproj.user/4A243815/sdb/prop/F85FEA88
+.Rproj.user/4A243815/sdb/prop/INDEX
+.Rproj.user/4A243815/sdb/prop/D6771E6C
+.Rproj.user/4A243815/sdb/prop/38162F11
+.Rproj.user/4A243815/sdb/s-635DC756/77334A3A
+.Rproj.user/4A243815/sdb/s-635DC756/8BCA4D3E
+.Rproj.user/4A243815/sdb/s-635DC756/342BBFDB
+.Rproj.user/4A243815/persistent-state
+.Rproj.user/4A243815/sdb/s-635DC756/FB20610C
+.Rproj.user/4A243815/sdb/s-635DC756/F3A1261F
+.Rproj.user/4A243815/sdb/s-3A69E7E/lock_file
+.Rproj.user/4A243815/sdb/s-3A69E7E/342BBFDB
+.Rproj.user/4A243815/sdb/s-3A69E7E/77334A3A
+.Rproj.user/4A243815/sdb/s-3A69E7E/8BCA4D3E
+.Rproj.user/4A243815/sdb/s-3A69E7E/C5AC8D95
+.Rproj.user/4A243815/sdb/s-3A69E7E/EC75B718
+.Rproj.user/4A243815/sdb/s-3A69E7E/F3A1261F
+.Rproj.user/4A243815/sdb/s-3A69E7E/FB20610C
+*.Rproj
+RStars.Rproj

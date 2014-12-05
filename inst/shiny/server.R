@@ -1,15 +1,15 @@
 
 
 shinyServer(function(input, output, session) {
-# library(shiny)
-# library(shinyAce)
-# library(meta)
-# library(metafor)
-# library(MAd)
-# library(MAc)
-# library(quantreg)
-# library(ggplot2)
-# library(compute.es)
+library(shiny)
+library(shinyAce)
+library(meta)
+library(metafor)
+library(MAd)
+library(MAc)
+library(quantreg)
+library(ggplot2)
+library(compute.es)
   options(warn=-1)
 
 
