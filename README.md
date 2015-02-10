@@ -1,5 +1,6 @@
 MAVIS: Meta Analysis via Shiny v1.0 "Gobbling Turkey"
 =====
+[![DOI](https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg)](http://dx.doi.org/10.5281/zenodo.14966)
 
 The goal of this project is to help students and researchers run a meta-analysis as easily as possible.
 
