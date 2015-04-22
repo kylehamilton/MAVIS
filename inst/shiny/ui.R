@@ -519,7 +519,9 @@ tabPanel("p-value to Effect Size",
                code('library(quantreg)'),br(),
                code('library(ggplot2)'),br(),
                code('library(compute.es)'),br(),
-
+# One day when I have time I'll set this up so it doesn't just spit out bibtex at the user -kyle               
+#                strong('Session Citation info'),
+#                verbatimTextOutput("cite.out"),
 
                br(),
 
