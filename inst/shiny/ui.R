@@ -1,5 +1,5 @@
 
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0",
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.1",
 
       tabPanel("Main",
                sidebarPanel(
