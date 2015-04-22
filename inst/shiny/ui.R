@@ -4,17 +4,19 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.1",
       tabPanel("Main",
                sidebarPanel(
                  
-                 radioButtons("type", strong("Analysis and data input type:"),
+                 radioButtons("type", strong("Data Analysis and Input Options:"),
                               list("Mean Differences (n, M, SD)" = "mdms",
                                    "Mean Differences (n, Effect size d)" = "mdes",
                                    "Correlations (n, r)" = "cor"
                               ),
                  ),
-                 helpText("Click here to update your results, you need to do this after you change the data, model, or setting"),
-                 submitButton("Update View"),
+                 checkboxInput("moderator", label = ("The data contains a categorical moderator (subgroup) variable."), value = T),
                  br(),
-                 helpText("Press Quit to exit the application"),
-                 actionButton("quit", "Quit")
+                 submitButton("Update View"),
+                 helpText("Click here to update your results, you need to do this after you change the data, model, or any of the settings"),
+                 br(),
+                 actionButton("quit", "Quit"),
+                 helpText("Press Quit to exit the application")
                
                  
                ),
@@ -22,11 +24,8 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.1",
 
                p('Note: Input values must be separated by tabs. Copy and paste from Excel.'),
                p("Your data needs to have exactly the same header (variable names) in the first row."),
+               p("For examples of how this data should look click on the Input Examples tab"),
 
-               strong('Option:'),
-               checkboxInput("moderator", label = strong("The data contains a categorical moderator (subgroup) variable."), value = T),
-
-               br(),
 
                aceEditor("text", value="Study\tModerator\tN1\tM1\tSD1\tN2\tM2\tSD2\nStudy 01\tJH\t30\t51.57\t16.5\t30\t72.97\t13.23\nStudy 02\tUNI\t23\t75.09\t23.01\t24\t81.63\t14.42\nStudy 03\tSH\t83\t30.08\t14.29\t81\t35.38\t16.13\nStudy 04\tSH\t21\t2.95\t1.28\t21\t3.48\t0.68\nStudy 05\tSH\t15\t53.8\t17.4\t15\t60.47\t17.37\nStudy 06\tSH\t7\t15.7\t4.1\t7\t27.3\t4.1\nStudy 07\tSH\t28\t27.9\t9.57\t28\t33.2\t15.65\nStudy 08\tUNI\t40\t17.53\t8.87\t40\t19.23\t9.55\nStudy 09\tUNI\t18\t11.86\t13.24\t17\t29.92\t16.67\nStudy 10\tUNI\t21\t29.76\t16\t25\t27.98\t16.52\nStudy 11\tUNI\t26\t8.23\t3.59\t26\t9.65\t2.99\nStudy 12\tUNI\t49\t13.71\t4.07\t48\t16\t3.47\nStudy 13\tUNI\t27\t2.8\t1.7\t27\t5.9\t1.4\nStudy 14\tSH\t41\t10.05\t2.52\t34\t11.03\t1.78\nStudy 15\tUNI\t58\t3.62\t1.79\t57\t4.26\t1.61\nStudy 16\tSH\t60\t7.36\t2.8\t63\t8.82\t2.5\nStudy 17\tUNI\t15\t5.93\t3.55\t15\t12.27\t4.95\nStudy 18\tJH\t37\t13.68\t3.68\t142\t17.53\t4.34\nStudy 19\tJH\t27\t3.3\t2.3\t54\t12.98\t7.67\nStudy 20\tJH\t35\t5.49\t3.88\t39\t12.36\t7.68\nStudy 21\tJH\t32\t5.81\t3.14\t34\t12.44\t5.66\nStudy 22\tJH\t62\t17.84\t4.09\t60\t18.18\t4.09\nStudy 23\tSH\t39\t8.77\t5\t39\t13.72\t5.32\nStudy 24\tSH\t213\t59.8\t15.3\t39\t79.8\t9.5\nStudy 25\tUNI\t34\t14.32\t2.79\t42\t16\t2.05\nStudy 26\tUNI\t77\t70.85\t11.74\t56\t78.17\t9.94\nStudy 27\tUNI\t28\t80.83\t22.47\t28\t85.06\t23.52\nStudy 28\tUNI\t33\t25.38\t4.71\t36\t25.02\t3.36\nStudy 29\tUNI\t66\t0.45\t0.29\t66\t0.93\t0.59",
                          mode="r", theme="mono_industrial"),

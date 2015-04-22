@@ -1151,3 +1151,6 @@ output$downloadFunRandPlot <- downloadHandler(
 #  |  |  |  |(_(  |  |  (( |  |  |  |  |  |  |
 #  |  |  |  |  |  |  |  |\)|  |  |  |  |  |  |
 #  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+# That's my Indy and my Ari, they're my cats
+# Whenever I'm trying to work on this at night
+# They fight for lap space and purrr -Kyle
