@@ -8,7 +8,16 @@ Maintainer: William Kyle Hamilton <kyle.hamilton@gmail.com>
 Description: Interactive shiny application for running a meta-analysis,
     provides support for both random effects and fixed effects models.
 License: GPL-3
-Imports: shiny, shinyAce, metafor, MAd, MAc, quantreg, ggplot2, compute.es
+Depends: R (>= 3.0.3)
+Imports:
+    shiny,
+    shinyAce,
+    metafor,
+    MAc,
+    MAd,
+    quantreg,
+    ggplot2,
+    compute.es
 LazyData: true
 Packaged: 2014-11-22 13:29:53 UTC; Kyle
 NeedsCompilation: no
