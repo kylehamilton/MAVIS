@@ -1,8 +1,13 @@
-MAVIS: Meta Analysis via Shiny v1.0 "Gobbling Turkey"
+MAVIS: Meta Analysis via Shiny v1.0.3 "Gobbling Turkey"
 =====
 [![DOI](https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg)](http://dx.doi.org/10.5281/zenodo.14966)
 
-The goal of this project is to help students and researchers run a meta-analysis as easily as possible.
+#### News about MAVIS
+
+* April 23, 2015
+* Started to add some features to the effect size calculator
+* Added support for calculating effect sizes for single case design research with the SCMA package
+
 
 List of Packages Used 
 ```
@@ -15,10 +20,11 @@ library(MAc)
 library(quantreg) 
 library(ggplot2)
 library(compute.es)
+library(SCMA)
 ```
-The first production release of MAVIS is now available! v1.0 has been named "Gobbling Turkey"
+The first production release of MAVIS is now available on CRAN! v1.0 has been named "Gobbling Turkey"
 
-Live Demo can be found here http://kylehamilton.shinyapps.io/MAVIS_v1_0
+Live demo of v1.0 can be found here http://kylehamilton.shinyapps.io/MAVIS_v1_0
 
 ![2063839197_ad08f77773_z](https://cloud.githubusercontent.com/assets/2274317/5225143/dc868ea4-7694-11e4-94bf-2c465f7d497c.jpg)
 
@@ -26,12 +32,6 @@ Photo by https://www.flickr.com/photos/rdeetz/
 
 Image Licensed under https://creativecommons.org/licenses/by/2.0/
 
-
-
-Included graphs of MAVIS CRAN downloads since the last submission.
-![rplot02](https://cloud.githubusercontent.com/assets/2274317/5225105/1357124c-7694-11e4-88a5-fee5e6c6c05c.png)
-
-![rplot03](https://cloud.githubusercontent.com/assets/2274317/5225106/15cf1dd0-7694-11e4-84b1-235b22e1ff35.png)
 ### Acknowledgments and Authors
 
 #### Acknowledgments
