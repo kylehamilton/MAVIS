@@ -10,6 +10,7 @@ library(MAc)
 library(quantreg)
 library(ggplot2)
 library(compute.es)
+library(SCMA)
   options(warn=-1)
 
 
@@ -1026,6 +1027,17 @@ output$pvaluees.out <- renderPrint({
   pvaluees()
 })
 
+################################################
+# Single Case Design - Effect Size
+################################################
+
+SCDES <- reactive({
+  ES(design = input$SCDtype, ES = input$SCDes, data = read.csv(text=input$SCDdata))
+})
+
+output$SCDES.out <- renderPrint({
+  SCDES()
+})
 
 ################################################
 # R session info

@@ -1,5 +1,5 @@
 
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.2",
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
 
       tabPanel("Main",
                sidebarPanel(
@@ -497,50 +497,52 @@ tabPanel("p-value to Effect Size",
            
            h3("Effect size indices"),
            verbatimTextOutput("pvaluees.out"),
-           p(br())
+           p(br()),
            
-#          ),
-#          tabPanel("single case designs",
-#                   verticalLayout(
-#                     
-#                     wellPanel(
-#                       fluidRow(
-#                         column(3,
-#                                p(strong("single case designs")),
-#                                
-#                                numericInput("pvaluenum", " p-value.", 0.01),
-#                                numericInput("pvaluen1", " Sample size of treatment group.", 50),                      
-#                                numericInput("pvaluen2", " Sample size of comparison group.", 50),
-#                                
-#                                radioButtons("pvaluetail", strong("One or two-tailed p-value."),
-#                                             c("One tail" = "one",
-#                                               "Two tail" = "two"
-#                                             ), selected = "two"),
-#                                
-#                                p(br())
-#                         ),
-#                         radioButtons("scd", strong("Type of single-case design"),
-#                                      c("AB" = "AB",
-#                                        "ABA" = "ABA",
-#                                        "ABAB" = "ABAB",
-#                                        "Completely Random Design" = "CRD",
-#                                        "Randomized Block Design" = "RBD",
-#                                        "Alternating Treatments Design" = "ATD",
-#                                        "Multiple-baseline AB design" = "MBD"
-#                                      ), selected = "AB"),
-#                         p(h6('Type of single-case design')),
-#                         
-#                         verbatimTextOutput('scd.out')
-#                         column(4, offset = 1,
-#                                helpText("Click here to update your results"),
-#                                submitButton("Update View"),
-#                                p(br())
-#                         )
-#                         
-#                         
-#                       )),
-#    
-#                     p(br())
+           br()
+           
+         )
+         
+),
+         tabPanel("Single Case Designs",
+                  verticalLayout(
+                    
+                    wellPanel(
+                      fluidRow(
+                        column(3,
+                               p(strong("Single Case Design Type")),
+                               
+                               radioButtons("SCDtype", strong("Type of Single Case Design"),
+                                            c("AB" = "AB",
+                                              "ABA" = "ABA",
+                                              "ABAB" = "ABAB",
+                                              "Completely Random Design" = "CRD",
+                                              "Randomized Block Design" = "RBD",
+                                              "Alternating Treatments Design" = "ATD",
+                                              "Multiple-baseline AB design" = "MBD"
+                                            ), selected = "AB"),
+                               radioButtons("SCDes", strong("Effect Size"),
+                                            c("Standardized Mean Difference" = "SMD",
+                                              "Pooled Standardized Mean Difference" = "SMDpool",
+                                              "Percentage of Nonoverlapping Data (Positive)" = "PND+",
+                                              "Percentage of Nonoverlapping Data (Negative)" = "PND-",
+                                              "Percentage of Data Points Exceeding the Median (Positive)" = "PND+",
+                                              "Percentage of Data Points Exceeding the Median (Negative)" = "PND-"
+                                            ), selected = "SMD"),
+                               helpText("Click here to update your results"),
+                               submitButton("Update View"),
+                               
+                               p(br())
+                        ),
+                        p(strong("Single Case Design Data Entry")),
+                        p("The left column should contain the condition labels and the right column should contain the obtained scores"),
+                        aceEditor("SCDdata", value="A, 9.523465\nA, 12.371462\nA, 13.265618\nA, 10.182837\nA, 10.987079\nA, 8.161392\nA, 10.655287\nA, 9.563863\nA, 9.381336\nA, 8.822936\nA, 10.227932\nA, 11.961484\nA, 9.425201\nA, 12.199128\nB, 16.212489\nB, 17.657583\nB, 18.45166\nB, 16.645105\nB, 14.618445\nB, 15.769643\nB, 16.017145\nB, 14.000921\nB, 17.081538\nB, 14.06722\nB, 20.423526\nB, 14.123096\nB, 16.728538", mode="r", theme="terminal"),
+                        verbatimTextOutput('SCDES.out')
+                        
+                        
+                      )),
+   
+                    p(br())
                     
                   )
          
