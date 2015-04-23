@@ -1,5 +1,5 @@
 
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.1",
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.2",
 
       tabPanel("Main",
                sidebarPanel(
@@ -412,6 +412,56 @@ tabPanel("Chi-Squared Statistic to Effect Size",
            h3("Effect size indices"),
            verbatimTextOutput("chisquared.out"),
            p(br())
+           
+         )
+         
+),
+tabPanel("Outcome Measures for Two-Group Comparisons",
+         
+         verticalLayout(
+           
+           wellPanel(
+             fluidRow(
+               column(3,
+                      p(strong("Group 1:")),
+                      
+                      numericInput("ai", "Outcome 1", 100),
+                      
+                      numericInput("bi", "Outcome 2", 21),
+                      
+                      #numericInput("n1i", "Total", 121),
+                      
+                      p(br())
+               ),
+               column(4, offset = 1,
+                      p(strong("Group 2:")),
+                      
+                      numericInput("ci", "Outcome 1", 120),
+                      
+                      numericInput("di", "Outcome 2", 67),
+                      
+                      #numericInput("n2i", "Total", 187),
+                      
+                      p(br())
+               ),
+               column(4,
+                      radioButtons("twoxtwovalue", strong("Measure Selection"),
+                                   c("log relative risk" = "RR",
+                                     "log odds ratio" = "OR",
+                                     "risk difference" = "RD",
+                                     "arcsine square-root transformed risk difference (Rücker et al., 2009)." = "AS",
+                                     "log odds ratio estimated with Peto’s method (Yusuf et al., 1985)." = "PETO"
+                                   ), selected = "OR"),
+                      submitButton("Update View")
+               )
+               
+             )),
+           
+           
+           h3("Effect Size Estimates and Corresponding Sampling Variances"),
+           verbatimTextOutput("twobytwogroups.out"),
+           
+           br()
            
          )
          

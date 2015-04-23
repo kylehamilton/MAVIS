@@ -999,6 +999,22 @@ output$ancovamean.out <- renderPrint({
   })
 
 ################################################
+# Outcome Measures for Two-Group Comparisons
+################################################
+
+twobytwogroups <- reactive({
+  escalc(measure=input$twoxtwovalue, ai=input$ai, bi=input$bi, ci=input$ci, di=input$di,
+         add=1/2, to="only0", drop00=FALSE, vtype="LS",
+         var.names=c("Effect Size Estimates","Corresponding Sampling
+Variances"), add.measure=FALSE,
+         append=TRUE, replace=TRUE, digits=4)
+})
+
+output$twobytwogroups.out <- renderPrint({
+  twobytwogroups()
+})
+
+################################################
 # p-value to Effect Size
 ################################################
 
