@@ -3,7 +3,6 @@
 shinyServer(function(input, output, session) {
 library(shiny)
 library(shinyAce)
-library(shinythemes)
 library(meta)
 library(metafor)
 library(MAd)
@@ -1038,6 +1037,18 @@ SCDES <- reactive({
 
 output$SCDES.out <- renderPrint({
   SCDES()
+})
+
+################################################
+# Single Case Design - Graph 
+################################################
+
+SCDGRAPH <- reactive({
+  SCRT::graph1(design = input$SCDtype, data = read.csv(text=input$SCDdata), xlab= input$SCDXAXIS, ylab= input$SCDYAXIS)
+})
+
+output$SCDGRAPH.out <- renderPlot({
+  SCDGRAPH()
 })
 
 ################################################

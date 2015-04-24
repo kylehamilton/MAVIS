@@ -1,7 +1,7 @@
 Package: MAVIS
 Type: Package
 Title: Meta Analysis via Shiny
-Version: 1.0.3
+Version: 1.0.4
 Date: 2015-04-23
 Author: William Kyle Hamilton <kyle.hamilton@gmail.com>, Atsushi Mizumoto
 Maintainer: William Kyle Hamilton <kyle.hamilton@gmail.com>
@@ -13,14 +13,15 @@ License: GPL-3
 Depends: R (>= 3.0.3),
     shiny,
     shinyAce,
-    shinythemes,
     metafor,
     MAc,
     MAd,
     quantreg,
     ggplot2,
-    compute.es,
-    SCMA
+    compute.es
+Import:
+    SCMA,
+    SCRT
 LazyData: true
 Packaged: 2014-11-22 13:29:53 UTC; Kyle
 NeedsCompilation: no
