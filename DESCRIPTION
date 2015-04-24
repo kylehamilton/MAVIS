@@ -10,10 +10,10 @@ Description: Interactive shiny application for running a meta-analysis,
     Additional support is included for calculating effect sizes including
     single case design.
 License: GPL-3
-Depends: R (>= 3.0.3)
-Imports:
+Depends: R (>= 3.0.3),
     shiny,
     shinyAce,
+    shinythemes,
     metafor,
     MAc,
     MAd,
