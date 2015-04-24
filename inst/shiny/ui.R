@@ -1,7 +1,9 @@
 
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
-
-      tabPanel("Main",
+#shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1.png"), " |  MAVIS: Meta Analysis Via Shiny v1.0.3"), windowTitle="MAVIS v1.0.3",
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3", windowTitle="MAVIS v1.0.3",
+# If I want to add a theme here is how to do it
+# shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
+      tabPanel("Main", icon = icon("stats", lib = "glyphicon"),
                sidebarPanel(
                  
                  radioButtons("type", strong("Data Analysis and Input Options:"),
@@ -15,7 +17,7 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
                  submitButton("Update View"),
                  helpText("Click here to update your results, you need to do this after you change the data, model, or any of the settings"),
                  br(),
-                 actionButton("quit", "Quit"),
+                 actionButton("quit", "Quit", icon("sign-out")),
                  helpText("Press Quit to exit the application")
                
                  
@@ -130,7 +132,7 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
 
 
 
-      tabPanel("Input Examples",
+      tabPanel("Input Examples", icon = icon("table", lib = "font-awesome"),
 
                p('Note: Input values must be separated by tabs. Copy and paste from Excel.'),
 
@@ -154,8 +156,8 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
                br()
 
       ),
- navbarMenu("Correlation model measures",
-            tabPanel("Correlation model options",
+ navbarMenu("Correlation Model Measures", icon = icon("line-chart", lib = "font-awesome"),
+            tabPanel("Correlation model options", icon = icon("line-chart", lib = "font-awesome"),
                      
                      radioButtons("cormeasures", strong("Correlation model measures"),
                                   c("raw correlation coefficient" = "COR",
@@ -167,8 +169,8 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
                      verbatimTextOutput('cormeasures.out')
                      
             ) ),
- navbarMenu("Model Estimators",
-      tabPanel("Random-effects model estimators",
+ navbarMenu("Model Estimators", icon = icon("random", lib = "glyphicon"),
+      tabPanel("Random-effects model estimators", icon = icon("random", lib = "glyphicon"),
 
                radioButtons("model", strong("Random-effects model estimators"),
                             c("DerSimonian-Laird" = "DL",
@@ -185,8 +187,8 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
                verbatimTextOutput('model.out')
 
      ) ),
- navbarMenu("Publication Bias Options",
-      tabPanel("Trim and Fill Options",
+ navbarMenu("Publication Bias", icon = icon("book", lib = "font-awesome"),
+      tabPanel("Trim and Fill Options", icon = icon("chevron-right", lib = "font-awesome"),
 
                radioButtons("trimfillopt", strong("Trim and Fill Estimator"),
                             c("L0" = "L0",
@@ -199,7 +201,7 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
 
       ),
 
-      tabPanel("Regression Test for Funnel Plot Asymmetry",
+      tabPanel("Regression Test for Funnel Plot Asymmetry", icon = icon("chevron-right", lib = "font-awesome"),
                
                radioButtons("regtestpredictor", strong("Predictor"),
                             c("standard error" = "sei",
@@ -213,7 +215,7 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3",
                
       ),
       
-      tabPanel("File Drawer Analysis",
+      tabPanel("File Drawer Analysis", icon = icon("chevron-right", lib = "font-awesome"),
                
                radioButtons("filedraweranalysis", strong("File Drawer Analysis"),
                             c("Rosenthal" = "Rosenthal",
@@ -236,8 +238,8 @@ described in Rosenberg (2005).'),
                verbatimTextOutput('filedraweranalysis.out')
                
       )),
-navbarMenu("Effect Size Calculator",
-          tabPanel("One Study with Means, SDs, Ns",
+navbarMenu("Effect Size Calculator", icon = icon("calculator", lib = "font-awesome"),
+          tabPanel("One Study with Means, SDs, Ns", icon = icon("chevron-right", lib = "font-awesome"),
          
                    verticalLayout(
                      
@@ -303,7 +305,7 @@ navbarMenu("Effect Size Calculator",
                        )
          
           ),
-          tabPanel("ANCOVA F-statistic to Effect Size",
+          tabPanel("ANCOVA F-statistic to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
                    verticalLayout(
                      
                      wellPanel(
@@ -342,7 +344,7 @@ navbarMenu("Effect Size Calculator",
                    )
                    
           ),
-          tabPanel("Mean Values from ANCOVA F-statistic to Effect Size",
+          tabPanel("Mean Values from ANCOVA F-statistic to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
                    verticalLayout(
                      
                      wellPanel(
@@ -385,7 +387,7 @@ navbarMenu("Effect Size Calculator",
                    )
                    
           ),
-tabPanel("Chi-Squared Statistic to Effect Size",
+tabPanel("Chi-Squared Statistic to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
          verticalLayout(
            
            wellPanel(
@@ -416,7 +418,7 @@ tabPanel("Chi-Squared Statistic to Effect Size",
          )
          
 ),
-tabPanel("Outcome Measures for Two-Group Comparisons",
+tabPanel("Outcome Measures for Two-Group Comparisons", icon = icon("chevron-right", lib = "font-awesome"),
          
          verticalLayout(
            
@@ -466,7 +468,7 @@ tabPanel("Outcome Measures for Two-Group Comparisons",
          )
          
 ),
-tabPanel("p-value to Effect Size",
+tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
          verticalLayout(
            
            wellPanel(
@@ -504,7 +506,7 @@ tabPanel("p-value to Effect Size",
          )
          
 ),
-         tabPanel("Single Case Designs",
+         tabPanel("Single Case Designs", icon = icon("chevron-right", lib = "font-awesome"),
                   verticalLayout(
                     
                     wellPanel(
@@ -547,74 +549,118 @@ tabPanel("p-value to Effect Size",
                   )
          
 )),
+navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
+           tabPanel("Authors", icon = icon("users", lib = "font-awesome"),
+                    
+                    strong('Acknowledgments'),
+                    
+                    p('William Kyle Hamilton would like to thank the ',
+                      a("Health Communications and Interventions Lab at UC Merced", href="http://cameronhcilab.com/", target="_blank"),
+                      'for their comments and beta testing efforts on this application ', 'as well as',
+                      a("Kathleen Coburn", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),
+                      'for her feedback and evaluation of the statistical methods related to this project.'),
+                    
+                    p('Atsushi Mizumoto would like to thank',
+                      a("Dr. Luke Plonsky", href="http://oak.ucc.nau.edu/ldp3/", target="_blank"), 'and',
+                      a("Dr. Yo In'nami", href="https://sites.google.com/site/yoinnami/", target="_blank"),
+                      'for their support and feedback to create this web application.'),
+                    
+                    br(),
+                    
+                    strong('Authors'),
+                    
+                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/kyle80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+                    p(a("William Kyle Hamilton - University of California, Merced", href="http://www.kylehamilton.com", target="_blank")),
+                    p("William Kyle Hamilton maintains this application and has authored new features."),
+                    
+                    br(),
+                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+                    p(a("Atsushi Mizumoto, PhD - Kansai University", href="http://mizumot.com", target="_blank"),br(),
+                      p("Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found", a("here", href="https://github.com/mizumot/meta", target="_blank"))
+                      
+                      
+                    ),
 
-      tabPanel("About",
+                    br()
+                    
+           ),
+           tabPanel("Bug Reports", icon = icon("bug", lib = "font-awesome"),
+                    
+                    strong('Bug Reports'),
 
-               strong('MAVIS: Meta Analysis Via Shiny'),
-               p("The goal of this project is to help students and researchers run a meta-analysis as easily as possible."),
-               p('This application is developed with',
-                 a("Shiny.", href="http://www.rstudio.com/shiny/", target="_blank"),
-                 ''),
-               p('The code for this application is available at this',
-                 a('GitHub.', href='https://github.com/kylehamilton/meta', target="_blank")),
+                    p("If you discover a problem with MAVIS please submit it to the project GitHub page", 
+                      a("https://github.com/kylehamilton/MAVIS/issues", href="https://github.com/kylehamilton/MAVIS/issues", target="_blank"),br()),
 
+                    p("MAVIS is an Open Source project, you are more than welcome to submit patches or features and help the project grow."),
+                    
+                    
+                    br()
+                    
+           ),
+           tabPanel("Feedback", icon = icon("comments", lib = "font-awesome"),
+                    
+                    strong('Feedback about MAVIS'),
+                    
+                    p("Feedback about your MAVIS experince is always welcome and highly encouraged!"),
+                    p("Feel free to contact the project maintainer with any questions, user experinces, uses of MAVIS, or
+                       feature requests at kyle.hamilton@gmail.com"),
+                    
+                    br()
+                    
+           ),
+           
+           tabPanel("Licence", icon = icon("legal", lib = "font-awesome"),
+                    
+                    strong('Licence'),
+                    
+                    p("MAVIS: Meta Analysis via Shiny"),
+                    p(" Copyright 2015  William Kyle Hamilton and Atsushi Mizumoto"),
 
-               br(),
+                    p(" This program is free software you can redistribute it and or modify
+                      it under the terms of the GNU General Public License as published by
+                      the Free Software Foundation either version 3 of the License or
+                      at your option any later version."),
 
-               strong('List of Packages Used'), br(),
-               code('library(shiny)'),br(),
-               code('library(shinyAce)'),br(),
-               code('library(metafor)'),br(),
-               code('library(meta)'),br(),
-               code('library(MAd)'),br(),
-               code('library(MAc)'),br(),
-               code('library(quantreg)'),br(),
-               code('library(ggplot2)'),br(),
-               code('library(compute.es)'),br(),
-# One day when I have time I'll set this up so it doesn't just spit out bibtex at the user -kyle               
-#                strong('Session Citation info'),
-#                verbatimTextOutput("cite.out"),
+                    p("This program is distributed in the hope that it will be useful,
+                      but WITHOUT ANY WARRANTY; without even the implied warranty of
+                      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                      GNU General Public License for more details."),
 
-               br(),
+                    p("You should have received a copy of the GNU General Public License
+                      along with this program.  If not, see", a("http://www.gnu.org/licenses/", href="http://www.gnu.org/licenses/", target="_blank"),br()),
 
-               h4('Acknowledgments and Authors'),
+                    
+                    br(),
+                    
+                    strong('Futher Infomation'),
+                    p("If you would like to learn more about the GNU General Public License and what it means tl'dr legal has a simple explaination which can be found here", a("https://www.tldrlegal.com/l/gpl-3.0", href="https://www.tldrlegal.com/l/gpl-3.0", target="_blank"),br()),
+                    
 
-               strong('Acknowledgments'),
+                    
+                    br()
+                    
+           ),
+           
+           tabPanel("Support", icon = icon("chevron-right", lib = "font-awesome"),
+                    
+                    
+                    strong('Feedback about MAVIS'),
+                    
+                    p("Feedback about your MAVIS experince is always welcome and highly encouraged!"),
+                    p("Feel free to contact the project maintainer with any questions, user experinces, uses of MAVIS, or
+                      feature requests at kyle.hamilton@gmail.com"),
+                    br()
+                    
+                    )),
 
-               p('William Kyle Hamilton would like to thank the ',
-                 a("Health Communications and Interventions Lab at UC Merced", href="http://cameronhcilab.com/", target="_blank"),
-                 'for their comments and beta testing efforts on this application ', 'as well as',
-                 a("Kathleen Coburn", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),
-                 'for her feedback and evaluation of the statistical methods related to this project.'),
+#This is just so I can get ui.R to run, I'll fix this later
+tabPanel(" ",
+         h5(" ")
+),
 
-               p('Atsushi Mizumoto would like to thank',
-                 a("Dr. Luke Plonsky", href="http://oak.ucc.nau.edu/ldp3/", target="_blank"), 'and',
-                 a("Dr. Yo In'nami", href="https://sites.google.com/site/yoinnami/", target="_blank"),
-                 'for their support and feedback to create this web application.'),
+p(br())
 
-               br(),
+)
+)
 
-
-
-               h5('Authors'),
-
-               HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/kyle80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
-               p(a("William Kyle Hamilton - University of California, Merced", href="http://www.kylehamilton.com", target="_blank")),
-               p("William Kyle Hamilton maintains this application and has authored new features."),
-
-               br(),
-               HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
-               p(a("Atsushi Mizumoto, PhD - Kansai University", href="http://mizumot.com", target="_blank"),br(),
-                 p("Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found", a("here", href="https://github.com/mizumot/meta", target="_blank"))
-
-
-               ),
-
-
-
-               p(br())
-
-      )
-    )
-  )
 
