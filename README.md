@@ -2,6 +2,8 @@ MAVIS: Meta Analysis via Shiny v1.0.3 "Gobbling Turkey"
 =====
 [![DOI](https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg)](http://dx.doi.org/10.5281/zenodo.14966)
 
+![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads")
+
 #### News about MAVIS
 
 * April 23, 2015
