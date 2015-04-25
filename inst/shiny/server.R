@@ -598,10 +598,12 @@ asy <- reactive({
 
     RE.res <- RE.est()$RE.res
 
-    regt <- regtest(RE.res, model="lm", predictor=input$regtestpredictor)
+    regt <- regtest(RE.res, model="lm", predictor=input$regtestpredictor, ret.fit=input$regtestfullmodel)
+    rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
 
     return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+                'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
   }
 
@@ -611,9 +613,11 @@ asy <- reactive({
     RE.res <- RE.est()$RE.res
 
     regt <- regtest(RE.res, model="lm", predictor=input$regtestpredictor)
+    rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
 
     return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+                'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
 
   }
@@ -624,16 +628,14 @@ asy <- reactive({
     RE.res <- RE.est()$RE.res
 
     regt <- regtest(RE.res, model="lm", predictor=input$regtestpredictor)
+    rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
 
     return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+                'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
   }
 })
-
-
-
-
 
 ################################################
 # Moderator analysis
