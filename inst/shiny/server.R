@@ -1111,52 +1111,32 @@ info <- reactive({
 # R citation info
 ################################################
 
-cite <- reactive({
-  cite1 <- paste("This analysis was performed on ", format(Sys.time(), "%A, %B %d %Y at %I:%M:%S %p"), ".", sep = "")
-  cite2 <- paste(strsplit(R.version$version.string, " \\(")[[1]][1], " was used for this session.", sep = "")
-  cite3 <- paste("Package citation infomation for this session:")
-  cite4 <- paste("ggplot2", citation("ggplot2"))
-  cite5 <- paste("MAc", citation("MAc"))
-  cite6 <- paste("MAd", citation("MAd"))
-  cite7 <- paste("meta", citation("meta"))
-  cite8 <- paste("metafor", citation("metafor"))
-  cite9 <- paste("quantreg", citation("quantreg"))
-  cite10 <- paste("shiny", citation("shiny"))
-  cite11 <- paste("shinyAce", citation("shinyAce"))
-  
-  cat(sprintf(cite1), "\n")
-  cat(sprintf(cite2), "\n")
-  cat(sprintf(cite3), "\n")
-  cat(sprintf(cite4), "\n")
-  cat(sprintf(cite5), "\n")
-  cat(sprintf(cite6), "\n")
-  cat(sprintf(cite7), "\n")
-  cat(sprintf(cite8), "\n")
-  cat(sprintf(cite9), "\n")
-  cat(sprintf(cite10), "\n")
-  cat(sprintf(cite11), "\n")
-})
+# cite <- reactive({
+#   cite1 <- paste("This analysis was performed on ", format(Sys.time(), "%A, %B %d %Y at %I:%M:%S %p"), ".", sep = "")
+#   cite2 <- paste(strsplit(R.version$version.string, " \\(")[[1]][1], " was used for this session.", sep = "")
+#   cite3 <- paste("Package citation infomation for this session:")
+#   cite4 <- paste("ggplot2", citation("ggplot2"))
+#   cite5 <- paste("MAc", citation("MAc"))
+#   cite6 <- paste("MAd", citation("MAd"))
+#   cite7 <- paste("meta", citation("meta"))
+#   cite8 <- paste("metafor", citation("metafor"))
+#   cite9 <- paste("quantreg", citation("quantreg"))
+#   cite10 <- paste("shiny", citation("shiny"))
+#   cite11 <- paste("shinyAce", citation("shinyAce"))
+#   
+#   cat(sprintf(cite1), "\n")
+#   cat(sprintf(cite2), "\n")
+#   cat(sprintf(cite3), "\n")
+#   cat(sprintf(cite4), "\n")
+#   cat(sprintf(cite5), "\n")
+#   cat(sprintf(cite6), "\n")
+#   cat(sprintf(cite7), "\n")
+#   cat(sprintf(cite8), "\n")
+#   cat(sprintf(cite9), "\n")
+#   cat(sprintf(cite10), "\n")
+#   cat(sprintf(cite11), "\n")
+# })
 
-# ################################################
-# # knitr report
-# ################################################
-# 
-# output$downloadReport <- downloadHandler(
-#   filename = function() {
-#     paste('my-report', sep = '.', switch(
-#       input$format, PDF = 'pdf', HTML = 'html', Word = 'docx'
-#       ))
-#     },
-#   content = function(file) {
-#     src <- normalizePath('report.Rmd')
-#     file.copy(src, 'report.Rmd')
-#     out <- render('report.Rmd', switch(
-#       input$format,
-#       PDF = pdf_document(), HTML = html_document(), Word = word_document()
-#     ))
-#     file.rename(out, file)
-#   }
-# )
 ################################################
 # server.R and ui.R connection
 ################################################
