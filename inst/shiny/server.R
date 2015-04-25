@@ -11,6 +11,7 @@ library(quantreg)
 library(ggplot2)
 library(compute.es)
 library(SCMA)
+library(SCRT)
   options(warn=-1)
 
 
@@ -1116,6 +1117,26 @@ cite <- reactive({
   cat(sprintf(cite11), "\n")
 })
 
+# ################################################
+# # knitr report
+# ################################################
+# 
+# output$downloadReport <- downloadHandler(
+#   filename = function() {
+#     paste('my-report', sep = '.', switch(
+#       input$format, PDF = 'pdf', HTML = 'html', Word = 'docx'
+#       ))
+#     },
+#   content = function(file) {
+#     src <- normalizePath('report.Rmd')
+#     file.copy(src, 'report.Rmd')
+#     out <- render('report.Rmd', switch(
+#       input$format,
+#       PDF = pdf_document(), HTML = html_document(), Word = word_document()
+#     ))
+#     file.rename(out, file)
+#   }
+# )
 ################################################
 # server.R and ui.R connection
 ################################################

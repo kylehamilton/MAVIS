@@ -554,7 +554,19 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                   )
          
 )),
-navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
+
+# tabPanel("Report Settings", icon = icon("bookmark-o", lib = "font-awesome"),
+#          
+#          p('Note: Input values must be separated by tabs. Copy and paste from Excel.'),
+#          radioButtons('format', 'Document format', c('PDF', 'HTML', 'Word'),
+#                       inline = TRUE),
+#          downloadButton('downloadReport'),
+#          
+#          br()
+#          
+# ),
+
+navbarMenu("About MAVIS", icon = icon("info-circle", lib = "font-awesome"),
            tabPanel("Authors", icon = icon("users", lib = "font-awesome"),
                     
                     strong('Acknowledgments'),
