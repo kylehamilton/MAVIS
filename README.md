@@ -1,4 +1,4 @@
-MAVIS: Meta Analysis via Shiny v1.0.3 "Gobbling Turkey"
+MAVIS: Meta Analysis via Shiny v1.0.4 "Gobbling Turkey"
 =====
 [![DOI](https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg)](http://dx.doi.org/10.5281/zenodo.14966)
 
