@@ -1,7 +1,8 @@
 
-#shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1-e1429870722337.png"),  "|  MAVIS: Meta Analysis Via Shiny v1.0.3"), windowTitle="MAVIS v1.0.3", 
-
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
+#shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1.png"), " |  MAVIS: Meta Analysis Via Shiny v1.0.3"), windowTitle="MAVIS v1.0.3",
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3", windowTitle="MAVIS v1.0.3",
+# If I want to add a theme here is how to do it
+# shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
       tabPanel("Main", icon = icon("stats", lib = "glyphicon"),
                sidebarPanel(
                  
@@ -91,7 +92,7 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v
                p('Open circles (if any) on the right side show missing NULL studies estimated with the trim-and-fill method, added in the funnel plot.'),
                br(),
                br(),
-               strong("Fail-safe N"),
+
                verbatimTextOutput("asy.out"), # regression tests for funnel plot asymmetry
                p('Fail-safe N is the number of nonsignificant studies necessary to make the result nonsignificant. "When the fail-safe N is high, that is interpreted to mean that even a large number of nonsignificant studies may not influence the statistical significance of meta-analytic results too greatly."',
                  a('(Oswald & Plonsky, 2010, p. 92)', href='http://dx.doi.org/10.1017/S0267190510000115', target="_blank"), '.'),
@@ -511,7 +512,7 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                     wellPanel(
                       fluidRow(
                         column(3,
-                               p(strong("Calculation and Plot Options")),
+                               p(strong("Single Case Design Type")),
                                
                                radioButtons("SCDtype", strong("Type of Single Case Design"),
                                             c("AB" = "AB",
@@ -530,10 +531,6 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                                               "Percentage of Data Points Exceeding the Median (Positive)" = "PND+",
                                               "Percentage of Data Points Exceeding the Median (Negative)" = "PND-"
                                             ), selected = "SMD"),
-                               textInput("SCDXAXIS", label = ("X-Axis Label"), 
-                                         value = "Measurement Times"),
-                               textInput("SCDYAXIS", label = ("Y-Axis Label"), 
-                                         value = "Scores"),
                                helpText("Click here to update your results"),
                                submitButton("Update View"),
                                
@@ -542,9 +539,7 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                         p(strong("Single Case Design Data Entry")),
                         p("The left column should contain the condition labels and the right column should contain the obtained scores"),
                         aceEditor("SCDdata", value="A, 9.523465\nA, 12.371462\nA, 13.265618\nA, 10.182837\nA, 10.987079\nA, 8.161392\nA, 10.655287\nA, 9.563863\nA, 9.381336\nA, 8.822936\nA, 10.227932\nA, 11.961484\nA, 9.425201\nA, 12.199128\nB, 16.212489\nB, 17.657583\nB, 18.45166\nB, 16.645105\nB, 14.618445\nB, 15.769643\nB, 16.017145\nB, 14.000921\nB, 17.081538\nB, 14.06722\nB, 20.423526\nB, 14.123096\nB, 16.728538", mode="r", theme="terminal"),
-                        p("Effect Size should be listed below"),
-                        verbatimTextOutput('SCDES.out'),
-                        plotOutput("SCDGRAPH.out")
+                        verbatimTextOutput('SCDES.out')
                         
                         
                       )),
@@ -554,19 +549,7 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                   )
          
 )),
-
-# tabPanel("Report Settings", icon = icon("bookmark-o", lib = "font-awesome"),
-#          
-#          p('Note: Input values must be separated by tabs. Copy and paste from Excel.'),
-#          radioButtons('format', 'Document format', c('PDF', 'HTML', 'Word'),
-#                       inline = TRUE),
-#          downloadButton('downloadReport'),
-#          
-#          br()
-#          
-# ),
-
-navbarMenu("About MAVIS", icon = icon("info-circle", lib = "font-awesome"),
+navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
            tabPanel("Authors", icon = icon("users", lib = "font-awesome"),
                     
                     strong('Acknowledgments'),

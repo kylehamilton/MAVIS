@@ -484,7 +484,7 @@ makeFunFixPlot <- function(){
 
     FE.res <- FE.est()$FE.res
 
-    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt))
+    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
 
   }
 
@@ -493,7 +493,7 @@ makeFunFixPlot <- function(){
 
     FE.res <- FE.est()$FE.res
 
-    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt))
+    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
 
   }
 
@@ -502,7 +502,7 @@ makeFunFixPlot <- function(){
 
     FE.res <- FE.est()$FE.res
 
-    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt))
+    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
 
   }
 }
@@ -529,7 +529,7 @@ makeFunRandPlot <- function(){
 
     RE.res <- RE.est()$RE.res
 
-    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt))
+    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
 
   }
 
@@ -538,7 +538,7 @@ makeFunRandPlot <- function(){
 
     RE.res <- RE.est()$RE.res
 
-    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt))
+    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
 
   }
 
@@ -547,7 +547,7 @@ makeFunRandPlot <- function(){
 
     RE.res <- RE.est()$RE.res
 
-    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt))
+    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
 
   }
 }
