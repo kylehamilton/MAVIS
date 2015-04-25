@@ -92,7 +92,7 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v
                p('Open circles (if any) on the right side show missing NULL studies estimated with the trim-and-fill method, added in the funnel plot.'),
                br(),
                br(),
-               h3("Publication Bias)"),
+               h3("Publication Bias"),
                verbatimTextOutput("asy.out"), # regression tests for funnel plot asymmetry
                p('Fail-safe N is the number of nonsignificant studies necessary to make the result nonsignificant. "When the fail-safe N is high, that is interpreted to mean that even a large number of nonsignificant studies may not influence the statistical significance of meta-analytic results too greatly."',
                  a('(Oswald & Plonsky, 2010, p. 92)', href='http://dx.doi.org/10.1017/S0267190510000115', target="_blank"), '.'),
@@ -200,7 +200,7 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v
 
       ),
 
-tabPanel("Regression Test for Funnel Plot Asymmetry", icon = icon("chevron-right", lib = "font-awesome"),
+tabPanel("Tests for Funnel Plot Asymmetry", icon = icon("chevron-right", lib = "font-awesome"),
 verticalLayout(
   
   wellPanel(
@@ -213,6 +213,11 @@ verticalLayout(
                                            "sample size" = "ni",
                                            "inverse of the sample size" = "ninv"
                                          ), selected = "sei"),
+                            radioButtons("regtestmodeltype", strong("Model Selection"),
+                                          c("Weighted Regression with a Multiplicative Dispersion Term" = "lm",
+                                            "Meta-analytic Models" = "rma"
+                                          ), selected = "lm"),
+             
              
              p(br())
       ),
@@ -226,8 +231,10 @@ verticalLayout(
       )
       
     )),
+  p("For more information about the different methods of detecting publication bias in a meta-analysis see (Jin, Zhou, & He, 2015)"),
   h3("References"),
   p("Egger, M., Davey Smith, G., Schneider, M., & Minder, C. (1997). Bias in meta-analysis detected by a simple, graphical test. British Medical Journal, 315, 629--634."),
+  p("Jin, Zhi-Chao, Zhou, Xiao-Hua & He, Jia (2015). Statistical methods for dealing with publication bias in meta-analysis. Statistics in Medicine, 34, 343-360."),
   p("Peters, J. L., Sutton, A. J., Jones, D. R., Abrams, K. R., & Rushton, L. (2008). Contour-enhanced meta-analysis funnel plots help distinguish publication bias from other causes of asymmetry. Journal of Clinical Epidemiology, 61(10), 991–996."),
   p("Sterne, J. A. C., & Egger, M. (2001). Funnel plots for detecting bias in meta-analysis: Guidelines on choice of axis. Journal of Clinical Epidemiology, 54(10), 1046–1055."),
   br()

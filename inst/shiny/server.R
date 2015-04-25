@@ -598,7 +598,7 @@ asy <- reactive({
 
     RE.res <- RE.est()$RE.res
 
-    regt <- regtest(RE.res, model="lm", predictor=input$regtestpredictor, ret.fit=input$regtestfullmodel)
+    regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor, ret.fit=input$regtestfullmodel)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
 
@@ -612,7 +612,7 @@ asy <- reactive({
 
     RE.res <- RE.est()$RE.res
 
-    regt <- regtest(RE.res, model="lm", predictor=input$regtestpredictor)
+    regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
 
@@ -627,7 +627,7 @@ asy <- reactive({
 
     RE.res <- RE.est()$RE.res
 
-    regt <- regtest(RE.res, model="lm", predictor=input$regtestpredictor)
+    regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
 
