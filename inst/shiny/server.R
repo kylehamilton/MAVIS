@@ -481,30 +481,39 @@ output$rePlot <- renderPlot(
 makeFunFixPlot <- function(){
 
   if (input$type == "mdms") {
-
+    
+    if (input$contourenhancedbox == TRUE) {
     FE.res <- FE.est()$FE.res
-
+    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+    FE.res <- FE.est()$FE.res
     metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
-
-  }
+  }}
 
 
   else if (input$type == "mdes") {
-
-    FE.res <- FE.est()$FE.res
-
-    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
-
-  }
+    
+    if (input$contourenhancedbox == TRUE) {
+      FE.res <- FE.est()$FE.res
+      metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+      FE.res <- FE.est()$FE.res
+      metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
+    }}
 
 
   else if (input$type == "cor") {
-
-    FE.res <- FE.est()$FE.res
-
-    metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
-
-  }
+    
+    if (input$contourenhancedbox == TRUE) {
+      FE.res <- FE.est()$FE.res
+      metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+      FE.res <- FE.est()$FE.res
+      metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
+    }}
 }
 
 
@@ -526,30 +535,39 @@ output$FunFixPlot <- renderPlot(
 makeFunRandPlot <- function(){
 
   if (input$type == "mdms") {
-
-    RE.res <- RE.est()$RE.res
-
-    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
-
-  }
+    
+    if (input$contourenhancedbox == TRUE) {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
+    }}
 
 
   else if (input$type == "mdes") {
-
-    RE.res <- RE.est()$RE.res
-
-    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
-
-  }
+    
+    if (input$contourenhancedbox == TRUE) {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
+    }}
 
 
   else if (input$type == "cor") {
-
-    RE.res <- RE.est()$RE.res
-
-    metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
-
-  }
+    
+    if (input$contourenhancedbox == TRUE) {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
+    }}
 }
 
 

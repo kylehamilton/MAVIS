@@ -1,6 +1,6 @@
 
 #shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1.png"), " |  MAVIS: Meta Analysis Via Shiny v1.0.3"), windowTitle="MAVIS v1.0.3",
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3", windowTitle="MAVIS v1.0.3",
+shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
 # shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
       tabPanel("Main", icon = icon("stats", lib = "glyphicon"),
@@ -201,19 +201,36 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.3", windowTitle="MAVIS v
 
       ),
 
-      tabPanel("Regression Test for Funnel Plot Asymmetry", icon = icon("chevron-right", lib = "font-awesome"),
-               
-               radioButtons("regtestpredictor", strong("Predictor"),
-                            c("standard error" = "sei",
-                              "sampling variance" = "vi",
-                              "sample size" = "ni",
-                              "inverse of the sample size" = "ninv"
-                            ), selected = "sei"),
-               p(h6('Predictor used for the regression test. The default in the metafor package is standard error')),
-               
-               verbatimTextOutput('regtestpredictor.out')
-               
+tabPanel("Regression Test for Funnel Plot Asymmetry", icon = icon("chevron-right", lib = "font-awesome"),
+verticalLayout(
+  
+  wellPanel(
+    fluidRow(
+      column(4,
+             p(strong("Regression Test Options")),
+                            radioButtons("regtestpredictor", strong("Predictor"),
+                                         c("standard error" = "sei",
+                                           "sampling variance" = "vi",
+                                           "sample size" = "ni",
+                                           "inverse of the sample size" = "ninv"
+                                         ), selected = "sei"),
+             
+             p(br())
       ),
+      column(4,
+             strong('Funnel Plot Options'),
+             checkboxInput("contourenhancedbox", "Contour Enhanced Plots", FALSE),
+             helpText("Check this box if you would like to have your funnel plots contour enhanced see (Peters et al., 2008)")
+      )
+      
+    )),
+  h3("References"),
+  p("Peters, J. L., Sutton, A. J., Jones, D. R., Abrams, K. R., & Rushton, L. (2008). Contour-enhanced meta-analysis funnel plots help distinguish publication bias from other causes of asymmetry. Journal of Clinical Epidemiology, 61(10), 991–996."),                   
+  br()
+  
+)
+
+),
       
       tabPanel("File Drawer Analysis", icon = icon("chevron-right", lib = "font-awesome"),
                
