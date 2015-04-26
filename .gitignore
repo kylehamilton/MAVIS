@@ -88,3 +88,5 @@ $RECYCLE.BIN/
 *.Rproj
 RStars.Rproj
 *.Rhistory
+*.Rhistory
+*.dcf

@@ -1,4 +1,14 @@
-
+library(shiny)
+library(shinyAce)
+library(meta)
+library(metafor)
+library(MAd)
+library(MAc)
+library(quantreg)
+library(ggplot2)
+library(compute.es)
+library(SCMA)
+library(SCRT)
 #shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1.png"), " |  MAVIS: Meta Analysis Via Shiny v1.0.3"), windowTitle="MAVIS v1.0.3",
 shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
@@ -567,6 +577,7 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                         p(strong("Single Case Design Data Entry")),
                         p("The left column should contain the condition labels and the right column should contain the obtained scores"),
                         aceEditor("SCDdata", value="A, 9.523465\nA, 12.371462\nA, 13.265618\nA, 10.182837\nA, 10.987079\nA, 8.161392\nA, 10.655287\nA, 9.563863\nA, 9.381336\nA, 8.822936\nA, 10.227932\nA, 11.961484\nA, 9.425201\nA, 12.199128\nB, 16.212489\nB, 17.657583\nB, 18.45166\nB, 16.645105\nB, 14.618445\nB, 15.769643\nB, 16.017145\nB, 14.000921\nB, 17.081538\nB, 14.06722\nB, 20.423526\nB, 14.123096\nB, 16.728538", mode="r", theme="terminal"),
+                        p("Below is your computed effect size, unless you've selected either Percentage of Nonoverlapping Data or Percentage of Data Points Exceeding the Median in which case the number below is the percentage."),
                         verbatimTextOutput('SCDES.out')
                         
                         
@@ -578,7 +589,7 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
          
 )),
 navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
-           tabPanel("Authors", icon = icon("users", lib = "font-awesome"),
+           tabPanel("Authors and Contributors", icon = icon("users", lib = "font-awesome"),
                     
                     strong('Acknowledgments'),
                     
@@ -609,6 +620,17 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                       
                     ),
 
+                    br(),
+                    
+                    strong('Contributors and Translators'),
+                    
+                    HTML('<div style="clear: left;"><img src="http://oi59.tinypic.com/2mnrcci.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+                    p(a("Burak Aydin, PhD - Recep Tayyip Erdoğan University", href="http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148", target="_blank"),br(),
+                      p("Burak Aydin is working on a turkish version of MAVIS")
+                      
+                      
+                    ),
+                    
                     br()
                     
            ),
