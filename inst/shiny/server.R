@@ -1317,6 +1317,36 @@ info <- reactive({
 # })
 
 ################################################
+# PDF Download Test
+################################################
+# makePlot <- function() {
+#   plot(1:input$n123, 1:input$n123)
+# }
+# 
+# asy.test <- renderText ({
+#   print(asy)
+# })
+# 
+# output$myPlot <- renderPlot({
+#   makePlot()
+# }, height=400, width=800)
+# 
+# output$downloadPlot <- downloadHandler(
+#   filename = function() { 
+#     'report.pdf'
+#   },
+#   content = function(file) {
+#     pdf(file, onefile=T, width=8.5, height=11)
+#     makePlot()
+#     SCDGRAPH()
+#     asy.test()
+#     dev.off()
+#   },
+#   contentType = 'application/pdf'
+# )
+
+
+################################################
 # server.R and ui.R connection
 ################################################
 output$model.out <- renderPrint({ input$model })

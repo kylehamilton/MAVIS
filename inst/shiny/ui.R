@@ -9,8 +9,8 @@ library(ggplot2)
 library(compute.es)
 library(SCMA)
 library(SCRT)
-#shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1.png"), " |  MAVIS: Meta Analysis Via Shiny v1.0.3"), windowTitle="MAVIS v1.0.3",
-shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
+shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.0.4",
+#shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
 # shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
       tabPanel("Main", icon = icon("stats", lib = "glyphicon"),
@@ -183,6 +183,16 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v
                      verbatimTextOutput('cormeasures.out')
                      
             ) ),
+# navbarMenu("Test123", icon = icon("line-chart", lib = "font-awesome"),
+#            tabPanel("Test456", icon = icon("line-chart", lib = "font-awesome"),
+#                     
+#                     sliderInput("n123", "Number of points:", min = 1, max = 50, value = 10),
+#                     downloadButton('downloadPlot', 'Download')
+#            ),
+#            mainPanel(
+#              plotOutput("myPlot")
+#                     
+#            ) ),
  navbarMenu("Model Estimators", icon = icon("random", lib = "glyphicon"),
       tabPanel("Random-effects model estimators", icon = icon("random", lib = "glyphicon"),
 
@@ -594,6 +604,23 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
          
 )),
 navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
+           tabPanel("About MAVIS", icon = icon("bar-chart-o", lib = "font-awesome"),
+                    
+                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis3.png" alt="" style="float: top; margin-right:5px" /></div>'),
+                    br(),
+                    p("MAVIS was designed to help people run a meta-analysis with R as easily as possible"),
+                    br(),
+                    p("Version 1.0.4"),
+                    p("DOI for the MAVIS code"),
+                    img(src = "https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg", seamless=NA),
+                    br(),
+                    p("Number of monthly downloads from CRAN"),
+                    img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
+                    
+                    
+                    br()
+                    
+           ),
            tabPanel("Authors and Contributors", icon = icon("users", lib = "font-awesome"),
                     
                     strong('Acknowledgments'),
