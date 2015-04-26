@@ -19,7 +19,8 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v
                  radioButtons("type", strong("Data Analysis and Input Options:"),
                               list("Mean Differences (n, M, SD)" = "mdms",
                                    "Mean Differences (n, Effect size d)" = "mdes",
-                                   "Correlations (n, r)" = "cor"
+                                   "Correlations (n, r)" = "cor",
+                                   "Log Odds Ratio"="or"
                               ),
                  ),
                  checkboxInput("moderator", label = ("The data contains a categorical moderator (subgroup) variable."), value = T),
@@ -162,6 +163,10 @@ shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v
                p(strong("Correlations (n, r)")),
                aceEditor("text3", value="Study\tN\tr\tModerator\nIzumi (2000)\t175\t0.78\tcollege\nYu (2009)\t53\t0.38\tJS high\nThuy (1996)\t250\t0.69\tcollege\nOckey (2002)\t90\t0.89\tcollege\nAraru (2005)\t86\t0.52\tJS high\nWee (1997)\t182\t0.98\tcollege\nOzoda (2007)\t591\t0.91\tcollege\nHala (2004)\t30\t0.95\tcollege\nTapio (2008)\t37\t0.47\tJS high\nAndarani (2008)\t107\t0.84\tcollege\nDavis (1999)\t74\t0.99\tcollege\nPlonsky (2002)\t217\t0.86\tcollege\nGassel (1993)\t203\t0.99\tcollege",mode="r", theme="monokai"),
 
+               br(),
+               p(strong("Binary Data")),
+               aceEditor("text4", value="Study\tModerator\tupoz\tuneg\tNU\tkpoz\tkneg\tNK\nStudy 01\tra\t4\t119\t123\t11\t128\t139\nStudy 02\tra\t6\t300\t306\t29\t274\t303\nStudy 03\tra\t3\t228\t331\t11\t209\t220\nStudy 04\tsys\t17\t1699\t1716\t65\t1600\t1665\nStudy 05\tsys\t5\t2493\t2498\t3\t2338\t2341\nStudy 06\tra\t29\t7470\t7499\t45\t7232\t7277", mode="r", theme="monokai"),
+               
                br()
 
       ),

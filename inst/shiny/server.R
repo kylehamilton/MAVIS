@@ -72,6 +72,19 @@ library(SCRT)
       list(dat = dat) # To be used later
 
     }
+    else if (input$type == "or") {
+      
+      dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+                    data=dat, append=TRUE)
+      
+      dat$ES <- dat$yi
+      dat$yi <- NULL
+      dat$SV <- dat$vi # SV=sampling variances
+      dat$vi <- NULL
+      
+      list(dat = dat) # To be used later
+    }    
+
   })
 
 
@@ -133,68 +146,100 @@ library(SCRT)
 
       list(FE.res = FE.res) # To be used later
     }
-  })
-
-
-
-
-
-  # Random effects model to be used later
-  RE.est  <- reactive({
-
-    if (input$type == "mdms") {
-
+    
+    else if (input$type == "or") {
+      
       dat <- read.csv(text=input$text, sep="\t")
-
-      dat <- escalc(measure="SMD", n1i=N1, n2i=N2,
-                    m1i=M1, m2i=M2,
-                    sd1i=SD1, sd2i=SD2,
+      
+      dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
                     data=dat, append=TRUE)
-
+      
       dat$ES <- dat$yi
-      dat$yi <- NULL
-      dat$SV <- dat$vi
-      dat$vi <- NULL
-
-      RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
-
-      list(RE.res = RE.res) # To be used later
-    }
-
-
-    else if (input$type == "mdes") {
-
-      dat <- read.csv(text=input$text, sep="\t")
-
-      df <- (dat$N1 + dat$N2) - 2
-      j <- 1 - (3/(4 * df - 1))
-      g <- j * dat$d
-      dat$ES <- g
-
-      dat$SV <- (((dat$N1+dat$N2)/(dat$N1*dat$N2))+((dat$ES*dat$ES)/(2*(dat$N1+dat$N2))))
-
-      RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
-
-      list(RE.res = RE.res) # To be used later
-    }
-
-
-    else if (input$type == "cor") {
-
-      dat <- read.csv(text=input$text, sep="\t")
-
-      dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
-      dat$FZ <- dat$yi
       dat$yi <- NULL
       dat$SV <- dat$vi # SV=sampling variances
       dat$vi <- NULL
-
-      RE.res <- rma(FZ, SV, data=dat, method =input$model, slab=paste(Study))
-
-      list(RE.res = RE.res) # To be used later
-
+      
+      FE.res <- rma(ES, SV, method="FE", data=dat, slab=paste(Study))
+      
+      list(FE.res = FE.res) # To be used later
     }
   })
+
+# Random effects model to be used later
+RE.est  <- reactive({
+  
+  if (input$type == "mdms") {
+    
+    dat <- read.csv(text=input$text, sep="\t")
+    
+    dat <- escalc(measure="SMD", n1i=N1, n2i=N2,
+                  m1i=M1, m2i=M2,
+                  sd1i=SD1, sd2i=SD2,
+                  data=dat, append=TRUE)
+    
+    dat$ES <- dat$yi
+    dat$yi <- NULL
+    dat$SV <- dat$vi
+    dat$vi <- NULL
+    
+    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
+    
+    list(RE.res = RE.res) # To be used later
+  }
+  
+  
+  else if (input$type == "mdes") {
+    
+    dat <- read.csv(text=input$text, sep="\t")
+    
+    df <- (dat$N1 + dat$N2) - 2
+    j <- 1 - (3/(4 * df - 1))
+    g <- j * dat$d
+    dat$ES <- g
+    
+    dat$SV <- (((dat$N1+dat$N2)/(dat$N1*dat$N2))+((dat$ES*dat$ES)/(2*(dat$N1+dat$N2))))
+    
+    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
+    
+    list(RE.res = RE.res) # To be used later
+  }
+  
+  
+  else if (input$type == "cor") {
+    
+    dat <- read.csv(text=input$text, sep="\t")
+    
+    dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
+    dat$FZ <- dat$yi
+    dat$yi <- NULL
+    dat$SV <- dat$vi # SV=sampling variances
+    dat$vi <- NULL
+    
+    RE.res <- rma(FZ, SV, data=dat, method =input$model, slab=paste(Study))
+    
+    list(RE.res = RE.res) # To be used later
+    
+  }
+  else if (input$type == "or") {
+    
+    dat <- read.csv(text=input$text, sep="\t")
+    
+    dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+                  data=dat, append=TRUE)
+    
+    dat$ES <- dat$yi
+    dat$yi <- NULL
+    dat$SV <- dat$vi # SV=sampling variances
+    dat$vi <- NULL
+    
+    
+    
+    
+    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
+    
+    list(RE.res = RE.res) # To be used later
+  }
+})
 
 
 
@@ -229,7 +274,6 @@ library(SCRT)
       print(dat)
     }
 
-
     else if (input$type == "mdes") {
 
       df <- (dat$N1 + dat$N2) - 2
@@ -247,7 +291,6 @@ library(SCRT)
       print(dat)
     }
 
-
     else if (input$type == "cor") {
 
       dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
@@ -262,6 +305,25 @@ library(SCRT)
 
       print(dat)
 
+    }
+    
+    else if (input$type == "or") {
+      
+      
+      dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+                    data=dat, append=TRUE)
+      
+      dat$ES <- dat$yi
+      dat$yi <- NULL
+      dat$SV <- dat$vi # SV=sampling variances
+      dat$vi <- NULL
+      
+      cat("\n","ES = Effect size [Hedges's g]", "\n",
+          "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n"
+      ) # ," W = Inverse variance weight", "\n", "\n"
+      cat("---","\n")
+      
+      print(dat)
     }
   })
 
@@ -321,6 +383,20 @@ library(SCRT)
       })
       FE.res
     }
+    else if (input$type == "or") {
+      
+      FE.res <- FE.est()$FE.res
+      
+      cat("The FE model is a description of the K studies (Kovalchik, 2013).","\n")
+      cat("---","\n")
+      withProgress(message = 'Calculating', detail = 'Fixed effects model', value = 0, {
+        for (i in 1:10) {
+          incProgress(1/10)
+          Sys.sleep(0.05)
+        }
+      })
+      FE.res
+    }
   })
 
 
@@ -345,7 +421,6 @@ library(SCRT)
       RE.res
     }
 
-
     else if (input$type == "mdes") {
 
       RE.res <- RE.est()$RE.res
@@ -363,7 +438,6 @@ library(SCRT)
 
     }
 
-
     else if (input$type == "cor") {
 
       cat("Both FE and RE model results are reported above.","\n","\n")
@@ -374,6 +448,22 @@ library(SCRT)
       cat("The RE model regards the K studies as a sample of","\n")
       cat(" a larger universe of studies (Kovalchik, 2013).","\n")
 
+    }
+    
+    else if (input$type == "or") {
+      
+      RE.res <- RE.est()$RE.res
+      
+      cat("The RE model regards the K studies as a sample of","\n")
+      cat(" a larger universe of studies (Kovalchik, 2013).","\n")
+      cat("---","\n")
+      withProgress(message = 'Calculating', detail = 'Random effects model', value = 0, {
+        for (i in 1:10) {
+          incProgress(1/10)
+          Sys.sleep(0.05)
+        }
+      })
+      RE.res
     }
   })
 
@@ -409,6 +499,12 @@ library(SCRT)
 
       forest(FE.res, transf=transf.ztor)
 
+    }
+    else if (input$type == "or") {
+      
+      FE.res <- FE.est()$FE.res
+      
+      forest(FE.res)
     }
   }
 
@@ -454,6 +550,13 @@ makerePlot <- function(){
 
     forest(RE.res, transf=transf.ztor)
 
+  }
+  if (input$type == "or") {
+    
+    RE.res <- RE.est()$RE.res
+    
+    forest(RE.res)
+    
   }
 }
 
@@ -514,7 +617,20 @@ makeFunFixPlot <- function(){
       FE.res <- FE.est()$FE.res
       metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
     }}
-}
+  
+  
+  else if (input$type == "or") {
+    
+    if (input$contourenhancedbox == TRUE) {
+      FE.res <- FE.est()$FE.res
+      metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+      FE.res <- FE.est()$FE.res
+      metafor::funnel(trimfill(FE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
+    }} 
+  }
+
 
 
 output$FunFixPlot <- renderPlot(
@@ -527,8 +643,6 @@ output$FunFixPlot <- renderPlot(
   })
   print(makeFunFixPlot())
 })
-
-
 
 
 
@@ -559,6 +673,18 @@ makeFunRandPlot <- function(){
 
 
   else if (input$type == "cor") {
+    
+    if (input$contourenhancedbox == TRUE) {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), level=c(90, 95, 99), shade=c("white", "gray", "darkgray"), refline=0, yaxis=input$regtestpredictor)
+    } 
+    else {
+      RE.res <- RE.est()$RE.res
+      metafor::funnel(trimfill(RE.res, estimator=input$trimfillopt), yaxis=input$regtestpredictor)
+    }}
+  
+  
+  else if (input$type == "or") {
     
     if (input$contourenhancedbox == TRUE) {
       RE.res <- RE.est()$RE.res
@@ -631,6 +757,20 @@ asy <- reactive({
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
 
+    return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+                'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
+                'File drawer analysis' = value))
+  }
+  
+  
+  else if (input$type == "or") {
+    
+    RE.res <- RE.est()$RE.res
+    
+    regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
+    rankt <- ranktest(RE.res)
+    value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
+    
     return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
@@ -738,7 +878,28 @@ modAnalysis <- reactive({
   #cat("No moderator (subgroup) analysis is conducted.","\n")
 
   #}
-
+  else if (input$type == "or") {
+    
+    dat <- read.csv(text=input$text, sep="\t")
+    
+    dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+                  data=dat, append=TRUE)
+    
+    dat$ES <- dat$yi
+    dat$yi <- NULL
+    dat$SV <- dat$vi
+    dat$vi <- NULL
+    
+    fixed <- MAd::macat(ES, SV, mod = Moderator, data=dat, method= "fixed")
+    random <- MAd::macat(ES, SV, mod = Moderator, data=dat, method= "random")
+    
+    cat("---", "\n", "Fixed effects model:", "\n")
+    print(fixed)
+    
+    cat("\n", "\n", "---", "\n", "Random effects model:", "\n")
+    print(random)
+    
+  }
 })
 
 
@@ -775,6 +936,15 @@ ModFixGraph <- function(){
 
     MAd::plotcat(FZ, SV, mod = Moderator, data = dat, method= "fixed", modname= "Moderator")
 
+  }
+  
+  
+  else if (input$type == "or") {
+    
+    dat <- W.data()$dat
+    
+    MAd::plotcat(ES, SV, mod = Moderator, data = dat, method= "fixed", modname= "Moderator")
+    
   }
 
 }
@@ -821,6 +991,15 @@ ModRandGraph <- function(){
 
     MAd::plotcat(FZ, SV, mod = Moderator, data = dat, method= "random", modname= "Moderator")
 
+  }
+  
+  
+  else if (input$type == "cor") {
+    
+    dat <- W.data()$dat
+    
+    MAd::plotcat(FZ, SV, mod = Moderator, data = dat, method= "random", modname= "Moderator")
+    
   }
 
 }
