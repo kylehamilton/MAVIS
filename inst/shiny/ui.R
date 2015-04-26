@@ -183,6 +183,24 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                      verbatimTextOutput('cormeasures.out')
                      
             ) ),
+navbarMenu("Dichotomous Model Options", icon = icon("ellipsis-v", lib = "font-awesome"),
+           tabPanel("Dichotomous Model Options", icon = icon("ellipsis-v", lib = "font-awesome"),
+                    
+                    radioButtons("dichotomousoptions", strong("Measure Selection"),
+                                 c("log relative risk" = "RR",
+                                   "log odds ratio" = "OR",
+                                   "risk difference" = "RD",
+                                   "arcsine square-root transformed risk difference (Rücker et al., 2009)." = "AS",
+                                   "log odds ratio estimated with Peto’s method (Yusuf et al., 1985)." = "PETO",
+                                   "probit transformed risk difference as an estimate of the standardized mean difference." = "PBIT",
+                                   "transformed odds ratio as an estimate of the standardized mean difference (normal distributions)." = "OR2DN",
+                                   "transformed odds ratio as an estimate of the standardized mean difference (logistic distributions)." = "OR2DL"
+                                 ), selected = "OR"),
+                    p(h6('logs odds ratio is the default option and is the one you should use for the example provided in the Input Examples tab.')),
+                    
+                    verbatimTextOutput('dichotomousoptions.out')
+                    
+           ) ),
 # navbarMenu("Test123", icon = icon("line-chart", lib = "font-awesome"),
 #            tabPanel("Test456", icon = icon("line-chart", lib = "font-awesome"),
 #                     

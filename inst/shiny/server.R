@@ -74,7 +74,7 @@ library(SCRT)
     }
     else if (input$type == "or") {
       
-      dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+      dat <- escalc(input$dichotomousoptions, ai = upoz, bi = uneg, ci = kpoz, di = kneg,
                     data=dat, append=TRUE)
       
       dat$ES <- dat$yi
@@ -151,7 +151,7 @@ library(SCRT)
       
       dat <- read.csv(text=input$text, sep="\t")
       
-      dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+      dat <- escalc(input$dichotomousoptions, ai = upoz, bi = uneg, ci = kpoz, di = kneg,
                     data=dat, append=TRUE)
       
       dat$ES <- dat$yi
@@ -224,7 +224,7 @@ RE.est  <- reactive({
     
     dat <- read.csv(text=input$text, sep="\t")
     
-    dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+    dat <- escalc(input$dichotomousoptions, ai = upoz, bi = uneg, ci = kpoz, di = kneg,
                   data=dat, append=TRUE)
     
     dat$ES <- dat$yi
@@ -310,7 +310,7 @@ RE.est  <- reactive({
     else if (input$type == "or") {
       
       
-      dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+      dat <- escalc(input$dichotomousoptions, ai = upoz, bi = uneg, ci = kpoz, di = kneg,
                     data=dat, append=TRUE)
       
       dat$ES <- dat$yi
@@ -882,7 +882,7 @@ modAnalysis <- reactive({
     
     dat <- read.csv(text=input$text, sep="\t")
     
-    dat <- escalc(measure="OR", ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+    dat <- escalc(input$dichotomousoptions, ai = upoz, bi = uneg, ci = kpoz, di = kneg,
                   data=dat, append=TRUE)
     
     dat$ES <- dat$yi
@@ -1352,6 +1352,8 @@ info <- reactive({
 output$model.out <- renderPrint({ input$model })
 
 output$cormeasures.out <- renderPrint({ input$cormeasures })
+
+output$dichotomousoptions.out <- renderPrint({ input$dichotomousoptions })
 
 output$trimfillopt.out <- renderPrint({paste("Selected method is:", input$trimfillopt )})
 
