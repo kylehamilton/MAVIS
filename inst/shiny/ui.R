@@ -626,7 +626,7 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                     
                     HTML('<div style="clear: left;"><img src="http://oi59.tinypic.com/2mnrcci.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
                     p(a("Burak Aydin, PhD - Recep Tayyip Erdoğan University", href="http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148", target="_blank"),br(),
-                      p("Burak Aydin is working on a turkish version of MAVIS")
+                      p("Burak Aydin is working on a Turkish version of MAVIS")
                       
                       
                     ),
