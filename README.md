@@ -26,7 +26,7 @@ library(SCMA)
 ```
 The first production release of MAVIS is now available on CRAN! v1.0 has been named "Gobbling Turkey"
 
-Live demo of v1.0 can be found here http://kylehamilton.shinyapps.io/MAVIS_v1_0
+Live demo of v1.0 can be found here http://shiny.aaboyles.com/MAVIS/inst/shiny/
 
 ![2063839197_ad08f77773_z](https://cloud.githubusercontent.com/assets/2274317/5225143/dc868ea4-7694-11e4-94bf-2c465f7d497c.jpg)
 
@@ -53,3 +53,7 @@ William Kyle Hamilton maintains this application and has authored new features.
 [Atsushi Mizumoto, PhD - Kansai University](http://mizumot.com)
 
 Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found [here](https://github.com/mizumot/meta)
+
+![alt text](http://oi59.tinypic.com/2mnrcci.jpg "Logo Title Text 1") [Burak Aydin, PhD - Recep Tayyip Erdoğan University](http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148)
+
+Burak Aydin is working on a Turkish version of MAVIS
