@@ -185,20 +185,19 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
 #              br()
 #                     
 #            ) ),
- navbarMenu("Correlation Model Measures", icon = icon("line-chart", lib = "font-awesome"),
-            tabPanel("Correlation model options", icon = icon("line-chart", lib = "font-awesome"),
-                     
-                     radioButtons("cormeasures", strong("Correlation model measures"),
-                                  c("raw correlation coefficient" = "COR",
-                                    "raw correlation coefficient corrected for its slight negative bias" = "UCOR",
-                                    "Fisher’s r-to-z transformed correlation coefficient" = "ZCOR"
-                                  ), selected = "ZCOR"),
-                     p(h6('Fisher’s r-to-z transformed correlation coefficient is the default estimator for the metafor package')),
-                     
-                     verbatimTextOutput('cormeasures.out')
-                     
-            ) ),
-navbarMenu("Dichotomous Model Options", icon = icon("ellipsis-v", lib = "font-awesome"),
+navbarMenu("Model Options and Settings", icon = icon("line-chart", lib = "font-awesome"),
+           tabPanel("Correlation model options", icon = icon("line-chart", lib = "font-awesome"),
+                    
+                    radioButtons("cormeasures", strong("Correlation model measures"),
+                                 c("raw correlation coefficient" = "COR",
+                                   "raw correlation coefficient corrected for its slight negative bias" = "UCOR",
+                                   "Fisher’s r-to-z transformed correlation coefficient" = "ZCOR"
+                                 ), selected = "ZCOR"),
+                    p(h6('Fisher’s r-to-z transformed correlation coefficient is the default estimator for the metafor package')),
+                    
+                    verbatimTextOutput('cormeasures.out')
+                    
+           ),
            tabPanel("Dichotomous Model Options", icon = icon("ellipsis-v", lib = "font-awesome"),
                     
                     radioButtons("dichotomousoptions", strong("Measure Selection"),
@@ -215,48 +214,32 @@ navbarMenu("Dichotomous Model Options", icon = icon("ellipsis-v", lib = "font-aw
                     
                     verbatimTextOutput('dichotomousoptions.out')
                     
-           ) ),
-# navbarMenu("Test123", icon = icon("line-chart", lib = "font-awesome"),
-#            tabPanel("Test456", icon = icon("line-chart", lib = "font-awesome"),
-#                     
-#                     sliderInput("n123", "Number of points:", min = 1, max = 50, value = 10),
-#                     downloadButton('downloadPlot', 'Download')
-#            ),
-#            mainPanel(
-#              plotOutput("myPlot")
-#                     
-#            ) ),
- navbarMenu("Model Estimators", icon = icon("random", lib = "glyphicon"),
-      tabPanel("Random-effects model estimators", icon = icon("random", lib = "glyphicon"),
-
-               radioButtons("model", strong("Random-effects model estimators"),
-                            c("DerSimonian-Laird" = "DL",
-                              "Hedges" = "HE",
-                              "Hunter-Schmidt" = "HS",
-                              "Sidik-Jonkman" = "SJ",
-                              "Maximum-likelihood" = "ML",
-                              "Restricted maximum-likelihood" = "REML",
-                              "Empirical Bayes (Paule-Mandel)" = "EB",
-                              "Generalized Q-statistic" = "GENQ"
-                            ), selected = "REML"),
-               p(h6('Restricted maximum-likelihood is the default estimator for the metafor package')),
-               
-               verbatimTextOutput('model.out')
-
-     ),
-     
-     tabPanel("Knapp & Hartung Adjustment", icon = icon("chevron-right", lib = "font-awesome"),
-              checkboxInput("khadjust", label = "Knapp & Hartung Adjustment", value = FALSE),
-              p(h6('Knapp & Hartung Adjustment is turned off by the default in the metafor package')),
-              p("The Knapp and Hartung (2003) method is an adjustment to the standard errors of the estimated
+           ),
+           tabPanel("Random-effects model estimators", icon = icon("random", lib = "glyphicon"),
+                    
+                    radioButtons("model", strong("Random-effects model estimators"),
+                                 c("DerSimonian-Laird" = "DL",
+                                   "Hedges" = "HE",
+                                   "Hunter-Schmidt" = "HS",
+                                   "Sidik-Jonkman" = "SJ",
+                                   "Maximum-likelihood" = "ML",
+                                   "Restricted maximum-likelihood" = "REML",
+                                   "Empirical Bayes (Paule-Mandel)" = "EB",
+                                   "Generalized Q-statistic" = "GENQ"
+                                 ), selected = "REML"),
+                    p(h6('Restricted maximum-likelihood is the default estimator for the metafor package')),
+                    
+                    checkboxInput("khadjust", label = "Knapp & Hartung Adjustment", value = FALSE),
+                    p(h6('Knapp & Hartung Adjustment is turned off by the default in the metafor package')),
+                    p("The Knapp and Hartung (2003) method is an adjustment to the standard errors of the estimated
 coefficients, which helps to account for the uncertainty in the estimate of the amount of
 (residual) heterogeneity and leads to different reference distributions."),
-              verbatimTextOutput('khadjust.out'),
-              h3("References"),
-              p("Knapp, G., & Hartung, J. (2003). Improved tests for a random effects meta-regression with a single covariate. Statistics in Medicine, 22, 2693–2710.")
-              
-
-     )),
+                    verbatimTextOutput('khadjust.out'),
+                    h3("References"),
+                    p("Knapp, G., & Hartung, J. (2003). Improved tests for a random effects meta-regression with a single covariate. Statistics in Medicine, 22, 2693–2710.")
+                    
+                    
+           )),
 
  navbarMenu("Publication Bias", icon = icon("book", lib = "font-awesome"),
       tabPanel("Trim and Fill Options", icon = icon("chevron-right", lib = "font-awesome"),
