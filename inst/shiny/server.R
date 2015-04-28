@@ -182,7 +182,7 @@ RE.est  <- reactive({
     dat$SV <- dat$vi
     dat$vi <- NULL
     
-    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
+    RE.res <- rma(ES, SV, method=input$model, data=dat, knha=input$khadjust, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
   }
@@ -199,7 +199,7 @@ RE.est  <- reactive({
     
     dat$SV <- (((dat$N1+dat$N2)/(dat$N1*dat$N2))+((dat$ES*dat$ES)/(2*(dat$N1+dat$N2))))
     
-    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
+    RE.res <- rma(ES, SV, method=input$model, data=dat, knha=input$khadjust, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
   }
@@ -215,7 +215,7 @@ RE.est  <- reactive({
     dat$SV <- dat$vi # SV=sampling variances
     dat$vi <- NULL
     
-    RE.res <- rma(FZ, SV, data=dat, method =input$model, slab=paste(Study))
+    RE.res <- rma(FZ, SV, data=dat, method =input$model, knha=input$khadjust, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
     
@@ -235,7 +235,7 @@ RE.est  <- reactive({
     
     
     
-    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
+    RE.res <- rma(ES, SV, method=input$model, data=dat, knha=input$khadjust, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
   }
@@ -1354,6 +1354,8 @@ info <- reactive({
 output$model.out <- renderPrint({ input$model })
 
 output$cormeasures.out <- renderPrint({ input$cormeasures })
+
+output$khadjust.out <- renderPrint({ input$khadjust })
 
 output$dichotomousoptions.out <- renderPrint({ input$dichotomousoptions })
 

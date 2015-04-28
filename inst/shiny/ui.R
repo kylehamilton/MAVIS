@@ -173,6 +173,18 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                br()
 
       ),
+# navbarMenu("Bayesian Model Options", icon = icon("tasks", lib = "font-awesome"),
+#            tabPanel("Test456", icon = icon("tasks", lib = "font-awesome"),
+# #                     
+# #                     sliderInput("n123", "Number of points:", min = 1, max = 50, value = 10),
+# #                     downloadButton('downloadPlot', 'Download')
+# br()
+#            ),
+#            mainPanel(
+# #              plotOutput("myPlot"),
+#              br()
+#                     
+#            ) ),
  navbarMenu("Correlation Model Measures", icon = icon("line-chart", lib = "font-awesome"),
             tabPanel("Correlation model options", icon = icon("line-chart", lib = "font-awesome"),
                      
@@ -231,7 +243,21 @@ navbarMenu("Dichotomous Model Options", icon = icon("ellipsis-v", lib = "font-aw
                
                verbatimTextOutput('model.out')
 
-     ) ),
+     ),
+     
+     tabPanel("Knapp & Hartung Adjustment", icon = icon("chevron-right", lib = "font-awesome"),
+              checkboxInput("khadjust", label = "Knapp & Hartung Adjustment", value = FALSE),
+              p(h6('Knapp & Hartung Adjustment is turned off by the default in the metafor package')),
+              p("The Knapp and Hartung (2003) method is an adjustment to the standard errors of the estimated
+coefficients, which helps to account for the uncertainty in the estimate of the amount of
+(residual) heterogeneity and leads to different reference distributions."),
+              verbatimTextOutput('khadjust.out'),
+              h3("References"),
+              p("Knapp, G., & Hartung, J. (2003). Improved tests for a random effects meta-regression with a single covariate. Statistics in Medicine, 22, 2693–2710.")
+              
+
+     )),
+
  navbarMenu("Publication Bias", icon = icon("book", lib = "font-awesome"),
       tabPanel("Trim and Fill Options", icon = icon("chevron-right", lib = "font-awesome"),
 
