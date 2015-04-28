@@ -185,7 +185,7 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
 #              br()
 #                     
 #            ) ),
-navbarMenu("Model Options and Settings", icon = icon("line-chart", lib = "font-awesome"),
+navbarMenu("Model Options and Settings", icon = icon("cog", lib = "font-awesome"),
            tabPanel("Correlation model options", icon = icon("line-chart", lib = "font-awesome"),
                     
                     radioButtons("cormeasures", strong("Correlation model measures"),
