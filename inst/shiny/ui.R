@@ -3,6 +3,7 @@ library(shinyAce)
 library(shinyBS)
 library(meta)
 library(metafor)
+#library(metamisc)
 library(MAd)
 library(MAc)
 library(quantreg)
@@ -173,19 +174,15 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                br()
 
       ),
-# navbarMenu("Bayesian Model Options", icon = icon("tasks", lib = "font-awesome"),
-#            tabPanel("Test456", icon = icon("tasks", lib = "font-awesome"),
-# #                     
-# #                     sliderInput("n123", "Number of points:", min = 1, max = 50, value = 10),
-# #                     downloadButton('downloadPlot', 'Download')
-# br()
-#            ),
-#            mainPanel(
-# #              plotOutput("myPlot"),
-#              br()
-#                     
-#            ) ),
+
 navbarMenu("Model Options and Settings", icon = icon("cog", lib = "font-awesome"),
+#                       tabPanel("Bayesian Model Options", icon = icon("tasks", lib = "font-awesome"),
+#                                
+#                      strong('Bayesian Analysis Options'),
+#                      selectInput("bayoption1", label = h3("Run Bayesian Analysis"), 
+#                                  choices = list("No" = FALSE, "Yes" = TRUE)
+#                                
+#                       )),
            tabPanel("Correlation model options", icon = icon("line-chart", lib = "font-awesome"),
                     
                     radioButtons("cormeasures", strong("Correlation model measures"),
