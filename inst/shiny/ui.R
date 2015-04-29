@@ -10,7 +10,7 @@ library(ggplot2)
 library(compute.es)
 library(SCMA)
 library(SCRT)
-shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.0.4",
+shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.0.5",
 #shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
 # shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
@@ -639,12 +639,14 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                     
                     HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis3.png" alt="" style="float: top; margin-right:5px" /></div>'),
                     br(),
-                    p("MAVIS was designed to help people run a meta-analysis with R as easily as possible"),
+                    strong('About MAVIS'),
+                    p("MAVIS was designed from the beginning to help users run a meta-analysis as effortlessly as possible. 
+                      The software accomplishes this by leveraging the R programming language for data analysis and the Shiny 
+                      package from RStudio to power the user interface and server software. These two things combined give 
+                      MAVIS a positive user experience with an easy to use interface along with the power of R to provide 
+                      the best possible user experience."),
                     br(),
-                    p("Version 1.0.4"),
-                    p("DOI for the MAVIS code"),
-                    img(src = "https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg", seamless=NA),
-                    br(),
+                    strong("MAVIS Version 1.0.5"),
                     p("Number of monthly downloads from CRAN"),
                     img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
                     
@@ -740,8 +742,9 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                       GNU General Public License for more details."),
 
                     p("You should have received a copy of the GNU General Public License
-                      along with this program.  If not, see", a("http://www.gnu.org/licenses/", href="http://www.gnu.org/licenses/", target="_blank"),br()),
-
+                      along with this program.  If not, see", a("http://www.gnu.org/licenses/gpl.html", href="http://www.gnu.org/licenses/gpl.html", target="_blank"),br()),
+                    img(src = "http://www.gnu.org/graphics/gplv3-127x51.png", seamless=NA),
+                    
                     
                     br(),
                     
@@ -757,11 +760,14 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
            tabPanel("Support", icon = icon("chevron-right", lib = "font-awesome"),
                     
                     
-                    strong('Feedback about MAVIS'),
+                    strong('Support'),
                     
-                    p("Feedback about your MAVIS experince is always welcome and highly encouraged!"),
-                    p("Feel free to contact the project maintainer with any questions, user experinces, uses of MAVIS, or
-                      feature requests at kyle.hamilton@gmail.com"),
+                    p("If you're having problems with MAVIS feel free to refer to our GitHub wiki or the documentation available on CRAN."),
+                    a("CRAN page for MAVIS", href="http://cran.r-project.org/web/packages/MAVIS/index.html", target="_blank"),
+                    br(),
+                    a("GitHub Wiki page for MAVIS", href="https://github.com/kylehamilton/MAVIS/wiki", target="_blank"),
+                    br(),
+                    p("As always you are more than welcome to contact the project maintainer at kyle.hamilton@gmail.com"),
                     br()
                     
                     )),
