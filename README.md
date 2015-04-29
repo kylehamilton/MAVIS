@@ -1,7 +1,15 @@
-MAVIS: Meta Analysis via Shiny
+MAVIS: Meta Analysis via Shiny v1.0.4 "Gobbling Turkey"
 =====
+[![DOI](https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg)](http://dx.doi.org/10.5281/zenodo.14966)
 
-The goal of this project is to help students and researchers run a meta-analysis as easily as possible.
+![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads")
+
+#### News about MAVIS
+
+* April 23, 2015
+* Started to add some features to the effect size calculator
+* Added support for calculating effect sizes for single case design research with the SCMA package
+
 
 List of Packages Used 
 ```
@@ -12,8 +20,20 @@ library(meta)
 library(MAd) 
 library(MAc) 
 library(quantreg) 
-library(ggplot2) 
+library(ggplot2)
+library(compute.es)
+library(SCMA)
 ```
+The first production release of MAVIS is now available on CRAN! v1.0 has been named "Gobbling Turkey"
+
+Live demo of v1.0 can be found here http://shiny.aaboyles.com/MAVIS/inst/shiny/
+
+![2063839197_ad08f77773_z](https://cloud.githubusercontent.com/assets/2274317/5225143/dc868ea4-7694-11e4-94bf-2c465f7d497c.jpg)
+
+Photo by https://www.flickr.com/photos/rdeetz/
+
+Image Licensed under https://creativecommons.org/licenses/by/2.0/
+
 ### Acknowledgments and Authors
 
 #### Acknowledgments
@@ -33,3 +53,7 @@ William Kyle Hamilton maintains this application and has authored new features.
 [Atsushi Mizumoto, PhD - Kansai University](http://mizumot.com)
 
 Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found [here](https://github.com/mizumot/meta)
+
+![alt text](http://oi59.tinypic.com/2mnrcci.jpg "Logo Title Text 1") [Burak Aydin, PhD - Recep Tayyip Erdoğan University](http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148)
+
+Burak Aydin is working on a Turkish version of MAVIS
