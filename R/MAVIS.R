@@ -10,7 +10,12 @@
 #' startmavis()
 #' }
 #' @export
-
+.onAttach <-
+  function (libname, pkgname) 
+  {
+    loadmsg <- "Loading MAVIS: Meta Analysis via Shiny  package (version 1.1). To start MAVIS please type: startmavis()."
+    packageStartupMessage(loadmsg, domain = NULL, appendLF = TRUE)
+  }
 
 startmavis <- function() {
 
