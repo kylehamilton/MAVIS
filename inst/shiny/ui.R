@@ -140,7 +140,7 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                br(),
                br(),
 
-               strong('R session info'),
+               strong('R session and package information'),
                verbatimTextOutput("info.out")
       ),
 
@@ -168,7 +168,7 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                aceEditor("text3", value="Study\tN\tr\tModerator\nIzumi (2000)\t175\t0.78\tcollege\nYu (2009)\t53\t0.38\tJS high\nThuy (1996)\t250\t0.69\tcollege\nOckey (2002)\t90\t0.89\tcollege\nAraru (2005)\t86\t0.52\tJS high\nWee (1997)\t182\t0.98\tcollege\nOzoda (2007)\t591\t0.91\tcollege\nHala (2004)\t30\t0.95\tcollege\nTapio (2008)\t37\t0.47\tJS high\nAndarani (2008)\t107\t0.84\tcollege\nDavis (1999)\t74\t0.99\tcollege\nPlonsky (2002)\t217\t0.86\tcollege\nGassel (1993)\t203\t0.99\tcollege",mode="r", theme="monokai"),
 
                br(),
-               p(strong("Binary Data")),
+               p(strong("Dichotomous (upoz, uneg, NU, kpoz, kneg, NK)")),
                aceEditor("text4", value="Study\tModerator\tupoz\tuneg\tNU\tkpoz\tkneg\tNK\nStudy 01\tra\t4\t119\t123\t11\t128\t139\nStudy 02\tra\t6\t300\t306\t29\t274\t303\nStudy 03\tra\t3\t228\t331\t11\t209\t220\nStudy 04\tsys\t17\t1699\t1716\t65\t1600\t1665\nStudy 05\tsys\t5\t2493\t2498\t3\t2338\t2341\nStudy 06\tra\t29\t7470\t7499\t45\t7232\t7277", mode="r", theme="monokai"),
                
                br()
@@ -231,7 +231,6 @@ navbarMenu("Model Options and Settings", icon = icon("cog", lib = "font-awesome"
                     p("The Knapp and Hartung (2003) method is an adjustment to the standard errors of the estimated
 coefficients, which helps to account for the uncertainty in the estimate of the amount of
 (residual) heterogeneity and leads to different reference distributions."),
-                    verbatimTextOutput('khadjust.out'),
                     h3("References"),
                     p("Knapp, G., & Hartung, J. (2003). Improved tests for a random effects meta-regression with a single covariate. Statistics in Medicine, 22, 2693–2710.")
                     
@@ -246,9 +245,14 @@ coefficients, which helps to account for the uncertainty in the estimate of the 
                               "R0" = "R0",
                               "Q0" = "Q0"
                             ), selected = "L0"),
-               p(h6('Three different estimators for the number of missing studies were proposed by Duval and Tweedie (2000a, 2000b). The default estimator for the metafor package is L0')),
+               p(h6('Three different estimators for the number of missing studies were proposed by Duval and Tweedie (2000a, 2000b; see also Duval, 2005). The default estimator for the metafor package is L0')),
                
-               verbatimTextOutput('trimfillopt.out')
+               verbatimTextOutput('trimfillopt.out'),
+               h3("References"),
+               p("Duval, S. J., & Tweedie, R. L. (2000a). Trim and fill: A simple funnel-plot-based method of testing and adjusting for publication bias in meta-analysis. Biometrics, 56, 455–463."),
+               p("Duval, S. J., & Tweedie, R. L. (2000b). A nonparametric trim and fill method of accounting for publication bias in meta-analysis. Journal of the American Statistical Association, 95, 89–98."),
+               p("Duval, S. J. (2005). The trim and fill method. In H. R. Rothstein, A. J. Sutton, & M. Borenstein (Eds.) Publication bias in meta-analysis: Prevention, assessment, and adjustments (pp. 127–144). Chichester, England: Wiley.")
+               
 
       ),
 
@@ -287,8 +291,8 @@ verticalLayout(
   h3("References"),
   p("Egger, M., Davey Smith, G., Schneider, M., & Minder, C. (1997). Bias in meta-analysis detected by a simple, graphical test. British Medical Journal, 315, 629--634."),
   p("Jin, Zhi-Chao, Zhou, Xiao-Hua & He, Jia (2015). Statistical methods for dealing with publication bias in meta-analysis. Statistics in Medicine, 34, 343-360."),
-  p("Peters, J. L., Sutton, A. J., Jones, D. R., Abrams, K. R., & Rushton, L. (2008). Contour-enhanced meta-analysis funnel plots help distinguish publication bias from other causes of asymmetry. Journal of Clinical Epidemiology, 61(10), 991–996."),
-  p("Sterne, J. A. C., & Egger, M. (2001). Funnel plots for detecting bias in meta-analysis: Guidelines on choice of axis. Journal of Clinical Epidemiology, 54(10), 1046–1055."),
+  p("Peters, J. L., Sutton, A. J., Jones, D. R., Abrams, K. R., & Rushton, L. (2008). Contour-enhanced meta-analysis funnel plots help distinguish publication bias from other causes of asymmetry. Journal of Clinical Epidemiology, 61(10), 991–-996."),
+  p("Sterne, J. A. C., & Egger, M. (2001). Funnel plots for detecting bias in meta-analysis: Guidelines on choice of axis. Journal of Clinical Epidemiology, 54(10), 1046--1055."),
   br()
   
 )
@@ -315,7 +319,12 @@ added to the given set of observed outcomes to reduce significance level (p-valu
 average effect size (based on a fixed-effects model) to a target alpha level (e.g., .05). The method is
 described in Rosenberg (2005).'),
                
-               verbatimTextOutput('filedraweranalysis.out')
+               verbatimTextOutput('filedraweranalysis.out'),
+h3("References"),
+p("Rosenthal, R. (1979). The file drawer problem and tolerance for null results. Psychological Bulletin, 86, 638--641."),
+p("Orwin, R. G. (1983). A fail-safe N for effect size in meta-analysis. Journal of Educational Statistics, 8, 157--159."),
+p("Rosenberg, M. S. (2005). The file-drawer problem revisited: A general weighted method for calculating fail-safe numbers in meta-analysis. Evolution, 59, 464--468.")
+
                
       )),
 navbarMenu("Effect Size Calculator", icon = icon("calculator", lib = "font-awesome"),
@@ -621,7 +630,12 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                         p("The left column should contain the condition labels and the right column should contain the obtained scores"),
                         aceEditor("SCDdata", value="A, 9.523465\nA, 12.371462\nA, 13.265618\nA, 10.182837\nA, 10.987079\nA, 8.161392\nA, 10.655287\nA, 9.563863\nA, 9.381336\nA, 8.822936\nA, 10.227932\nA, 11.961484\nA, 9.425201\nA, 12.199128\nB, 16.212489\nB, 17.657583\nB, 18.45166\nB, 16.645105\nB, 14.618445\nB, 15.769643\nB, 16.017145\nB, 14.000921\nB, 17.081538\nB, 14.06722\nB, 20.423526\nB, 14.123096\nB, 16.728538", mode="r", theme="terminal"),
                         p("Below is your computed effect size, unless you've selected either Percentage of Nonoverlapping Data or Percentage of Data Points Exceeding the Median in which case the number below is the percentage."),
-                        verbatimTextOutput('SCDES.out')
+                        verbatimTextOutput('SCDES.out'),
+                        p(br()),
+                        h3("References"),
+                        p("Bulte, I., & Onghena, P. (2008). An R package for single-case randomization tests. Behavior Research Methods, 40, 467--478."),
+                        p("Bulte, I., & Onghena, P. (2009). Randomization tests for multiple baseline designs: An extension of the SCRT-R package. Behavior Research Methods, 41, 477--485.")
+                        
                         
                         
                       )),
@@ -643,7 +657,7 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                       MAVIS a positive user experience with an easy to use interface along with the power of R to provide 
                       the best possible user experience."),
                     br(),
-                    strong("MAVIS Version 1.0.5"),
+                    strong("MAVIS Version 1.1"),
                     p("Number of monthly downloads from CRAN"),
                     img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
                     
@@ -656,7 +670,7 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                     strong('Acknowledgments'),
                     
                     p('William Kyle Hamilton would like to thank the ',
-                      a("Health Communications and Interventions Lab at UC Merced", href="http://cameronhcilab.com/", target="_blank"),
+                      a("Health Communications and Interventions Lab at the University of California, Merced", href="http://cameronhcilab.com/", target="_blank"),
                       'for their comments and beta testing efforts on this application ', 'as well as',
                       a("Kathleen Coburn", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),
                       'for her feedback and evaluation of the statistical methods related to this project.'),
@@ -677,7 +691,7 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                     br(),
                     HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
                     p(a("Atsushi Mizumoto, PhD - Kansai University", href="http://mizumot.com", target="_blank"),br(),
-                      p("Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found", a("here", href="https://github.com/mizumot/meta", target="_blank"))
+                      p("Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found", a("here.", href="https://github.com/mizumot/meta", target="_blank"))
                       
                       
                     ),
@@ -688,13 +702,16 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                     
                     HTML('<div style="clear: left;"><img src="http://oi59.tinypic.com/2mnrcci.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
                     p(a("Burak Aydin, PhD - Recep Tayyip Erdoğan University", href="http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148", target="_blank"),br(),
-                      p("Burak Aydin is working on a Turkish version of MAVIS")
-                      
-                      
+                      p("Burak Aydin is working on a Turkish version of MAVIS and contributed the dichotomous data entry feature.")
                     ),
                     
-                    br()
-                    
+                    br(),
+                    br(),
+                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/katie80.png" alt="" style="float: left; margin-right:5px" /></div>'),
+                    p(a("Kathleen Coburn - University of California, Merced", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),br(),
+                      p("Kathleen Coburn contributed technical advice on how to run a meta-analysis as well as information on publication bias.")
+           ),
+           br()
            ),
            tabPanel("Bug Reports", icon = icon("bug", lib = "font-awesome"),
                     
@@ -713,17 +730,17 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                     
                     strong('Feedback about MAVIS'),
                     
-                    p("Feedback about your MAVIS experince is always welcome and highly encouraged!"),
-                    p("Feel free to contact the project maintainer with any questions, user experinces, uses of MAVIS, or
+                    p("Feedback about your MAVIS experience is always welcome and highly encouraged!"),
+                    p("Feel free to contact the project maintainer with any questions, user experiences, uses of MAVIS, or
                        feature requests at kyle.hamilton@gmail.com"),
                     
                     br()
                     
            ),
            
-           tabPanel("Licence", icon = icon("legal", lib = "font-awesome"),
+           tabPanel("License", icon = icon("legal", lib = "font-awesome"),
                     
-                    strong('Licence'),
+                    strong('License'),
                     
                     p("MAVIS: Meta Analysis via Shiny"),
                     p(" Copyright 2015  William Kyle Hamilton and Atsushi Mizumoto"),

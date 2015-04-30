@@ -1,0 +1,15 @@
+citHeader("To cite package 'MAVIS' in publications use: ")
+ 
+ vers <- paste("R package version", meta$Version)
+
+ citEntry(entry="Manual",
+  	  title = "MAVIS: Meta Analysis via Shiny",
+		  author = "William Kyle Hamilton and Atsushi Mizumoto",
+		  year = 2015,
+		  note = vers,
+		  textVersion =
+		  paste("William Kyle Hamilton and Atsushi Mizumoto (",
+				2015,
+				"). MAVIS: Meta Analysis via Shiny. ",
+				vers, ".", sep=""),
+      url = {"http://CRAN.R-project.org/package=MAVIS"})
