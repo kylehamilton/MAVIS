@@ -58,6 +58,6 @@ Atsushi Mizumoto wrote the first version of this application; this application i
 
 Burak Aydin is working on a Turkish version of MAVIS and contributed the dichotomous data entry feature.
 
-![alt text](http://kylehamilton.com/wp-content/uploads/2015/04/katie80.png "Logo Title Text 1")[Kathleen Coburn - University of California, Merced](http://psychology.ucmerced.edu/content/kathleen-coburn)
+![alt text](http://kylehamilton.com/wp-content/uploads/2015/04/katie80.png "Logo Title Text 1") [Kathleen Coburn - University of California, Merced](http://psychology.ucmerced.edu/content/kathleen-coburn)
 
 Kathleen Coburn contributed technical advice on how to run a meta-analysis as well as information on publication bias.
