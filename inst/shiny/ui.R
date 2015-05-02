@@ -11,7 +11,7 @@ library(ggplot2)
 library(compute.es)
 library(SCMA)
 library(SCRT)
-shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.0.5",
+shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.1.0",
 #shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
 # shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
