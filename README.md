@@ -7,13 +7,14 @@ MAVIS: Meta Analysis via Shiny v1.1.0 "Smiling Fox"
 #### News about MAVIS
 
 * April 29, 2015
-* Version 1.1 has been sent to CRAN.
+* Version 1.1 has been sent to CRAN and can be found here http://cran.r-project.org/web/packages/MAVIS/index.html.
 
 
 List of Packages Used 
 ```
 library(shiny) 
 library(shinyAce) 
+library(shinyBS)
 library(metafor) 
 library(meta) 
 library(MAd) 
@@ -22,6 +23,7 @@ library(quantreg)
 library(ggplot2)
 library(compute.es)
 library(SCMA)
+library(SCRT)
 ```
 The first production release of MAVIS is now available on CRAN! v1.1 has been named "Smiling Fox"
 
