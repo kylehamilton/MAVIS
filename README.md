@@ -1,8 +1,6 @@
 MAVIS: Meta Analysis via Shiny v1.1.0 "Smiling Fox"
 =====
-[![DOI](https://zenodo.org/badge/9922/kylehamilton/MAVIS.svg)](http://dx.doi.org/10.5281/zenodo.14966)
-
-![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads")
+![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads from CRAN")
 
 #### News about MAVIS
 
