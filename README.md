@@ -25,7 +25,7 @@ library(SCRT)
 ```
 The first production release of MAVIS is now available on CRAN! v1.1 has been named "Smiling Fox"
 
-Live demo of v1.0.4 can be found here http://shiny.aaboyles.com/MAVIS/inst/shiny/
+Live demo of v1.1 can be found here http://kylehamilton.net/shiny/MAVIS/
 
 ![8505162700_11394c3f6a_z](https://cloud.githubusercontent.com/assets/2274317/7405977/b4a9163e-eeaf-11e4-9f74-1f42c7cbf4f4.jpg)
 
