@@ -696,7 +696,8 @@ navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
                       MAVIS a positive user experience with an easy to use interface along with the power of R to provide 
                       the best possible user experience."),
                     br(),
-                    strong("MAVIS Version 1.1"),
+                    strong("MAVIS Version 1.1.1"),
+                    p("Last Updated July 20th 2015")
                     p("Number of monthly downloads from CRAN"),
                     img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
                     
