@@ -1187,6 +1187,22 @@ output$twobytwogroups.out <- renderPrint({
 })
 
 ################################################
+# Outcome Measures for Individual Groups
+################################################
+
+divari1 <- reactive({
+  escalc(measure=input$divari1, weights=input$ni, xi=input$xi, ni=input$ni,
+         add=1/2, to="only0", drop00=FALSE, vtype="UB",
+         var.names=c("Effect Size Estimates","Corresponding Sampling
+                     Variances"), add.measure=FALSE,
+         append=TRUE, replace=TRUE, digits=4)
+})
+
+output$divari1.out <- renderPrint({
+  divari1()
+})
+
+################################################
 # p-value to Effect Size
 ################################################
 
