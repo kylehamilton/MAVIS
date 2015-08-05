@@ -1,8 +1,8 @@
 Package: MAVIS
 Type: Package
 Title: Meta Analysis via Shiny
-Version: 1.1
-Date: 2015-04-29
+Version: 1.1.1
+Date: 2015-08-04
 Author: Authors@R: c(person("William Kyle", "Hamilton", role = c("aut", "cre"),
                     email = "kyle.hamilton@gmail.com"),
              person("Atsushi", "Mizumoto", role = "aut"),
