@@ -4,6 +4,7 @@ export(startmavis)
 
 import(shiny)
 import(shinyAce)
+import(shinyBS)
 import(metafor)
 import(MAd)
 importFrom(MAc,var_r)

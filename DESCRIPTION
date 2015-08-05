@@ -1,19 +1,21 @@
 Package: MAVIS
 Type: Package
 Title: Meta Analysis via Shiny
-Version: 1.0.4
-Date: 2015-04-23
+Version: 1.1
+Date: 2015-04-29
 Author: Authors@R: c(person("William Kyle", "Hamilton", role = c("aut", "cre"),
                     email = "kyle.hamilton@gmail.com"),
              person("Atsushi", "Mizumoto", role = "aut"),
-             person("Burak", "Aydin", role = c("ctb", "trl"))
+             person("Burak", "Aydin", role = c("ctb", "trl"),
+             person("Kathleen", "Coburn", role = "ctb"))
 Maintainer: William Kyle Hamilton <kyle.hamilton@gmail.com>
 Description: Interactive shiny application for running a meta-analysis,
-    provides support for both random effects and fixed effects models.
-    Additional support is included for calculating effect sizes including
-    single case design.
+    provides support for both random effects and fixed effects models with the 'metafor' package.
+    Additional support is included for calculating effect sizes plus
+    support for single case designs, graphical output, and detecting publication bias.
 License: GPL-3
-Depends: R (>= 3.0.3),
+Depends: R (>= 3.0.3)
+Imports: 
     shiny,
     shinyAce,
     metafor,
@@ -21,10 +23,10 @@ Depends: R (>= 3.0.3),
     MAd,
     quantreg,
     ggplot2,
-    compute.es
-Import:
+    compute.es,
     SCMA,
-    SCRT
+    SCRT,
+    shinyBS
 LazyData: true
 Packaged: 2014-11-22 13:29:53 UTC; Kyle
 NeedsCompilation: no

@@ -1,6 +1,3 @@
-
-
-shinyServer(function(input, output, session) {
 library(shiny)
 library(shinyAce)
 library(meta)
@@ -12,81 +9,76 @@ library(ggplot2)
 library(compute.es)
 library(SCMA)
 library(SCRT)
-  options(warn=-1)
 
+shinyServer(function(input, output, session) {
+
+  options(warn=-1)
+  bayoption1 = FALSE
 
   q <- observe({
     # Stop the app when the quit button is clicked
     if (input$quit == 1) stopApp()
   })
-
-
-  #
-  #reme <- reactive({input$model})
-
-
-
-  # First calculation to be used later
-  W.data <- reactive({
-
-    dat <- read.csv(text=input$text, sep="\t")
-
-
-    if (input$type == "mdms") {
-
-      dat <- escalc(measure="SMD", n1i=N1, n2i=N2,
-                    m1i=M1, m2i=M2,
-                    sd1i=SD1, sd2i=SD2,
-                    data=dat, append=TRUE)
-
-      dat$ES <- dat$yi
-      dat$yi <- NULL
-      dat$SV <- dat$vi # SV=sampling variances
-      dat$vi <- NULL
-
-      list(dat = dat) # To be used later
-    }
-
-
-    else if (input$type == "mdes") {
-
-      df <- (dat$N1 + dat$N2) - 2
-      j <- 1 - (3/(4 * df - 1))
-      g <- j * dat$d
-      dat$ES <- g
-
-      dat$SV <- (((dat$N1+dat$N2)/(dat$N1*dat$N2))+((dat$ES*dat$ES)/(2*(dat$N1+dat$N2))))
-
-      list(dat = dat) # To be used later
-    }
-
-
-    else if (input$type == "cor") {
-
-      dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
-      dat$FZ <- dat$yi
-      dat$yi <- NULL
-      dat$SV <- dat$vi # SV=sampling variances
-      dat$vi <- NULL
-
-      list(dat = dat) # To be used later
-
-    }
-    else if (input$type == "or") {
-      
-      dat <- escalc(input$dichotomousoptions, ai = upoz, bi = uneg, ci = kpoz, di = kneg,
-                    data=dat, append=TRUE)
-      
-      dat$ES <- dat$yi
-      dat$yi <- NULL
-      dat$SV <- dat$vi # SV=sampling variances
-      dat$vi <- NULL
-      
-      list(dat = dat) # To be used later
-    }    
-
-  })
-
+  
+W.data <- reactive({
+  
+  dat <- read.csv(text=input$text, sep="\t")
+  
+  
+  if (input$type == "mdms") {
+    
+    dat <- escalc(measure="SMD", n1i=N1, n2i=N2,
+                  m1i=M1, m2i=M2,
+                  sd1i=SD1, sd2i=SD2,
+                  data=dat, append=TRUE)
+    
+    dat$ES <- dat$yi
+    dat$yi <- NULL
+    dat$SV <- dat$vi # SV=sampling variances
+    dat$vi <- NULL
+    
+    list(dat = dat) # To be used later
+  }
+  
+  
+  else if (input$type == "mdes") {
+    
+    df <- (dat$N1 + dat$N2) - 2
+    j <- 1 - (3/(4 * df - 1))
+    g <- j * dat$d
+    dat$ES <- g
+    
+    dat$SV <- (((dat$N1+dat$N2)/(dat$N1*dat$N2))+((dat$ES*dat$ES)/(2*(dat$N1+dat$N2))))
+    
+    list(dat = dat) # To be used later
+  }
+  
+  
+  else if (input$type == "cor") {
+    
+    dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
+    dat$FZ <- dat$yi
+    dat$yi <- NULL
+    dat$SV <- dat$vi # SV=sampling variances
+    dat$vi <- NULL
+    
+    list(dat = dat) # To be used later
+    
+  }
+  else if (input$type == "or") {
+    
+    dat <- escalc(input$dichotomousoptions, ai = upoz, bi = uneg, ci = kpoz, di = kneg,
+                  data=dat, append=TRUE)
+    
+    dat$ES <- dat$yi
+    dat$yi <- NULL
+    dat$SV <- dat$vi # SV=sampling variances
+    dat$vi <- NULL
+    
+    list(dat = dat) # To be used later
+  }    
+  
+})
 
 
 
@@ -165,7 +157,6 @@ library(SCRT)
     }
   })
 
-# Random effects model to be used later
 RE.est  <- reactive({
   
   if (input$type == "mdms") {
@@ -199,7 +190,7 @@ RE.est  <- reactive({
     
     dat$SV <- (((dat$N1+dat$N2)/(dat$N1*dat$N2))+((dat$ES*dat$ES)/(2*(dat$N1+dat$N2))))
     
-    RE.res <- rma(ES, SV, method=input$model, data=dat, knha=input$khadjust, slab=paste(Study))
+    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
   }
@@ -215,7 +206,7 @@ RE.est  <- reactive({
     dat$SV <- dat$vi # SV=sampling variances
     dat$vi <- NULL
     
-    RE.res <- rma(FZ, SV, data=dat, method =input$model, knha=input$khadjust, slab=paste(Study))
+    RE.res <- rma(FZ, SV, data=dat, method =input$model, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
     
@@ -235,44 +226,37 @@ RE.est  <- reactive({
     
     
     
-    RE.res <- rma(ES, SV, method=input$model, data=dat, knha=input$khadjust, slab=paste(Study))
+    RE.res <- rma(ES, SV, method=input$model, data=dat, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
   }
 })
 
 
-
-
-
-  ################################################
-  # Displaying the first calculation
-  ################################################
-
-  data <- reactive({
-
-    dat <- read.csv(text=input$text, sep="\t")
-
-
-    if (input$type == "mdms") {
-
-      dat <- escalc(measure="SMD", n1i=N1, n2i=N2,
-                    m1i=M1, m2i=M2,
-                    sd1i=SD1, sd2i=SD2,
-                    data=dat, append=TRUE)
-
-      dat$ES <- round(dat$yi, 3)
-      dat$yi <- NULL
-      dat$SV <- round(dat$vi, 3) # SV=sampling variances
-      dat$vi <- NULL
-
-      cat("\n","ES = Effect size [Hedges's g]", "\n",
-          "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n"
-      ) # ," W = Inverse variance weight", "\n", "\n"
-      cat("---","\n")
-
-      print(dat)
-    }
+data <- reactive({
+  
+  dat <- read.csv(text=input$text, sep="\t")
+  
+  
+  if (input$type == "mdms") {
+    
+    dat <- escalc(measure="SMD", n1i=N1, n2i=N2,
+                  m1i=M1, m2i=M2,
+                  sd1i=SD1, sd2i=SD2,
+                  data=dat, append=TRUE)
+    
+    dat$ES <- round(dat$yi, 3)
+    dat$yi <- NULL
+    dat$SV <- round(dat$vi, 3) # SV=sampling variances
+    dat$vi <- NULL
+    
+    cat("\n","ES = Effect size [Hedges's g]", "\n",
+        "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n"
+    ) # ," W = Inverse variance weight", "\n", "\n"
+    cat("---","\n")
+    
+    print(dat)
+  }
 
     else if (input$type == "mdes") {
 
@@ -401,25 +385,24 @@ RE.est  <- reactive({
 
 
 
-
-
-  re <- reactive({
-
-    if (input$type == "mdms") {
-
-      RE.res <- RE.est()$RE.res
-
-      cat("The RE model regards the K studies as a sample of","\n")
-      cat(" a larger universe of studies (Kovalchik, 2013).","\n")
-      cat("---","\n")
-      withProgress(message = 'Calculating', detail = 'Random effects model', value = 0, {
-        for (i in 1:10) {
-          incProgress(1/10)
-          Sys.sleep(0.05)
-        }
-      })
-      RE.res
-    }
+re <- reactive({
+  
+  if (input$type == "mdms") {
+    
+    RE.res <- RE.est()$RE.res
+    
+    cat("The RE model regards the K studies as a sample of","\n")
+    cat(" a larger universe of studies (Kovalchik, 2013).","\n")
+    cat("---","\n")
+    withProgress(message = 'Calculating', detail = 'Random effects model', value = 0, {
+      for (i in 1:10) {
+        incProgress(1/10)
+        Sys.sleep(0.05)
+      }
+    })
+    RE.res
+  }
+      
 
     else if (input$type == "mdes") {
 
@@ -471,27 +454,15 @@ RE.est  <- reactive({
 
 
 
-  ################################################
-  # Forest plot
-  ################################################
-
-  makefePlot <- function(){
-
-    if (input$type == "mdms") {
-
-      FE.res <- FE.est()$FE.res
-
-      forest(FE.res)
-    }
-
-
-    else if (input$type == "mdes") {
-
-      FE.res <- FE.est()$FE.res
-
-      forest(FE.res)
-    }
-
+makefePlot <- function(){
+  
+  if (input$type == "mdms") {
+    
+    FE.res <- FE.est()$FE.res
+    
+    forest(FE.res)
+  }
+  
 
     else if (input$type == "cor") {
 
@@ -1216,6 +1187,22 @@ output$twobytwogroups.out <- renderPrint({
 })
 
 ################################################
+# Outcome Measures for Individual Groups
+################################################
+
+divari1 <- reactive({
+  escalc(measure=input$divari1, weights=input$ni, xi=input$xi, ni=input$ni,
+         add=1/2, to="only0", drop00=FALSE, vtype="UB",
+         var.names=c("Effect Size Estimates","Corresponding Sampling
+                     Variances"), add.measure=FALSE,
+         append=TRUE, replace=TRUE, digits=4)
+})
+
+output$divari1.out <- renderPrint({
+  divari1()
+})
+
+################################################
 # p-value to Effect Size
 ################################################
 
@@ -1260,27 +1247,45 @@ output$SCDGRAPH.out <- renderPlot({
 info <- reactive({
   info1 <- paste("This analysis was performed on ", format(Sys.time(), "%A, %B %d %Y at %I:%M:%S %p"), ".", sep = "")
   info2 <- paste(strsplit(R.version$version.string, " \\(")[[1]][1], " was used for this session.", sep = "")
+  info2a <- paste(" ")
   info3 <- paste("Package version infomation for this session:")
+  info3a <- paste(" ")
+  info3b <- paste("Packages used for the computational back-end:")
+  info3c <- paste("compute.es", packageVersion("compute.es"))
   info4 <- paste("ggplot2", packageVersion("ggplot2"))
   info5 <- paste("MAc", packageVersion("MAc"))
   info6 <- paste("MAd", packageVersion("MAd"))
   info7 <- paste("meta", packageVersion("meta"))
   info8 <- paste("metafor", packageVersion("metafor"))
   info9 <- paste("quantreg", packageVersion("quantreg"))
+  info9a <- paste("SCMA", packageVersion("SCMA"))
+  info9b <- paste("SCRT", packageVersion("SCRT"))
+  info9c <- paste(" ")
+  info9d <- paste("Packages used for the graphical user interface:")
   info10 <- paste("shiny", packageVersion("shiny"))
   info11 <- paste("shinyAce", packageVersion("shinyAce"))
-
+  info12 <- paste("shinyBS", packageVersion("shinyBS"))
+  
   cat(sprintf(info1), "\n")
   cat(sprintf(info2), "\n")
+  cat(sprintf(info2a), "\n")
   cat(sprintf(info3), "\n")
+  cat(sprintf(info3a), "\n")
+  cat(sprintf(info3b), "\n")
+  cat(sprintf(info3c), "\n")
   cat(sprintf(info4), "\n")
   cat(sprintf(info5), "\n")
   cat(sprintf(info6), "\n")
   cat(sprintf(info7), "\n")
   cat(sprintf(info8), "\n")
   cat(sprintf(info9), "\n")
+  cat(sprintf(info9a), "\n")
+  cat(sprintf(info9b), "\n")
+  cat(sprintf(info9c), "\n")
+  cat(sprintf(info9d), "\n")
   cat(sprintf(info10), "\n")
   cat(sprintf(info11), "\n")
+  cat(sprintf(info12), "\n")
   withProgress(message = 'Rendering', detail = 'R session info', value = 0, {
     for (i in 1:10) {
       incProgress(1/10)
@@ -1354,8 +1359,6 @@ info <- reactive({
 output$model.out <- renderPrint({ input$model })
 
 output$cormeasures.out <- renderPrint({ input$cormeasures })
-
-output$khadjust.out <- renderPrint({ input$khadjust })
 
 output$dichotomousoptions.out <- renderPrint({ input$dichotomousoptions })
 

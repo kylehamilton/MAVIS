@@ -1,0 +1,18 @@
+# CHANGES TO MAVIS 1.1 #
+
+## SIGNIFICANT USER-VISIBILE CHANGES ##
+
+* Changed UI for MAVIS, options are now in drop down menus.
+* Added icons throughout UI.
+* Added effect size calculators including single case design and outcome measure for two group comparisons.
+* Support for single case design including graphing of data.
+* Additional input example for Dichotomous models.
+* Dichotomous models are now supported.
+* More options for defining models.
+* Graphics options for funnel plots.
+* Option to see the full results from the fitted models.
+
+## MINOR CHANGES ##
+* Information provide about GPLv3.
+*	References for methods added throughout interface.
+
