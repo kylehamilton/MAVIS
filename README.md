@@ -1,10 +1,14 @@
-MAVIS: Meta Analysis via Shiny v1.1.0 "Smiling Fox"
+MAVIS: Meta Analysis via Shiny v1.1.1 "Smiling Fox"
 =====
 ![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads from CRAN")
 
-### Live demo of MAVIS v1.1 can be found here http://kylehamilton.net/shiny/MAVIS/
+### Live demo of MAVIS v1.1.1 can be found here http://kylehamilton.net/shiny/MAVIS/
 
 #### News about MAVIS
+
+August 4, 2015
+* Version 1.1.1 has been sent to CRAN
+* Added one new effect size calculator and included the Turkish version of MAVIS (aRma) to the package.
 
 * April 29, 2015
 * Version 1.1 has been sent to CRAN and can be found here http://cran.r-project.org/web/packages/MAVIS/index.html.
