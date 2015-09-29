@@ -670,7 +670,11 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                         aceEditor("SCDdata", value="A, 9.523465\nA, 12.371462\nA, 13.265618\nA, 10.182837\nA, 10.987079\nA, 8.161392\nA, 10.655287\nA, 9.563863\nA, 9.381336\nA, 8.822936\nA, 10.227932\nA, 11.961484\nA, 9.425201\nA, 12.199128\nB, 16.212489\nB, 17.657583\nB, 18.45166\nB, 16.645105\nB, 14.618445\nB, 15.769643\nB, 16.017145\nB, 14.000921\nB, 17.081538\nB, 14.06722\nB, 20.423526\nB, 14.123096\nB, 16.728538", mode="r", theme="terminal"),
                         p("Below is your computed effect size, unless you've selected either Percentage of Nonoverlapping Data or Percentage of Data Points Exceeding the Median in which case the number below is the percentage."),
                         verbatimTextOutput('SCDES.out'),
-                        p(br()),
+#                         plotOutput('SCDGRAPH.out'),
+#                         p(br()),
+#                         p(br()),
+#                         p(br()),
+#                         p(br()),
                         h3("References"),
                         p("Bulte, I., & Onghena, P. (2008). An R package for single-case randomization tests. Behavior Research Methods, 40, 467--478."),
                         p("Bulte, I., & Onghena, P. (2009). Randomization tests for multiple baseline designs: An extension of the SCRT-R package. Behavior Research Methods, 41, 477--485.")
