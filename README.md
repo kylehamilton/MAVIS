@@ -1,6 +1,8 @@
 MAVIS: Meta Analysis via Shiny v1.1.1 "Smiling Fox"
 =====
-![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads from CRAN")
+[![CRAN Version](http://www.r-pkg.org/badges/version/MAVIS)](http://cran.rstudio.com/web/packages/MAVIS)
+[![Monthly Downloads](http://cranlogs.r-pkg.org/badges/MAVIS)](http://cranlogs.r-pkg.org/badges/MAVIS)
+[![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/MAVIS)](http://cranlogs.r-pkg.org/badges/grand-total/MAVIS)
 
 ### Live demo of MAVIS v1.1.1 can be found here http://kylehamilton.net/shiny/MAVIS/
 
