@@ -1,4 +1,4 @@
-MAVIS: Meta Analysis via Shiny v1.1.1 "Smiling Quant Student"
+MAVIS: Meta Analysis via Shiny v1.1.1 "Smiling Fox"
 =====
 ![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads from CRAN")
 
