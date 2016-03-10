@@ -165,7 +165,51 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
 
                br(),
                p(strong("Correlations (n, r)")),
-               aceEditor("text3", value="Study\tN\tr\tModerator\nIzumi (2000)\t175\t0.78\tcollege\nYu (2009)\t53\t0.38\tJS high\nThuy (1996)\t250\t0.69\tcollege\nOckey (2002)\t90\t0.89\tcollege\nAraru (2005)\t86\t0.52\tJS high\nWee (1997)\t182\t0.98\tcollege\nOzoda (2007)\t591\t0.91\tcollege\nHala (2004)\t30\t0.95\tcollege\nTapio (2008)\t37\t0.47\tJS high\nAndarani (2008)\t107\t0.84\tcollege\nDavis (1999)\t74\t0.99\tcollege\nPlonsky (2002)\t217\t0.86\tcollege\nGassel (1993)\t203\t0.99\tcollege",mode="r", theme="monokai"),
+               p("Data for this example is from the following study."),
+               p("Widman, L., Noar, S. M., Choukas-Bradley, S., & Francis, D. B. (2014). Adolescent Sexual Health Communication and Condom Use : A Meta-Analysis, 33(10), 1113–1124."),
+               aceEditor("text3", value="Study\tN\tr\tModerator
+Abraham-1992\t351\t0.01\tmix
+Baele-2001\t163\t0.4\tmix
+Barthlow-1995\t328\t0.162\tmix
+Basen-Engquist-1999\t1718\t0.225\tmix
+Brown-2008\t1218\t0.334\tmix
+Bryan-2002\t170\t0.71\tboys
+Bryan-2002\t123\t0.78\tgirls
+Crosby-2002\t522\t0.102\tgirls
+Crosby-2003\t144\t0.218\tgirls
+Crosby-2008\t566\t0.175\tgirls
+Deardorff-2010\t377\t0.15\tboys
+Deardorff-2010\t462\t0.14\tgirls
+DePadilla-2011\t701\t0.535\tmix
+DiClemente-1991\t79\t0.418\tmix
+DiClemente-1996\t116\t0.311\tmix
+DiIorio-2001\t116\t0.177\tmix
+Donald-1994\t395\t0.054\tboys
+Donald-1994\t505\t0.098\tgirls
+Gallupe-2009\t863\t0.112\tboys
+Gallupe-2009\t1143\t0.298\tgirls
+Grossman-2008\t446\t0.498\tmix
+Gutiérrez-2000\t148\t0.14\tboys
+Gutiérrez-2000\t185\t0.29\tgirls
+Guzmán-2003\t34\t0.334\tmix
+Harrison-2012\t91\t0.491\tboys
+Harrison-2012\t64\t0.377\tgirls
+Hart-2005\t100\t0.07\tboys
+Magura-1994\t421\t0.4\tboys
+Maxwell-1995\t100\t0\tmix
+Overby-1994\t60\t0.414\tgirls
+Rickman-1994\t1439\t0.226\tmix
+Roye-1998\t452\t0\tgirls
+Shoop-1994\t45\t0.514\tmix
+Shrier-1999\t22\t0.492\tgirls
+Small-2010\t189\t0.329\tgirls
+Troth-2000\t26\t0.28\tboys
+Troth-2000\t50\t0.23\tgirls
+Tschann-2010\t393\t0.068\tmix
+van Empelen-2006\t108\t0.07\tmix
+Whitaker-1999\t372\t0.077\tmix
+Wilson-1994\t241\t0.012\tboys", mode="r", theme="monokai"),
+                         
 
                br(),
                p(strong("Dichotomous (upoz, uneg, NU, kpoz, kneg, NK)")),
