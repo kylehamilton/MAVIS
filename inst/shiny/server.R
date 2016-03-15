@@ -1203,6 +1203,18 @@ output$divari1.out <- renderPrint({
 })
 
 ################################################
+# Correlation coefficient (r) to Effect Size
+################################################
+
+corrcoeff1 <- reactive({
+  res(r = input$corrcoeff, n = input$corrcoeffn, level = input$corrcoefflevel)
+})
+
+output$corrcoeff.out <- renderPrint({
+  corrcoeff1()
+})
+
+################################################
 # p-value to Effect Size
 ################################################
 

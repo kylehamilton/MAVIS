@@ -19,14 +19,14 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                sidebarPanel(
                  
                  radioButtons("type", strong("Data Analysis and Input Options:"),
-                              list("Mean Differences (n, M, SD)" = "mdms",
-                                   "Mean Differences (n, Effect size d)" = "mdes",
-                                   "Correlations (n, r)" = "cor",
-                                   "Dichotomous Models"="or"
-                                   ),
+          list("Mean Differences (n, M, SD)" = "mdms",
+               "Mean Differences (n, Effect size d)" = "mdes",
+               "Correlations (n, r)" = "cor",
+               "Dichotomous Models"="or"
+               ),
                  ),
                  bsTooltip("type", "Make sure to review the options on the toolbar before running your analysis",
-                           "right", trigger = "click", options = list(container = "body")),
+       "right", trigger = "click", options = list(container = "body")),
                  helpText("See Dichotomous Model Options, default is set to log odds ratio"),
                  checkboxInput("moderator", label = ("The data contains a categorical moderator (subgroup) variable."), value = T),
                  br(),
@@ -45,7 +45,7 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                p("For examples of how this data should look click on the Input Examples tab"),
 
                aceEditor("text", value="Study\tModerator\tN1\tM1\tSD1\tN2\tM2\tSD2\nStudy 01\tJH\t30\t51.57\t16.5\t30\t72.97\t13.23\nStudy 02\tUNI\t23\t75.09\t23.01\t24\t81.63\t14.42\nStudy 03\tSH\t83\t30.08\t14.29\t81\t35.38\t16.13\nStudy 04\tSH\t21\t2.95\t1.28\t21\t3.48\t0.68\nStudy 05\tSH\t15\t53.8\t17.4\t15\t60.47\t17.37\nStudy 06\tSH\t7\t15.7\t4.1\t7\t27.3\t4.1\nStudy 07\tSH\t28\t27.9\t9.57\t28\t33.2\t15.65\nStudy 08\tUNI\t40\t17.53\t8.87\t40\t19.23\t9.55\nStudy 09\tUNI\t18\t11.86\t13.24\t17\t29.92\t16.67\nStudy 10\tUNI\t21\t29.76\t16\t25\t27.98\t16.52\nStudy 11\tUNI\t26\t8.23\t3.59\t26\t9.65\t2.99\nStudy 12\tUNI\t49\t13.71\t4.07\t48\t16\t3.47\nStudy 13\tUNI\t27\t2.8\t1.7\t27\t5.9\t1.4\nStudy 14\tSH\t41\t10.05\t2.52\t34\t11.03\t1.78\nStudy 15\tUNI\t58\t3.62\t1.79\t57\t4.26\t1.61\nStudy 16\tSH\t60\t7.36\t2.8\t63\t8.82\t2.5\nStudy 17\tUNI\t15\t5.93\t3.55\t15\t12.27\t4.95\nStudy 18\tJH\t37\t13.68\t3.68\t142\t17.53\t4.34\nStudy 19\tJH\t27\t3.3\t2.3\t54\t12.98\t7.67\nStudy 20\tJH\t35\t5.49\t3.88\t39\t12.36\t7.68\nStudy 21\tJH\t32\t5.81\t3.14\t34\t12.44\t5.66\nStudy 22\tJH\t62\t17.84\t4.09\t60\t18.18\t4.09\nStudy 23\tSH\t39\t8.77\t5\t39\t13.72\t5.32\nStudy 24\tSH\t213\t59.8\t15.3\t39\t79.8\t9.5\nStudy 25\tUNI\t34\t14.32\t2.79\t42\t16\t2.05\nStudy 26\tUNI\t77\t70.85\t11.74\t56\t78.17\t9.94\nStudy 27\tUNI\t28\t80.83\t22.47\t28\t85.06\t23.52\nStudy 28\tUNI\t33\t25.38\t4.71\t36\t25.02\t3.36\nStudy 29\tUNI\t66\t0.45\t0.29\t66\t0.93\t0.59",
-                         mode="r", theme="mono_industrial"),
+     mode="r", theme="mono_industrial"),
 
                br(),
 
@@ -117,24 +117,24 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
 
                # Display this only if "moderator" is checked
                conditionalPanel(condition = "input.moderator == true",
-                                h3("Moderator (subgroup) analysis"),
-                                verbatimTextOutput("modAnalysis.out")
+            h3("Moderator (subgroup) analysis"),
+            verbatimTextOutput("modAnalysis.out")
                ),
 
                br(),
 
                # Display this only if "moderator" is checked
                conditionalPanel(condition = "input.moderator == true",
-                                h4("Categorical moderator graph (Fixed effects model)"),
-                                plotOutput("ModFixGraph")
+            h4("Categorical moderator graph (Fixed effects model)"),
+            plotOutput("ModFixGraph")
                ),
 
                br(),
 
                # Display this only if "moderator" is checked
                conditionalPanel(condition = "input.moderator == true",
-                                h4("Categorical moderator graph (Random effects model)"),
-                                plotOutput("ModRandGraph")
+            h4("Categorical moderator graph (Random effects model)"),
+            plotOutput("ModRandGraph")
                ),
 
                br(),
@@ -209,7 +209,7 @@ Tschann-2010\t393\t0.068\tmix
 van Empelen-2006\t108\t0.07\tmix
 Whitaker-1999\t372\t0.077\tmix
 Wilson-1994\t241\t0.012\tboys", mode="r", theme="monokai"),
-                         
+     
 
                br(),
                p(strong("Dichotomous (upoz, uneg, NU, kpoz, kneg, NK)")),
@@ -220,75 +220,75 @@ Wilson-1994\t241\t0.012\tboys", mode="r", theme="monokai"),
       ),
 
 navbarMenu("Model Options and Settings", icon = icon("cog", lib = "font-awesome"),
-#                       tabPanel("Bayesian Model Options", icon = icon("tasks", lib = "font-awesome"),
-#                                
-#                      strong('Bayesian Analysis Options'),
-#                      selectInput("bayoption1", label = h3("Run Bayesian Analysis"), 
-#                                  choices = list("No" = FALSE, "Yes" = TRUE)
-#                                
-#                       )),
+#   tabPanel("Bayesian Model Options", icon = icon("tasks", lib = "font-awesome"),
+#            
+#  strong('Bayesian Analysis Options'),
+#  selectInput("bayoption1", label = h3("Run Bayesian Analysis"), 
+#              choices = list("No" = FALSE, "Yes" = TRUE)
+#            
+#   )),
            tabPanel("Correlation model options", icon = icon("line-chart", lib = "font-awesome"),
-                    
-                    radioButtons("cormeasures", strong("Correlation model measures"),
-                                 c("raw correlation coefficient" = "COR",
-                                   "raw correlation coefficient corrected for its slight negative bias" = "UCOR",
-                                   "Fisher’s r-to-z transformed correlation coefficient" = "ZCOR"
-                                 ), selected = "ZCOR"),
-                    p(h6('Fisher’s r-to-z transformed correlation coefficient is the default estimator for the metafor package')),
-                    
-                    verbatimTextOutput('cormeasures.out')
-                    
+
+radioButtons("cormeasures", strong("Correlation model measures"),
+             c("raw correlation coefficient" = "COR",
+               "raw correlation coefficient corrected for its slight negative bias" = "UCOR",
+               "Fisher’s r-to-z transformed correlation coefficient" = "ZCOR"
+             ), selected = "ZCOR"),
+p(h6('Fisher’s r-to-z transformed correlation coefficient is the default estimator for the metafor package')),
+
+verbatimTextOutput('cormeasures.out')
+
            ),
            tabPanel("Dichotomous Model Options", icon = icon("ellipsis-v", lib = "font-awesome"),
-                    
-                    radioButtons("dichotomousoptions", strong("Measure Selection"),
-                                 c("log relative risk" = "RR",
-                                   "log odds ratio" = "OR",
-                                   "risk difference" = "RD",
-                                   "arcsine square-root transformed risk difference (Rücker et al., 2009)." = "AS",
-                                   "log odds ratio estimated with Peto’s method (Yusuf et al., 1985)." = "PETO",
-                                   "probit transformed risk difference as an estimate of the standardized mean difference." = "PBIT",
-                                   "transformed odds ratio as an estimate of the standardized mean difference (normal distributions)." = "OR2DN",
-                                   "transformed odds ratio as an estimate of the standardized mean difference (logistic distributions)." = "OR2DL"
-                                 ), selected = "OR"),
-                    p(h6('logs odds ratio is the default option and is the one you should use for the example provided in the Input Examples tab.')),
-                    
-                    verbatimTextOutput('dichotomousoptions.out')
-                    
+
+radioButtons("dichotomousoptions", strong("Measure Selection"),
+             c("log relative risk" = "RR",
+               "log odds ratio" = "OR",
+               "risk difference" = "RD",
+               "arcsine square-root transformed risk difference (Rücker et al., 2009)." = "AS",
+               "log odds ratio estimated with Peto’s method (Yusuf et al., 1985)." = "PETO",
+               "probit transformed risk difference as an estimate of the standardized mean difference." = "PBIT",
+               "transformed odds ratio as an estimate of the standardized mean difference (normal distributions)." = "OR2DN",
+               "transformed odds ratio as an estimate of the standardized mean difference (logistic distributions)." = "OR2DL"
+             ), selected = "OR"),
+p(h6('logs odds ratio is the default option and is the one you should use for the example provided in the Input Examples tab.')),
+
+verbatimTextOutput('dichotomousoptions.out')
+
            ),
            tabPanel("Random-effects model estimators", icon = icon("random", lib = "glyphicon"),
-                    
-                    radioButtons("model", strong("Random-effects model estimators"),
-                                 c("DerSimonian-Laird" = "DL",
-                                   "Hedges" = "HE",
-                                   "Hunter-Schmidt" = "HS",
-                                   "Sidik-Jonkman" = "SJ",
-                                   "Maximum-likelihood" = "ML",
-                                   "Restricted maximum-likelihood" = "REML",
-                                   "Empirical Bayes (Paule-Mandel)" = "EB",
-                                   "Generalized Q-statistic" = "GENQ"
-                                 ), selected = "REML"),
-                    p(h6('Restricted maximum-likelihood is the default estimator for the metafor package')),
-                    
-                    checkboxInput("khadjust", label = "Knapp & Hartung Adjustment", value = FALSE),
-                    p(h6('Knapp & Hartung Adjustment is turned off by the default in the metafor package')),
-                    p("The Knapp and Hartung (2003) method is an adjustment to the standard errors of the estimated
+
+radioButtons("model", strong("Random-effects model estimators"),
+             c("DerSimonian-Laird" = "DL",
+               "Hedges" = "HE",
+               "Hunter-Schmidt" = "HS",
+               "Sidik-Jonkman" = "SJ",
+               "Maximum-likelihood" = "ML",
+               "Restricted maximum-likelihood" = "REML",
+               "Empirical Bayes (Paule-Mandel)" = "EB",
+               "Generalized Q-statistic" = "GENQ"
+             ), selected = "REML"),
+p(h6('Restricted maximum-likelihood is the default estimator for the metafor package')),
+
+checkboxInput("khadjust", label = "Knapp & Hartung Adjustment", value = FALSE),
+p(h6('Knapp & Hartung Adjustment is turned off by the default in the metafor package')),
+p("The Knapp and Hartung (2003) method is an adjustment to the standard errors of the estimated
 coefficients, which helps to account for the uncertainty in the estimate of the amount of
 (residual) heterogeneity and leads to different reference distributions."),
-                    h3("References"),
-                    p("Knapp, G., & Hartung, J. (2003). Improved tests for a random effects meta-regression with a single covariate. Statistics in Medicine, 22, 2693–2710.")
-                    
-                    
+h3("References"),
+p("Knapp, G., & Hartung, J. (2003). Improved tests for a random effects meta-regression with a single covariate. Statistics in Medicine, 22, 2693–2710.")
+
+
            )),
 
  navbarMenu("Publication Bias", icon = icon("book", lib = "font-awesome"),
       tabPanel("Trim and Fill Options", icon = icon("chevron-right", lib = "font-awesome"),
 
                radioButtons("trimfillopt", strong("Trim and Fill Estimator"),
-                            c("L0" = "L0",
-                              "R0" = "R0",
-                              "Q0" = "Q0"
-                            ), selected = "L0"),
+        c("L0" = "L0",
+          "R0" = "R0",
+          "Q0" = "Q0"
+        ), selected = "L0"),
                p(h6('Three different estimators for the number of missing studies were proposed by Duval and Tweedie (2000a, 2000b; see also Duval, 2005). The default estimator for the metafor package is L0')),
                
                verbatimTextOutput('trimfillopt.out'),
@@ -307,16 +307,16 @@ verticalLayout(
     fluidRow(
       column(4,
              p(strong("Regression Test Options")),
-                            radioButtons("regtestpredictor", strong("Predictor"),
-                                         c("standard error" = "sei",
-                                           "sampling variance" = "vi",
-                                           "sample size" = "ni",
-                                           "inverse of the sample size" = "ninv"
-                                         ), selected = "sei"),
-                            radioButtons("regtestmodeltype", strong("Model Selection"),
-                                          c("Weighted Regression with a Multiplicative Dispersion Term" = "lm",
-                                            "Meta-analytic Models" = "rma"
-                                          ), selected = "lm"),
+        radioButtons("regtestpredictor", strong("Predictor"),
+ c("standard error" = "sei",
+   "sampling variance" = "vi",
+   "sample size" = "ni",
+   "inverse of the sample size" = "ninv"
+ ), selected = "sei"),
+        radioButtons("regtestmodeltype", strong("Model Selection"),
+  c("Weighted Regression with a Multiplicative Dispersion Term" = "lm",
+    "Meta-analytic Models" = "rma"
+  ), selected = "lm"),
              
              
              p(br())
@@ -346,10 +346,10 @@ verticalLayout(
       tabPanel("File Drawer Analysis", icon = icon("chevron-right", lib = "font-awesome"),
                
                radioButtons("filedraweranalysis", strong("File Drawer Analysis"),
-                            c("Rosenthal" = "Rosenthal",
-                              "Orwin" = "Orwin",
-                              "Rosenberg" = "Rosenberg"
-                            ), selected = "Rosenthal"),
+        c("Rosenthal" = "Rosenthal",
+          "Orwin" = "Orwin",
+          "Rosenberg" = "Rosenberg"
+        ), selected = "Rosenthal"),
                p(h6('Method for running file drawer analysis. The default in the metafor package is Rosenthal')),
                p('The Rosenthal method (sometimes called a ‘file drawer analysis’) calculates the number of studies
 averaging null results that would have to be added to the given set of observed outcomes to reduce
@@ -375,148 +375,148 @@ navbarMenu("Effect Size Calculator", icon = icon("calculator", lib = "font-aweso
           tabPanel("One Study with Means, SDs, Ns", icon = icon("chevron-right", lib = "font-awesome"),
          
                    verticalLayout(
-                     
-                     wellPanel(
-                       fluidRow(
-                         column(3,
-                      p(strong("Group 1:")),
-                     
-                     numericInput("nx", " Sample size (n)", 21),
-                     
-                     numericInput("mx", " Mean", 61.33),
-                     
-                     numericInput("sdx", " SD", 16.43),
-                     
-                     p(br())
-                         ),
-                     column(4, offset = 1,
-                     p(strong("Group 2:")),
-                     
-                     numericInput("ny", " Sample size (n)", 24),
-                     
-                     numericInput("my", " Mean", 59.79),
-                     
-                     numericInput("sdy", " SD", 18.50),
-                     
-                     p(br())
-                       ),
-                     column(4,
-                     strong('Option:'),
-                     
-                     
-                     checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
-                     
-                     
-                     checkboxInput("vartest", "Show test for equality of variances", FALSE),
-                     helpText("Click here to update your results."),
-                     submitButton("Update View")
-                     )
-                     
+ 
+ wellPanel(
+   fluidRow(
+     column(3,
+  p(strong("Group 1:")),
+ 
+ numericInput("nx", " Sample size (n)", 21),
+ 
+ numericInput("mx", " Mean", 61.33),
+ 
+ numericInput("sdx", " SD", 16.43),
+ 
+ p(br())
+     ),
+ column(4, offset = 1,
+ p(strong("Group 2:")),
+ 
+ numericInput("ny", " Sample size (n)", 24),
+ 
+ numericInput("my", " Mean", 59.79),
+ 
+ numericInput("sdy", " SD", 18.50),
+ 
+ p(br())
+   ),
+ column(4,
+ strong('Option:'),
+ 
+ 
+ checkboxInput("varequal", "t-test with equal variances assumed", FALSE),
+ 
+ 
+ checkboxInput("vartest", "Show test for equality of variances", FALSE),
+ helpText("Click here to update your results."),
+ submitButton("Update View")
+ )
+ 
                    )),
                    
-                     h3("Checking the input data"),
-                     tableOutput("values"),
-                                
-                    br(),
-                                
-                     h3("Mean of the differences and 95% CI"),
-                     verbatimTextOutput("difference.out"),
-                                
-                     br(),
-                                
-                     h3("t-test"),
-                     verbatimTextOutput("ttest.out"),
-                     h3(""),
-                     verbatimTextOutput("vartest.out"),
-                                
-                     br(),
-                                
-                     h3("Effect size indices"),
-                     verbatimTextOutput("es.out"),                   
-                     br()
-                                
-                       )
+ h3("Checking the input data"),
+ tableOutput("values"),
+            
+br(),
+            
+ h3("Mean of the differences and 95% CI"),
+ verbatimTextOutput("difference.out"),
+            
+ br(),
+            
+ h3("t-test"),
+ verbatimTextOutput("ttest.out"),
+ h3(""),
+ verbatimTextOutput("vartest.out"),
+            
+ br(),
+            
+ h3("Effect size indices"),
+ verbatimTextOutput("es.out"),                   
+ br()
+            
+   )
          
           ),
           tabPanel("ANCOVA F-statistic to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
                    verticalLayout(
-                     
-                     wellPanel(
-                       fluidRow(
-                         column(3,
-                                p(strong("ANCOVA F-statistic to Effect Size")),
-                                
-                                numericInput("ancovaf", " F value from ANCOVA", 21),
-                                
-                                numericInput("ancovafn1", " Treatment group sample size", 50),
-                                
-                                numericInput("ancovafn2", " Comparison group sample size", 50),
-                                
-                                p(br())
-                         ),
-                         column(4, offset = 1,
-                                
-                                numericInput("anovafcovar", " Covariate outcome correlation or multiple correlation", 0.24),
-                                
-                                numericInput("anovafcovarnum", " Number of covariates", 3),
-                                
-                                numericInput("sdy", " SD", 18.50),
-                                helpText("Click here to update your results"),
-                                submitButton("Update View"),
-                                p(br())
-                         )
+ 
+ wellPanel(
+   fluidRow(
+     column(3,
+            p(strong("ANCOVA F-statistic to Effect Size")),
+            
+            numericInput("ancovaf", " F value from ANCOVA", 21),
+            
+            numericInput("ancovafn1", " Treatment group sample size", 50),
+            
+            numericInput("ancovafn2", " Comparison group sample size", 50),
+            
+            p(br())
+     ),
+     column(4, offset = 1,
+            
+            numericInput("anovafcovar", " Covariate outcome correlation or multiple correlation", 0.24),
+            
+            numericInput("anovafcovarnum", " Number of covariates", 3),
+            
+            numericInput("sdy", " SD", 18.50),
+            helpText("Click here to update your results"),
+            submitButton("Update View"),
+            p(br())
+     )
 
-                         
-                       )),
-                     
-                     
-                     h3("Effect size indices"),
-                     verbatimTextOutput("ancovaf.out"),
-                     p(br())
-                     
+     
+   )),
+ 
+ 
+ h3("Effect size indices"),
+ verbatimTextOutput("ancovaf.out"),
+ p(br())
+ 
                    )
                    
           ),
           tabPanel("Mean Values from ANCOVA F-statistic to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
                    verticalLayout(
-                     
-                     wellPanel(
-                       fluidRow(
-                         column(3,
-                                p(strong("Mean Values from ANCOVA F-statistic to Effect Size")),
-                                
-                                numericInput("ancovamean1", " Adjusted mean of treatment group from ANCOVA", 21.7),
-                                
-                                numericInput("ancovamean2", " Adjusted mean of comparison group from ANCOVA", 33.5),
-                                
-                                numericInput("ancovameansd", " Adjusted standard deviation", 50),
-                                
-                                p(br())
-                         ),
-                         column(4, offset = 1,
-                                
-                                numericInput("ancovameann1", " Treatment group sample size", 142),
-                                
-                                numericInput("ancovameann2", " Comparison group sample size", 133),
-                                
-                                numericInput("ancovameancovar", " Covariate outcome correlation or multiple correlation", 0.24),
+ 
+ wellPanel(
+   fluidRow(
+     column(3,
+            p(strong("Mean Values from ANCOVA F-statistic to Effect Size")),
+            
+            numericInput("ancovamean1", " Adjusted mean of treatment group from ANCOVA", 21.7),
+            
+            numericInput("ancovamean2", " Adjusted mean of comparison group from ANCOVA", 33.5),
+            
+            numericInput("ancovameansd", " Adjusted standard deviation", 50),
+            
+            p(br())
+     ),
+     column(4, offset = 1,
+            
+            numericInput("ancovameann1", " Treatment group sample size", 142),
+            
+            numericInput("ancovameann2", " Comparison group sample size", 133),
+            
+            numericInput("ancovameancovar", " Covariate outcome correlation or multiple correlation", 0.24),
 
-                                numericInput("ancovameancovarnumber", " Number of covariate", 3),
-                                
-                                
-                                helpText("Click here to update your results"),
-                                submitButton("Update View"),
-                                p(br())
-                         )
-                         
-                         
-                       )),
-                     
-                     
-                     h3("Effect size indices"),
-                     verbatimTextOutput("ancovamean.out"),
-                     p(br())
-                     
+            numericInput("ancovameancovarnumber", " Number of covariate", 3),
+            
+            
+            helpText("Click here to update your results"),
+            submitButton("Update View"),
+            p(br())
+     )
+     
+     
+   )),
+ 
+ 
+ h3("Effect size indices"),
+ verbatimTextOutput("ancovamean.out"),
+ p(br())
+ 
                    )
                    
           ),
@@ -526,18 +526,18 @@ tabPanel("Chi-Squared Statistic to Effect Size", icon = icon("chevron-right", li
            wellPanel(
              fluidRow(
                column(3,
-                      p(strong("Chi-Squared Statistic to Effect Size")),
-                      
-                      numericInput("chisquaredstat", " Chi squared statistic from primary study.", 5.3),
-                      
-                      numericInput("chisquaredn1", " Sample size in primary study.", 50),
-                      
-                      p(br())
+  p(strong("Chi-Squared Statistic to Effect Size")),
+  
+  numericInput("chisquaredstat", " Chi squared statistic from primary study.", 5.3),
+  
+  numericInput("chisquaredn1", " Sample size in primary study.", 50),
+  
+  p(br())
                ),
                column(4, offset = 1,
-                      helpText("Click here to update your results"),
-                      submitButton("Update View"),
-                      p(br())
+  helpText("Click here to update your results"),
+  submitButton("Update View"),
+  p(br())
                )
                
                
@@ -558,25 +558,25 @@ tabPanel("Outcome Measures for Individual Groups", icon = icon("chevron-right", 
            wellPanel(
              fluidRow(
                column(3,
-                      p(strong("Dichotomous Variables")),
-                      
-                      numericInput("xi", "Frequencies of the event of interest", 6),
-                      
-                      numericInput("ni", "Sample size", 323),
-                      
-                      #numericInput("n1i", "Total", 121),
-                      
-                      p(br())
+  p(strong("Dichotomous Variables")),
+  
+  numericInput("xi", "Frequencies of the event of interest", 6),
+  
+  numericInput("ni", "Sample size", 323),
+  
+  #numericInput("n1i", "Total", 121),
+  
+  p(br())
                ),
                column(4,
-                      radioButtons("divari1", strong("Measure Selection"),
-                                   c("raw proportion" = "PR",
-                                     "log transformed proportion" = "PLN",
-                                     "logit transformed proportion (i.e., log odds)" = "PLO",
-                                     "arcsine square-root transformed proportion (i.e., the angular transformation)" = "PAS",
-                                     "Freeman-Tukey double arcsine transformed proportion (Freeman & Tukey, 1950)." = "PFT"
-                                   ), selected = "PR"),
-                      submitButton("Update View")
+  radioButtons("divari1", strong("Measure Selection"),
+               c("raw proportion" = "PR",
+                 "log transformed proportion" = "PLN",
+                 "logit transformed proportion (i.e., log odds)" = "PLO",
+                 "arcsine square-root transformed proportion (i.e., the angular transformation)" = "PAS",
+                 "Freeman-Tukey double arcsine transformed proportion (Freeman & Tukey, 1950)." = "PFT"
+               ), selected = "PR"),
+  submitButton("Update View")
                )
                
              )),
@@ -597,36 +597,36 @@ tabPanel("Outcome Measures for Two-Group Comparisons", icon = icon("chevron-righ
            wellPanel(
              fluidRow(
                column(3,
-                      p(strong("Group 1:")),
-                      
-                      numericInput("ai", "Outcome 1", 100),
-                      
-                      numericInput("bi", "Outcome 2", 21),
-                      
-                      #numericInput("n1i", "Total", 121),
-                      
-                      p(br())
+  p(strong("Group 1:")),
+  
+  numericInput("ai", "Outcome 1", 100),
+  
+  numericInput("bi", "Outcome 2", 21),
+  
+  #numericInput("n1i", "Total", 121),
+  
+  p(br())
                ),
                column(4, offset = 1,
-                      p(strong("Group 2:")),
-                      
-                      numericInput("ci", "Outcome 1", 120),
-                      
-                      numericInput("di", "Outcome 2", 67),
-                      
-                      #numericInput("n2i", "Total", 187),
-                      
-                      p(br())
+  p(strong("Group 2:")),
+  
+  numericInput("ci", "Outcome 1", 120),
+  
+  numericInput("di", "Outcome 2", 67),
+  
+  #numericInput("n2i", "Total", 187),
+  
+  p(br())
                ),
                column(4,
-                      radioButtons("twoxtwovalue", strong("Measure Selection"),
-                                   c("log relative risk" = "RR",
-                                     "log odds ratio" = "OR",
-                                     "risk difference" = "RD",
-                                     "arcsine square-root transformed risk difference (Rücker et al., 2009)." = "AS",
-                                     "log odds ratio estimated with Peto’s method (Yusuf et al., 1985)." = "PETO"
-                                   ), selected = "OR"),
-                      submitButton("Update View")
+  radioButtons("twoxtwovalue", strong("Measure Selection"),
+               c("log relative risk" = "RR",
+                 "log odds ratio" = "OR",
+                 "risk difference" = "RD",
+                 "arcsine square-root transformed risk difference (Rücker et al., 2009)." = "AS",
+                 "log odds ratio estimated with Peto’s method (Yusuf et al., 1985)." = "PETO"
+               ), selected = "OR"),
+  submitButton("Update View")
                )
                
              )),
@@ -640,22 +640,17 @@ tabPanel("Outcome Measures for Two-Group Comparisons", icon = icon("chevron-righ
          )
          
 ),
-tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
+tabPanel("Correlation coefficient (r) to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
          verticalLayout(
            
            wellPanel(
              fluidRow(
                column(3,
-                      p(strong("p-value to Effect Size")),
+                      p(strong(" ")),
                       
-                      numericInput("pvaluenum", " p-value.", 0.01),
-                      numericInput("pvaluen1", " Sample size of treatment group.", 50),                      
-                      numericInput("pvaluen2", " Sample size of comparison group.", 50),
-                      
-                      radioButtons("pvaluetail", strong("One or two-tailed p-value."),
-                                   c("One tail" = "one",
-                                     "Two tail" = "two"
-                                   ), selected = "two"),
+                      numericInput("corrcoeff", "Correlation coefficient (r)", .37, step = 0.01),
+                      numericInput("corrcoeffn", "Total sample size", 500),  
+                      numericInput("corrcoefflevel", "Confidence level in percent", 95),
                       
                       p(br())
                ),
@@ -663,6 +658,44 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
                       helpText("Click here to update your results"),
                       submitButton("Update View"),
                       p(br())
+               )
+               
+               
+             )),
+           
+           
+           h3("Effect size indices"),
+           verbatimTextOutput("corrcoeff.out"),
+           p(br()),
+           
+           br()
+           
+         )
+         
+),
+tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
+         verticalLayout(
+           
+           wellPanel(
+             fluidRow(
+               column(3,
+  p(strong("p-value to Effect Size")),
+  
+  numericInput("pvaluenum", " p-value.", 0.01),
+  numericInput("pvaluen1", " Sample size of treatment group.", 50),  
+  numericInput("pvaluen2", " Sample size of comparison group.", 50),
+  
+  radioButtons("pvaluetail", strong("One or two-tailed p-value."),
+               c("One tail" = "one",
+                 "Two tail" = "two"
+               ), selected = "two"),
+  
+  p(br())
+               ),
+               column(4, offset = 1,
+  helpText("Click here to update your results"),
+  submitButton("Update View"),
+  p(br())
                )
                
                
@@ -680,199 +713,192 @@ tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awes
 ),
          tabPanel("Single Case Designs", icon = icon("chevron-right", lib = "font-awesome"),
                   verticalLayout(
-                    
-                    wellPanel(
-                      fluidRow(
-                        column(3,
-                               p(strong("Single Case Design Type")),
-                               
-                               radioButtons("SCDtype", strong("Type of Single Case Design"),
-                                            c("AB" = "AB",
-                                              "ABA" = "ABA",
-                                              "ABAB" = "ABAB",
-                                              "Completely Random Design" = "CRD",
-                                              "Randomized Block Design" = "RBD",
-                                              "Alternating Treatments Design" = "ATD",
-                                              "Multiple-baseline AB design" = "MBD"
-                                            ), selected = "AB"),
-                               radioButtons("SCDes", strong("Effect Size"),
-                                            c("Standardized Mean Difference" = "SMD",
-                                              "Pooled Standardized Mean Difference" = "SMDpool",
-                                              "Percentage of Nonoverlapping Data (Positive)" = "PND+",
-                                              "Percentage of Nonoverlapping Data (Negative)" = "PND-",
-                                              "Percentage of Data Points Exceeding the Median (Positive)" = "PND+",
-                                              "Percentage of Data Points Exceeding the Median (Negative)" = "PND-"
-                                            ), selected = "SMD"),
-                               helpText("Click here to update your results"),
-                               bsAlert("alert"),
-                               submitButton("Update View"),
-                               
-                               p(br())
-                        ),
-                        p(strong("Single Case Design Data Entry")),
-                        p("The left column should contain the condition labels and the right column should contain the obtained scores"),
-                        aceEditor("SCDdata", value="A, 9.523465\nA, 12.371462\nA, 13.265618\nA, 10.182837\nA, 10.987079\nA, 8.161392\nA, 10.655287\nA, 9.563863\nA, 9.381336\nA, 8.822936\nA, 10.227932\nA, 11.961484\nA, 9.425201\nA, 12.199128\nB, 16.212489\nB, 17.657583\nB, 18.45166\nB, 16.645105\nB, 14.618445\nB, 15.769643\nB, 16.017145\nB, 14.000921\nB, 17.081538\nB, 14.06722\nB, 20.423526\nB, 14.123096\nB, 16.728538", mode="r", theme="terminal"),
-                        p("Below is your computed effect size, unless you've selected either Percentage of Nonoverlapping Data or Percentage of Data Points Exceeding the Median in which case the number below is the percentage."),
-                        verbatimTextOutput('SCDES.out'),
-#                         plotOutput('SCDGRAPH.out'),
-#                         p(br()),
-#                         p(br()),
-#                         p(br()),
-#                         p(br()),
-                        h3("References"),
-                        p("Bulte, I., & Onghena, P. (2008). An R package for single-case randomization tests. Behavior Research Methods, 40, 467--478."),
-                        p("Bulte, I., & Onghena, P. (2009). Randomization tests for multiple baseline designs: An extension of the SCRT-R package. Behavior Research Methods, 41, 477--485.")
-                        
-                        
-                        
-                      )),
+
+wellPanel(
+  fluidRow(
+    column(3,
+           p(strong("Single Case Design Type")),
+           
+           radioButtons("SCDtype", strong("Type of Single Case Design"),
+    c("AB" = "AB",
+      "ABA" = "ABA",
+      "ABAB" = "ABAB",
+      "Completely Random Design" = "CRD",
+      "Randomized Block Design" = "RBD",
+      "Alternating Treatments Design" = "ATD",
+      "Multiple-baseline AB design" = "MBD"
+    ), selected = "AB"),
+           radioButtons("SCDes", strong("Effect Size"),
+    c("Standardized Mean Difference" = "SMD",
+      "Pooled Standardized Mean Difference" = "SMDpool",
+      "Percentage of Nonoverlapping Data (Positive)" = "PND+",
+      "Percentage of Nonoverlapping Data (Negative)" = "PND-",
+      "Percentage of Data Points Exceeding the Median (Positive)" = "PND+",
+      "Percentage of Data Points Exceeding the Median (Negative)" = "PND-"
+    ), selected = "SMD"),
+           helpText("Click here to update your results"),
+           bsAlert("alert"),
+           submitButton("Update View"),
+           
+           p(br())
+    ),
+    p(strong("Single Case Design Data Entry")),
+    p("The left column should contain the condition labels and the right column should contain the obtained scores"),
+    aceEditor("SCDdata", value="A, 9.523465\nA, 12.371462\nA, 13.265618\nA, 10.182837\nA, 10.987079\nA, 8.161392\nA, 10.655287\nA, 9.563863\nA, 9.381336\nA, 8.822936\nA, 10.227932\nA, 11.961484\nA, 9.425201\nA, 12.199128\nB, 16.212489\nB, 17.657583\nB, 18.45166\nB, 16.645105\nB, 14.618445\nB, 15.769643\nB, 16.017145\nB, 14.000921\nB, 17.081538\nB, 14.06722\nB, 20.423526\nB, 14.123096\nB, 16.728538", mode="r", theme="terminal"),
+    p("Below is your computed effect size, unless you've selected either Percentage of Nonoverlapping Data or Percentage of Data Points Exceeding the Median in which case the number below is the percentage."),
+    verbatimTextOutput('SCDES.out'),
+#     plotOutput('SCDGRAPH.out'),
+#     p(br()),
+#     p(br()),
+#     p(br()),
+#     p(br()),
+    h3("References"),
+    p("Bulte, I., & Onghena, P. (2008). An R package for single-case randomization tests. Behavior Research Methods, 40, 467--478."),
+    p("Bulte, I., & Onghena, P. (2009). Randomization tests for multiple baseline designs: An extension of the SCRT-R package. Behavior Research Methods, 41, 477--485.")
+    
+    
+    
+  )),
    
-                    p(br())
-                    
+p(br())
+
                   )
          
 )),
 navbarMenu("About MAVIS", icon = icon("dot-circle-o", lib = "font-awesome"),
            tabPanel("About MAVIS", icon = icon("bar-chart-o", lib = "font-awesome"),
-                    
-                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis3.png" alt="" style="float: top; margin-right:5px" /></div>'),
-                    br(),
-                    strong('About MAVIS'),
-                    p("MAVIS was designed from the beginning to help users run a meta-analysis as effortlessly as possible. 
-                      The software accomplishes this by leveraging the R programming language for data analysis and the Shiny 
-                      package from RStudio to power the user interface and server software. These two things combined give 
-                      MAVIS a positive user experience with an easy to use interface along with the power of R to provide 
-                      the best possible user experience."),
-                    br(),
-                    strong("MAVIS Version 1.1.1"),
-                    p("Last Updated July 20th 2015"),
-                    p("Number of monthly downloads from CRAN"),
-                    img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
-                    
-                    
-                    br()
-                    
+
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis3.png" alt="" style="float: top; margin-right:5px" /></div>'),
+br(),
+strong('About MAVIS'),
+p("MAVIS was designed from the beginning to help users run a meta-analysis as effortlessly as possible. 
+  The software accomplishes this by leveraging the R programming language for data analysis and the Shiny 
+  package from RStudio to power the user interface and server software. These two things combined give 
+  MAVIS a positive user experience with an easy to use interface along with the power of R to provide 
+  the best possible user experience."),
+br(),
+strong("MAVIS Version 1.1.1"),
+p("Last Updated July 20th 2015"),
+p("Number of monthly downloads from CRAN"),
+img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
+
+
+br()
+
            ),
            tabPanel("Authors and Contributors", icon = icon("users", lib = "font-awesome"),
-                    
-                    strong('Acknowledgments'),
-                    
-                    p('William Kyle Hamilton would like to thank the ',
-                      a("Health Communications and Interventions Lab at the University of California, Merced", href="http://cameronhcilab.com/", target="_blank"),
-                      'for their comments and beta testing efforts on this application ', 'as well as',
-                      a("Kathleen Coburn", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),
-                      'for her feedback and evaluation of the statistical methods related to this project.'),
-                    
-                    p('Atsushi Mizumoto would like to thank',
-                      a("Dr. Luke Plonsky", href="http://oak.ucc.nau.edu/ldp3/", target="_blank"), 'and',
-                      a("Dr. Yo In'nami", href="https://sites.google.com/site/yoinnami/", target="_blank"),
-                      'for their support and feedback to create this web application.'),
-                    
-                    br(),
-                    
-                    strong('Authors'),
-                    
-                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/kyle80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
-                    p(a("William Kyle Hamilton - University of California, Merced", href="http://www.kylehamilton.com", target="_blank")),
-                    p("William Kyle Hamilton maintains this application and has authored new features."),
-                    
-                    br(),
-                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
-                    p(a("Atsushi Mizumoto, PhD - Kansai University", href="http://mizumot.com", target="_blank"),br(),
-                      p("Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found", a("here.", href="https://github.com/mizumot/meta", target="_blank"))
-                      
-                      
-                    ),
 
-                    br(),
-                    
-                    strong('Contributors and Translators'),
-                    
-                    HTML('<div style="clear: left;"><img src="http://oi59.tinypic.com/2mnrcci.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
-                    p(a("Burak Aydin, PhD - Recep Tayyip Erdoğan University", href="http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148", target="_blank"),br(),
-                      p("Burak Aydin is working on a Turkish version of MAVIS and contributed the dichotomous data entry feature.")
-                    ),
-                    
-                    br(),
-                    br(),
-                    HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/katie80.png" alt="" style="float: left; margin-right:5px" /></div>'),
-                    p(a("Kathleen Coburn - University of California, Merced", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),br(),
-                      p("Kathleen Coburn contributed technical advice on how to run a meta-analysis as well as information on publication bias.")
-           ),
-           br()
+strong('Acknowledgments'),
+
+p('William Kyle Hamilton would like to thank the ',
+  a("Health Communications and Interventions Lab at the University of California, Merced", href="http://cameronhcilab.com/", target="_blank"),
+  'for their comments and beta testing efforts on this application ', 'as well as',
+  a("Kathleen Coburn", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),
+  'for her feedback and evaluation of the statistical methods related to this project.'),
+
+p('Atsushi Mizumoto would like to thank',
+  a("Dr. Luke Plonsky", href="http://oak.ucc.nau.edu/ldp3/", target="_blank"), 'and',
+  a("Dr. Yo In'nami", href="https://sites.google.com/site/yoinnami/", target="_blank"),
+  'for their support and feedback to create this web application.'),
+
+br(),
+
+strong('Authors'),
+
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/kyle80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("William Kyle Hamilton - University of California, Merced", href="http://www.kylehamilton.com", target="_blank")),
+p("William Kyle Hamilton maintains this application and has authored new features."),
+br(),
+HTML('<div style="clear: left;"><img src="http://oi59.tinypic.com/2mnrcci.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Burak Aydin, PhD - Recep Tayyip Erdoğan University", href="http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148", target="_blank"),br(),
+  p("Burak Aydin is working on a Turkish version of MAVIS and contributed the dichotomous data entry feature.")),
+br(),
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Atsushi Mizumoto, PhD - Kansai University", href="http://mizumot.com", target="_blank"),br(),
+  p("Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found", a("here.", href="https://github.com/mizumot/meta", target="_blank"))),
+
+br(),
+
+strong('Contributors'),
+
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/katie80.png" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Kathleen Coburn - University of California, Merced", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),br(),
+  p("Kathleen Coburn contributed technical advice on how to run a meta-analysis as well as information on publication bias.")
+),
+br()
            ),
            tabPanel("Bug Reports", icon = icon("bug", lib = "font-awesome"),
-                    
-                    strong('Bug Reports'),
 
-                    p("If you discover a problem with MAVIS please submit it to the project GitHub page", 
-                      a("https://github.com/kylehamilton/MAVIS/issues", href="https://github.com/kylehamilton/MAVIS/issues", target="_blank"),br()),
+strong('Bug Reports'),
 
-                    p("MAVIS is an Open Source project, you are more than welcome to submit patches or features and help the project grow."),
-                    
-                    
-                    br()
-                    
+p("If you discover a problem with MAVIS please submit it to the project GitHub page", 
+  a("https://github.com/kylehamilton/MAVIS/issues", href="https://github.com/kylehamilton/MAVIS/issues", target="_blank"),br()),
+
+p("MAVIS is an Open Source project, you are more than welcome to submit patches or features and help the project grow."),
+
+
+br()
+
            ),
            tabPanel("Feedback", icon = icon("comments", lib = "font-awesome"),
-                    
-                    strong('Feedback about MAVIS'),
-                    
-                    p("Feedback about your MAVIS experience is always welcome and highly encouraged!"),
-                    p("Feel free to contact the project maintainer with any questions, user experiences, uses of MAVIS, or
-                       feature requests at kyle.hamilton@gmail.com"),
-                    
-                    br()
-                    
+
+strong('Feedback about MAVIS'),
+
+p("Feedback about your MAVIS experience is always welcome and highly encouraged!"),
+p("Feel free to contact the project maintainer with any questions, user experiences, uses of MAVIS, or
+   feature requests at kyle.hamilton@gmail.com"),
+
+br()
+
            ),
            
            tabPanel("License", icon = icon("legal", lib = "font-awesome"),
-                    
-                    strong('License'),
-                    
-                    p("MAVIS: Meta Analysis via Shiny"),
-                    p(" Copyright 2015  William Kyle Hamilton and Atsushi Mizumoto"),
 
-                    p(" This program is free software you can redistribute it and or modify
-                      it under the terms of the GNU General Public License as published by
-                      the Free Software Foundation either version 3 of the License or
-                      at your option any later version."),
+strong('License'),
 
-                    p("This program is distributed in the hope that it will be useful,
-                      but WITHOUT ANY WARRANTY; without even the implied warranty of
-                      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                      GNU General Public License for more details."),
+p("MAVIS: Meta Analysis via Shiny"),
+p(" Copyright 2015  William Kyle Hamilton and Atsushi Mizumoto"),
 
-                    p("You should have received a copy of the GNU General Public License
-                      along with this program.  If not, see", a("http://www.gnu.org/licenses/gpl.html", href="http://www.gnu.org/licenses/gpl.html", target="_blank"),br()),
-                    img(src = "http://www.gnu.org/graphics/gplv3-127x51.png", seamless=NA),
-                    
-                    
-                    br(),
-                    
-                    strong('Futher Infomation'),
-                    p("If you would like to learn more about the GNU General Public License and what it means tl'dr legal has a simple explaination which can be found here", a("https://www.tldrlegal.com/l/gpl-3.0", href="https://www.tldrlegal.com/l/gpl-3.0", target="_blank"),br()),
-                    
+p(" This program is free software you can redistribute it and or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation either version 3 of the License or
+  at your option any later version."),
 
-                    
-                    br()
-                    
+p("This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details."),
+
+p("You should have received a copy of the GNU General Public License
+  along with this program.  If not, see", a("http://www.gnu.org/licenses/gpl.html", href="http://www.gnu.org/licenses/gpl.html", target="_blank"),br()),
+img(src = "http://www.gnu.org/graphics/gplv3-127x51.png", seamless=NA),
+
+
+br(),
+
+strong('Futher Infomation'),
+p("If you would like to learn more about the GNU General Public License and what it means tl'dr legal has a simple explaination which can be found here", a("https://www.tldrlegal.com/l/gpl-3.0", href="https://www.tldrlegal.com/l/gpl-3.0", target="_blank"),br()),
+
+
+
+br()
+
            ),
            
            tabPanel("Support", icon = icon("chevron-right", lib = "font-awesome"),
-                    
-                    
-                    strong('Support'),
-                    
-                    p("If you're having problems with MAVIS feel free to refer to our GitHub wiki or the documentation available on CRAN."),
-                    a("CRAN page for MAVIS", href="http://cran.r-project.org/web/packages/MAVIS/index.html", target="_blank"),
-                    br(),
-                    a("GitHub Wiki page for MAVIS", href="https://github.com/kylehamilton/MAVIS/wiki", target="_blank"),
-                    br(),
-                    p("As always you are more than welcome to contact the project maintainer at kyle.hamilton@gmail.com"),
-                    br()
-                    
-                    )),
+
+
+strong('Support'),
+
+p("If you're having problems with MAVIS feel free to refer to our GitHub wiki or the documentation available on CRAN."),
+a("CRAN page for MAVIS", href="http://cran.r-project.org/web/packages/MAVIS/index.html", target="_blank"),
+br(),
+a("GitHub Wiki page for MAVIS", href="https://github.com/kylehamilton/MAVIS/wiki", target="_blank"),
+br(),
+p("As always you are more than welcome to contact the project maintainer at kyle.hamilton@gmail.com"),
+br()
+
+)),
 
 #This is just so I can get ui.R to run, I'll fix this later
 tabPanel(" ",
