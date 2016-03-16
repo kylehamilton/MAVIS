@@ -1203,6 +1203,18 @@ output$divari1.out <- renderPrint({
 })
 
 ################################################
+# Proportions to Effect Size
+################################################
+
+propes1 <- reactive({
+  propes(p1 = input$propp1, p2 = input$propp2, n.ab = input$propnab, n.cd = input$propcd, level = input$proplevel)
+})
+
+output$prop.out <- renderPrint({
+  propes1()
+})
+
+################################################
 # Correlation coefficient (r) to Effect Size
 ################################################
 

@@ -673,6 +673,43 @@ tabPanel("Correlation coefficient (r) to Effect Size", icon = icon("chevron-righ
          )
          
 ),
+tabPanel("Proportions to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
+         verticalLayout(
+           
+           wellPanel(
+             fluidRow(
+               column(3,
+                      p(strong("Proportions to Effect Size")),
+                      p("Proportion One"),
+                      numericInput("propp1", " Proportion one", 43),
+                      numericInput("propnab", " Total sample size", 68),
+                      p("Proportion Two"),
+                      numericInput("propp2", " Proportion two", 24),
+                      numericInput("propcd", " Total sample size", 48),
+                      numericInput("proplevel", " Confidence level", 95),
+                      
+                      p(br())
+               ),
+               column(4, offset = 1,
+                      helpText("Click here to update your results"),
+                      submitButton("Update View"),
+                      p(br())
+               )
+               
+               
+             )),
+           
+           
+           h3("Effect size indices"),
+           verbatimTextOutput("prop.out"),
+           p(br()),
+           
+           br()
+           
+         )
+         
+),
+
 tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
          verticalLayout(
            
