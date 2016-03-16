@@ -1215,6 +1215,18 @@ output$prop.out <- renderPrint({
 })
 
 ################################################
+# Failure groups to Effect Size
+################################################
+
+# failes1 <- reactive({
+#   failes(input$failB, input$failD, input$failSS, input$failCSS)
+# })
+# 
+# output$fail.out <- renderPrint({
+#   failes1()
+# })
+
+################################################
 # Correlation coefficient (r) to Effect Size
 ################################################
 

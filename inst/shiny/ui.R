@@ -709,6 +709,42 @@ tabPanel("Proportions to Effect Size", icon = icon("chevron-right", lib = "font-
          )
          
 ),
+# tabPanel("Failure groups to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
+#          verticalLayout(
+#            
+#            wellPanel(
+#              fluidRow(
+#                column(3,
+#                       p(strong("Failure groups to Effect Size")),
+#                       p("Proportion One"),
+#                       numericInput("failB", " Treatment failure.", 5),
+#                       numericInput("failN", " Non-treatment failure", 10),
+#                       numericInput("failSS", " Treatment sample size", 30),
+#                       numericInput("failCSS", " Control/comparison sample size", 30),
+#                       #numericInput("faillevel", " Confidence level", 95),
+#                       #numericInput("failCER", " Control group Event Rate", 0.20),
+#                       
+#                       p(br())
+#                ),
+#                column(4, offset = 1,
+#                       helpText("Click here to update your results"),
+#                       submitButton("Update View"),
+#                       p(br())
+#                )
+#                
+#                
+#              )),
+#            
+#            
+#            h3("Effect size indices"),
+#            verbatimTextOutput("fail.out"),
+#            p(br()),
+#            
+#            br()
+#            
+#          )
+#          
+# ),
 
 tabPanel("p-value to Effect Size", icon = icon("chevron-right", lib = "font-awesome"),
          verticalLayout(
