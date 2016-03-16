@@ -62,3 +62,9 @@ $RECYCLE.BIN/
 
 *.csv
 *.Rhistory
+.Rhistory
+*.Rhistory
+*.RData
+.Rhistory
+*.Rhistory
+.RData

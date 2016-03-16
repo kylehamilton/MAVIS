@@ -1,6 +1,8 @@
 MAVIS: Meta Analysis via Shiny v1.1.1 "Smiling Fox"
 =====
-![DOWLOADS](http://cranlogs.r-pkg.org/badges/MAVIS "Monthly Downloads from CRAN")
+[![CRAN Version](http://www.r-pkg.org/badges/version/MAVIS)](http://cran.rstudio.com/web/packages/MAVIS)
+[![Monthly Downloads](http://cranlogs.r-pkg.org/badges/MAVIS)](http://cranlogs.r-pkg.org/badges/MAVIS)
+[![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/MAVIS)](http://cranlogs.r-pkg.org/badges/grand-total/MAVIS)
 
 ### Live demo of MAVIS v1.1.1 can be found here http://kylehamilton.net/shiny/MAVIS/
 
@@ -52,16 +54,13 @@ Atsushi Mizumoto would like to thank [Dr. Luke Plonsky](http://oak.ucc.nau.edu/l
 
 William Kyle Hamilton maintains this application and has authored new features.
 
-![alt text](http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg "Logo Title Text 1")
-[Atsushi Mizumoto, PhD - Kansai University](http://mizumot.com)
-
-Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found [here](https://github.com/mizumot/meta)
-
-#### Contributors and Translators
 ![alt text](http://oi59.tinypic.com/2mnrcci.jpg "Logo Title Text 1") [Burak Aydin, PhD - Recep Tayyip Erdoğan University](http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148)
 
 Burak Aydin is working on a Turkish version of MAVIS and contributed the dichotomous data entry feature.
 
-![alt text](http://kylehamilton.com/wp-content/uploads/2015/04/katie80.png "Logo Title Text 1") [Kathleen Coburn - University of California, Merced](http://psychology.ucmerced.edu/content/kathleen-coburn)
+![alt text](http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg "Logo Title Text 1")
+[Atsushi Mizumoto, PhD - Kansai University](http://mizumot.com)
+
+Atsushi Mizumoto wrote the first version of this application; this application is a fork of the original which can be found [here](https://github.com/mizumot/meta)
 
 Kathleen Coburn contributed technical advice on how to run a meta-analysis as well as information on publication bias.
