@@ -43,10 +43,21 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                p('Note: Input values must be separated by tabs. Copy and paste from Excel.'),
                p("Your data needs to have exactly the same header (variable names) in the first row."),
                p("For examples of how this data should look click on the Input Examples tab"),
-
-               aceEditor("text", value="Study\tModerator\tN1\tM1\tSD1\tN2\tM2\tSD2\nStudy 01\tJH\t30\t51.57\t16.5\t30\t72.97\t13.23\nStudy 02\tUNI\t23\t75.09\t23.01\t24\t81.63\t14.42\nStudy 03\tSH\t83\t30.08\t14.29\t81\t35.38\t16.13\nStudy 04\tSH\t21\t2.95\t1.28\t21\t3.48\t0.68\nStudy 05\tSH\t15\t53.8\t17.4\t15\t60.47\t17.37\nStudy 06\tSH\t7\t15.7\t4.1\t7\t27.3\t4.1\nStudy 07\tSH\t28\t27.9\t9.57\t28\t33.2\t15.65\nStudy 08\tUNI\t40\t17.53\t8.87\t40\t19.23\t9.55\nStudy 09\tUNI\t18\t11.86\t13.24\t17\t29.92\t16.67\nStudy 10\tUNI\t21\t29.76\t16\t25\t27.98\t16.52\nStudy 11\tUNI\t26\t8.23\t3.59\t26\t9.65\t2.99\nStudy 12\tUNI\t49\t13.71\t4.07\t48\t16\t3.47\nStudy 13\tUNI\t27\t2.8\t1.7\t27\t5.9\t1.4\nStudy 14\tSH\t41\t10.05\t2.52\t34\t11.03\t1.78\nStudy 15\tUNI\t58\t3.62\t1.79\t57\t4.26\t1.61\nStudy 16\tSH\t60\t7.36\t2.8\t63\t8.82\t2.5\nStudy 17\tUNI\t15\t5.93\t3.55\t15\t12.27\t4.95\nStudy 18\tJH\t37\t13.68\t3.68\t142\t17.53\t4.34\nStudy 19\tJH\t27\t3.3\t2.3\t54\t12.98\t7.67\nStudy 20\tJH\t35\t5.49\t3.88\t39\t12.36\t7.68\nStudy 21\tJH\t32\t5.81\t3.14\t34\t12.44\t5.66\nStudy 22\tJH\t62\t17.84\t4.09\t60\t18.18\t4.09\nStudy 23\tSH\t39\t8.77\t5\t39\t13.72\t5.32\nStudy 24\tSH\t213\t59.8\t15.3\t39\t79.8\t9.5\nStudy 25\tUNI\t34\t14.32\t2.79\t42\t16\t2.05\nStudy 26\tUNI\t77\t70.85\t11.74\t56\t78.17\t9.94\nStudy 27\tUNI\t28\t80.83\t22.47\t28\t85.06\t23.52\nStudy 28\tUNI\t33\t25.38\t4.71\t36\t25.02\t3.36\nStudy 29\tUNI\t66\t0.45\t0.29\t66\t0.93\t0.59",
-     mode="r", theme="mono_industrial"),
-
+               br(),
+     aceEditor("text", value="Study\tModerator\tN1\tM1\tSD1\tN2\tM2\tSD2
+Burhman et al (2013)\tINTERNET\t38\t55.84\t18.23\t38\t43.58\t16.58
+Fledderus et al (2012)\tBOOK\t125\t134.73\t16.17\t126\t115.7\t18.76
+Gluck & Maerker (2011)\tINTERNET\t28\t38.77\t5.38\t21\t40.67\t6.78
+Hesser et all (2012)\tINTERNET\t33\t44.27\t9.69\t32\t36.81\t10.95
+Hjeff/Hayes (2012)\tBOOK\t103\t135.81\t18.72\t109\t123.18\t19.39
+Johnson et al (2012)\tBOOK\t5\t77.4\t9.1\t8\t62.3\t24.8
+Lappalainen et al (2013)\tINTERNET\t12\t55.73\t6.25\t12\t53.67\t9.6
+Morledge et al (2013)\tINTERNET\t184\t3.86\t0.82\t184\t3.65\t0.89
+Muto et al (2011)\tBOOK\t30\t44.3\t6.67\t31\t43.48\t8.63
+Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="monokai"),
+     h6("Data for this example is from the following study.", align = "right"),
+     h6("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Clinical Psychology Review Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review, 34(2), 118–129.", align = "right"),
+     
                br(),
 
                h3("Effect size and sampling variance"),
@@ -155,7 +166,19 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                br(),
 
                p(strong("Mean Differences (n, M, SD)")),
-               aceEditor("text1", value="Study\tModerator\tN1\tM1\tSD1\tN2\tM2\tSD2\nStudy 01\tJH\t30\t51.57\t16.5\t30\t72.97\t13.23\nStudy 02\tUNI\t23\t75.09\t23.01\t24\t81.63\t14.42\nStudy 03\tSH\t83\t30.08\t14.29\t81\t35.38\t16.13\nStudy 04\tSH\t21\t2.95\t1.28\t21\t3.48\t0.68\nStudy 05\tSH\t15\t53.8\t17.4\t15\t60.47\t17.37\nStudy 06\tSH\t7\t15.7\t4.1\t7\t27.3\t4.1\nStudy 07\tSH\t28\t27.9\t9.57\t28\t33.2\t15.65\nStudy 08\tUNI\t40\t17.53\t8.87\t40\t19.23\t9.55\nStudy 09\tUNI\t18\t11.86\t13.24\t17\t29.92\t16.67\nStudy 10\tUNI\t21\t29.76\t16\t25\t27.98\t16.52\nStudy 11\tUNI\t26\t8.23\t3.59\t26\t9.65\t2.99\nStudy 12\tUNI\t49\t13.71\t4.07\t48\t16\t3.47\nStudy 13\tUNI\t27\t2.8\t1.7\t27\t5.9\t1.4\nStudy 14\tSH\t41\t10.05\t2.52\t34\t11.03\t1.78\nStudy 15\tUNI\t58\t3.62\t1.79\t57\t4.26\t1.61\nStudy 16\tSH\t60\t7.36\t2.8\t63\t8.82\t2.5\nStudy 17\tUNI\t15\t5.93\t3.55\t15\t12.27\t4.95\nStudy 18\tJH\t37\t13.68\t3.68\t142\t17.53\t4.34\nStudy 19\tJH\t27\t3.3\t2.3\t54\t12.98\t7.67\nStudy 20\tJH\t35\t5.49\t3.88\t39\t12.36\t7.68\nStudy 21\tJH\t32\t5.81\t3.14\t34\t12.44\t5.66\nStudy 22\tJH\t62\t17.84\t4.09\t60\t18.18\t4.09\nStudy 23\tSH\t39\t8.77\t5\t39\t13.72\t5.32\nStudy 24\tSH\t213\t59.8\t15.3\t39\t79.8\t9.5\nStudy 25\tUNI\t34\t14.32\t2.79\t42\t16\t2.05\nStudy 26\tUNI\t77\t70.85\t11.74\t56\t78.17\t9.94\nStudy 27\tUNI\t28\t80.83\t22.47\t28\t85.06\t23.52\nStudy 28\tUNI\t33\t25.38\t4.71\t36\t25.02\t3.36\nStudy 29\tUNI\t66\t0.45\t0.29\t66\t0.93\t0.59", mode="r", theme="monokai"),
+               p("Data for this example is from the following study."),
+               p("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Clinical Psychology Review Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review, 34(2), 118–129."),
+               aceEditor("text1", value="Study\tModerator\tN1\tM1\tSD1\tN2\tM2\tSD2
+Burhman et al (2013)\tINTERNET\t38\t55.84\t18.23\t38\t43.58\t16.58
+Fledderus et al (2012)\tBOOK\t125\t134.73\t16.17\t126\t115.7\t18.76
+Gluck & Maerker (2011)\tINTERNET\t28\t38.77\t5.38\t21\t40.67\t6.78
+Hesser et all (2012)\tINTERNET\t33\t44.27\t9.69\t32\t36.81\t10.95
+Hjeff/Hayes (2012)\tBOOK\t103\t135.81\t18.72\t109\t123.18\t19.39
+Johnson et al (2012)\tBOOK\t5\t77.4\t9.1\t8\t62.3\t24.8
+Lappalainen et al (2013)\tINTERNET\t12\t55.73\t6.25\t12\t53.67\t9.6
+Morledge et al (2013)\tINTERNET\t184\t3.86\t0.82\t184\t3.65\t0.89
+Muto et al (2011)\tBOOK\t30\t44.3\t6.67\t31\t43.48\t8.63
+Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="monokai"),
 
 
                br(),
