@@ -68,3 +68,5 @@ $RECYCLE.BIN/
 .Rhistory
 *.Rhistory
 .RData
+*.Rhistory
+.RData
