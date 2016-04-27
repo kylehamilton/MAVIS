@@ -1,12 +1,11 @@
 Package: MAVIS
 Type: Package
 Title: Meta Analysis via Shiny
-Version: 1.1.1
-Date: 2015-08-04
+Version: 1.1.2
+Date: 2016-04-26
 Authors@R: c(person("William Kyle", "Hamilton", role = c("aut", "cre"), email = "kyle.hamilton@gmail.com"),
              person("Atsushi", "Mizumoto", role = "aut"),
-             person("Burak", "Aydin", role = c("ctb", "trl")),
-             person("Kathleen", "Coburn", role = "ctb"))
+             person("Burak", "Aydin", role = c("ctb", "trl")))
 Maintainer: William Kyle Hamilton <kyle.hamilton@gmail.com>
 Description: Interactive shiny application for running a meta-analysis,
     provides support for both random effects and fixed effects models with the 'metafor' package.
@@ -25,7 +24,8 @@ Imports:
     compute.es,
     SCMA,
     SCRT,
-    shinyBS
+    shinyBS,
+    weightr
 LazyData: true
 Packaged: 2014-11-22 13:29:53 UTC; Kyle
 NeedsCompilation: no
