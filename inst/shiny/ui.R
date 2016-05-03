@@ -906,7 +906,7 @@ p(a("William Kyle Hamilton - University of California, Merced", href="http://www
 p("William Kyle Hamilton maintains this application and has authored new features."),
 br(),
 HTML('<div style="clear: left;"><img src="http://oi59.tinypic.com/2mnrcci.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
-p(a("Burak Aydin, PhD - Recep Tayyip Erdoğan University", href="http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148", target="_blank"),br(),
+p(a("Burak Aydin, PhD - RTE University", href="http://www.aydinburak.net/", target="_blank"),br(),
   p("Burak Aydin is working on a Turkish version of MAVIS and contributed the dichotomous data entry feature.")),
 br(),
 HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/atsushi80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
