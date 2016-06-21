@@ -1,8 +1,18 @@
+# CHANGES TO MAVIS 1.1.2 #
+
+## SIGNIFICANT USER-VISIBILE CHANGES ##
+
+* Examples now include data from published papers
+* More effect size calculators have been added
+
+## MINOR CHANGES ##
+* Added the framework to include the weightr package
+
 # CHANGES TO MAVIS 1.1.1 #
 
 ## SIGNIFICANT USER-VISIBILE CHANGES ##
 
-* Turkish version of MAVIS (aRma) is now added to the package and can be started using startaRma 
+* Turkish version of MAVIS (aRma) is now added to the package and can be started using startaRma
 
 # CHANGES TO MAVIS 1.1 #
 
@@ -21,4 +31,3 @@
 ## MINOR CHANGES ##
 * Information provide about GPLv3.
 *	References for methods added throughout interface.
-

@@ -4,12 +4,12 @@ citHeader("To cite package 'MAVIS' in publications use: ")
 
  citEntry(entry="Manual",
   	  title = "MAVIS: Meta Analysis via Shiny",
-		  author = "William Kyle Hamilton and Atsushi Mizumoto",
-		  year = 2015,
+		  author = "W. Kyle Hamilton, Burak Aydin, Atsushi Mizumoto",
+		  year = 2016,
 		  note = vers,
 		  textVersion =
-		  paste("William Kyle Hamilton and Atsushi Mizumoto (",
-				2015,
+		  paste("W. Kyle Hamilton, Burak Aydin, and Atsushi Mizumoto (",
+				2016,
 				"). MAVIS: Meta Analysis via Shiny. ",
 				vers, ".", sep=""),
       url = {"http://CRAN.R-project.org/package=MAVIS"})

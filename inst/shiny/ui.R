@@ -12,7 +12,7 @@ library("compute.es")
 library("SCMA")
 library("SCRT")
 library("weightr")
-shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.1.1",
+shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.1.2",
 #shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
 # shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
@@ -874,8 +874,8 @@ p("MAVIS was designed from the beginning to help users run a meta-analysis as ef
   MAVIS a positive user experience with an easy to use interface along with the power of R to provide 
   the best possible user experience."),
 br(),
-strong("MAVIS Version 1.1.1"),
-p("Last Updated July 20th 2015"),
+strong("MAVIS Version 1.1.2"),
+p("Last Updated June 21th 2016"),
 p("Number of monthly downloads from CRAN"),
 img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
 
@@ -887,7 +887,7 @@ br()
 
 strong('Acknowledgments'),
 
-p('William Kyle Hamilton would like to thank the ',
+p('W. Kyle Hamilton would like to thank the ',
   a("Health Communications and Interventions Lab at the University of California, Merced", href="http://cameronhcilab.com/", target="_blank"),
   'for their comments and beta testing efforts on this application ', 'as well as',
   a("Kathleen Coburn", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),
@@ -903,8 +903,8 @@ br(),
 strong('Authors'),
 
 HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/kyle80.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
-p(a("William Kyle Hamilton - University of California, Merced", href="http://www.kylehamilton.com", target="_blank")),
-p("William Kyle Hamilton maintains this application and has authored new features."),
+p(a("W. Kyle Hamilton - University of California, Merced", href="http://www.kylehamilton.com", target="_blank")),
+p("W. Kyle Hamilton maintains this application and has authored new features."),
 br(),
 HTML('<div style="clear: left;"><img src="http://oi59.tinypic.com/2mnrcci.jpg" alt="" style="float: left; margin-right:5px" /></div>'),
 p(a("Burak Aydin, PhD - RTE University", href="http://www.aydinburak.net/", target="_blank"),br(),
@@ -954,7 +954,7 @@ br()
 strong('License'),
 
 p("MAVIS: Meta Analysis via Shiny"),
-p(" Copyright 2015  William Kyle Hamilton and Atsushi Mizumoto"),
+p(" Copyright 2016  W. Kyle Hamilton, Burak Aydin, and Atsushi Mizumoto"),
 
 p(" This program is free software you can redistribute it and or modify
   it under the terms of the GNU General Public License as published by
