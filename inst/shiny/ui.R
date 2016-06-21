@@ -1,16 +1,17 @@
-library(shiny)
-library(shinyAce)
-library(shinyBS)
-library(meta)
-library(metafor)
-#library(metamisc)
-library(MAd)
-library(MAc)
-library(quantreg)
-library(ggplot2)
-library(compute.es)
-library(SCMA)
-library(SCRT)
+library("shiny")
+library("shinyAce")
+library("shinyBS")
+library("meta")
+library("metafor")
+#library("metamisc")
+library("MAd")
+library("MAc")
+library("quantreg")
+library("ggplot2")
+library("compute.es")
+library("SCMA")
+library("SCRT")
+library("weightr")
 shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.1.1",
 #shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
@@ -56,7 +57,7 @@ Morledge et al (2013)\tINTERNET\t184\t3.86\t0.82\t184\t3.65\t0.89
 Muto et al (2011)\tBOOK\t30\t44.3\t6.67\t31\t43.48\t8.63
 Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="monokai"),
      h6("Data for this example is from the following study.", align = "right"),
-     h6("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Clinical Psychology Review Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review, 34(2), 118–129.", align = "right"),
+     h6("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review", align = "right"),
      
                br(),
 
@@ -167,7 +168,7 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
 
                p(strong("Mean Differences (n, M, SD)")),
                p("Data for this example is from the following study."),
-               p("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Clinical Psychology Review Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review, 34(2), 118–129."),
+               p("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Can mindfulness and acceptance be learnt by self-help?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review."),
                aceEditor("text1", value="Study\tModerator\tN1\tM1\tSD1\tN2\tM2\tSD2
 Burhman et al (2013)\tINTERNET\t38\t55.84\t18.23\t38\t43.58\t16.58
 Fledderus et al (2012)\tBOOK\t125\t134.73\t16.17\t126\t115.7\t18.76
@@ -189,7 +190,7 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
                br(),
                p(strong("Correlations (n, r)")),
                p("Data for this example is from the following study."),
-               p("Widman, L., Noar, S. M., Choukas-Bradley, S., & Francis, D. B. (2014). Adolescent Sexual Health Communication and Condom Use : A Meta-Analysis, 33(10), 1113–1124."),
+               p("Widman, L., Noar, S. M., Choukas-Bradley, S., & Francis, D. B. (2014). Adolescent Sexual Health Communication and Condom Use : A Meta-Analysis. Health Psychology."),
                aceEditor("text3", value="Study\tN\tr\tModerator
 Abraham-1992\t351\t0.01\tmix
 Baele-2001\t163\t0.4\tmix

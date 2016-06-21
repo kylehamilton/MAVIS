@@ -1,14 +1,17 @@
-library(shiny)
-library(shinyAce)
-library(meta)
-library(metafor)
-library(MAd)
-library(MAc)
-library(quantreg)
-library(ggplot2)
-library(compute.es)
-library(SCMA)
-library(SCRT)
+library("shiny")
+library("shinyAce")
+library("shinyBS")
+library("meta")
+library("metafor")
+#library("metamisc")
+library("MAd")
+library("MAc")
+library("quantreg")
+library("ggplot2")
+library("compute.es")
+library("SCMA")
+library("SCRT")
+library("weightr")
 
 shinyServer(function(input, output, session) {
 
@@ -698,9 +701,9 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor, ret.fit=input$regtestfullmodel)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
-    wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
 
-    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) I have no idea what I am doing' = wfmod,
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) ' = wfmod,
                 'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
@@ -714,9 +717,9 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
-    wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
     
-    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) I have no idea what I am doing' = wfmod,
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) ' = wfmod,
                 'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
@@ -731,9 +734,9 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
-    wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
     
-    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) I have no idea what I am doing' = wfmod,
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) ' = wfmod,
                 'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
@@ -747,9 +750,9 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
-    wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
     
-    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) I have no idea what I am doing' = wfmod,
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995)' = wfmod,
                 'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
