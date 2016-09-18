@@ -11,6 +11,7 @@ library(ggplot2)
 library(compute.es)
 library(SCMA)
 library(SCRT)
+library(irr)
 shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.1.1",
 #shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
@@ -22,8 +23,7 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
                               list("Mean Differences (n, M, SD)" = "mdms",
                                    "Mean Differences (n, Effect size d)" = "mdes",
                                    "Correlations (n, r)" = "cor",
-                                   "Dichotomous Models"="or"
-                                   ),
+                                   "Dichotomous Models"="or"),
                  ),
                  bsTooltip("type", "Make sure to review the options on the toolbar before running your analysis",
                            "right", trigger = "click", options = list(container = "body")),
@@ -175,6 +175,48 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
 
       ),
 
+	  
+#########################NZ start
+	        tabPanel("Inter-rater reliability", icon = icon("bullseye", lib = "font-awesome"),
+
+               p('Note: Input values must be separated by tabs. Copy and paste from Excel.'),
+
+               p("Your data needs to have exactly the same header (variable names) in the first row."),
+               
+               br(),
+                                                                                                                                                                                                                                                                                                                 
+               p(strong("IRR (categorical with two raters)")),
+               aceEditor("text5", value="Study\tModerator\tRater 1\tRater 2\nStudy 01\tACT\t1\t1\nStudy 02\tACT\t3\t1\nStudy 03\tACT\t1\t1\nStudy 04\tACT\t1\t1\nStudy 05\tACT\t1\t1\nStudy 06\tACT\t2\t2\nStudy 07\tACT\t2\t2\nStudy 08\tACT\t1\t1\nStudy 09\tACT\t4\t4\nStudy 10\tACT\t1\t1\nStudy 11\tACT\t1\t1\nStudy 12\tACT\t1\t9\nStudy 13\tACT\t1\t1\nStudy 14\tACT\t1\t1\nStudy 15\tACT\t1\t1\nStudy 16\tACT\t1\t1", mode="r", theme="monokai"),
+               
+               verbatimTextOutput("cat2.out"),
+               
+               br(),
+               br(),
+               p(strong("IRR (categorical with three or more raters)")),
+               aceEditor("text6", value="Study\tModerator\tRater 1\tRater 2\tRater 3\nStudy 01\tACT\t1\t1\t1\nStudy 02\tACT\t3\t1\t3\nStudy 03\tACT\t1\t1\t1\nStudy 04\tACT\t1\t1\t3\nStudy 05\tACT\t1\t1\t1\nStudy 06\tACT\t2\t2\t2\nStudy 07\tACT\t2\t2\t2\nStudy 08\tACT\t1\t1\t1\nStudy 09\tACT\t4\t4\t4\nStudy 10\tACT\t1\t1\t1\nStudy 11\tACT\t1\t1\t1\nStudy 12\tACT\t1\t9\t4\nStudy 13\tACT\t1\t1\t1\nStudy 14\tACT\t1\t1\t1\nStudy 15\tACT\t1\t1\t1\nStudy 16\tACT\t1\t1\t1", mode="r", theme="monokai"),
+                
+               verbatimTextOutput("cat3.out"),
+               
+                                                                                                                                                      
+               br(),
+               p(strong("IRR (continuous with two raters)")),
+               aceEditor("text7", value="Study\tModerator\tRater 1\tRater 2\nStudy 01\tPF\t0\t.667\nStudy 02\tPF\t.667\t.667\nStudy 03\tPF\t0\t0\nStudy 04\tPF\t0\t0\nStudy 05\tPF\t.6\t.6\nStudy 06\tPF\t.333\t.333\nStudy 07\tPF\t1\t1\nStudy 08\tPF\t0\t0\nStudy 09\tPF\t0\t0\nStudy 10\tPF\t.444\t.269\nStudy 11\tPF\t.667\t.667\nStudy 12\tPF\t.667\t.667\nStudy 13\tPF\t.6\t.6\nStudy 14\tPF\t.667\t.667\nStudy 15\tPF\t0\t0\nStudy 16\tPF\t.566\t.566", mode="r", theme="monokai"),
+
+               verbatimTextOutput("cont2.out"),
+               
+               
+               br(),
+               p(strong("IRR (continuous with three or more raters)")),
+               aceEditor("text8", value="Study\tModerator\tRater 1\tRater 2\tRater 3\nStudy 01\tPF\t0\t.667\t1\nStudy 02\tPF\t.667\t.667\t.667\nStudy 03\tPF\t0\t0\t0\nStudy 04\tPF\t0\t0\t0\nStudy 05\tPF\t.6\t.6\t.6\nStudy 06\tPF\t.333\t.333\t0\nStudy 07\tPF\t1\t1\t1\nStudy 08\tPF\t0\t0\t0\nStudy 09\tPF\t0\t0\t0\nStudy 10\tPF\t.444\t.269\t.269\nStudy 11\tPF\t.667\t.667\t.667\nStudy 12\tPF\t.667\t.667\t.667\nStudy 13\tPF\t.6\t.6\t.6\nStudy 14\tPF\t.667\t.667\t.667\nStudy 15\tPF\t0\t0\t0\nStudy 16\tPF\t.566\t.566\t.566", mode="r", theme="monokai"),
+               
+               verbatimTextOutput("cont3.out"),
+               
+               br()
+
+      ),
+	  
+#########################NZ stop
+	  
 navbarMenu("Model Options and Settings", icon = icon("cog", lib = "font-awesome"),
 #                       tabPanel("Bayesian Model Options", icon = icon("tasks", lib = "font-awesome"),
 #                                
