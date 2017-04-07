@@ -316,8 +316,6 @@ data <- reactive({
 
 
 
-
-
   ################################################
   # FE & RE model result
   ################################################
@@ -547,6 +545,88 @@ output$rePlot <- renderPlot(
   print(makerePlot())
 })
 
+
+
+
+####################################### NZ start
+
+cat2  <- reactive({
+
+     rawirrdat <- read.csv(text=input$text5, sep="\t")
+     irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+     #percent agreement
+     agree(irrdat) -> agg2
+     
+     #kappa for two raters
+     kappa2(irrdat) -> kap2
+
+     list(agg2 = agg2, kap2 = kap2) # To be used later
+ })
+
+
+output$cat2.out <- renderPrint({
+  cat2()
+})
+
+cat3  <- reactive({
+  
+  rawirrdat <- read.csv(text=input$text6, sep="\t")
+  irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+  
+  #percent agreement
+  agree(irrdat) -> agg3
+
+  #Kappa described by Fleiss (1971)
+  kappam.fleiss(irrdat) -> kap3Fleiss
+
+  #"Light's Kappa equals the average of all possible combinations of bivariate Kappas between raters."
+  kappam.light(irrdat) -> kap3Light
+  
+  list(agg3 = agg3, kap3Fleiss = kap3Fleiss, kap3Light = kap3Light) # To be used later
+})
+
+output$cat3.out <- renderPrint({
+  cat3()
+})
+
+
+cont2  <- reactive({
+  
+  rawirrdat <- read.csv(text=input$text7, sep="\t")
+  irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+  
+  #correlation
+  meancor(irrdat) -> cor2
+
+  #intraclass correlation of raters
+  icc(irrdat) -> icc2
+
+  list(cor2 = cor2, icc2 = icc2) # To be used later
+})
+
+output$cont2.out <- renderPrint({
+  cont2()
+})
+
+cont3  <- reactive({
+  
+  rawirrdat <- read.csv(text=input$text8, sep="\t")
+  irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+  
+  #correlation
+  meancor(irrdat) -> cor3
+  
+  #intraclass correlation of raters
+  icc(irrdat) -> icc3
+  
+  list(cor3 = cor3, icc3 = icc3) # To be used later
+})
+
+output$cont3.out <- renderPrint({
+  cont3()
+})
+
+######################################### NZ stop
 
 
 
@@ -883,8 +963,6 @@ modAnalysis <- reactive({
     
   }
 })
-
-
 
 
 
@@ -1356,6 +1434,8 @@ info <- reactive({
 #   cite9 <- paste("quantreg", citation("quantreg"))
 #   cite10 <- paste("shiny", citation("shiny"))
 #   cite11 <- paste("shinyAce", citation("shinyAce"))
+#   cite12 <- paste("irr", citation("irr"))
+
 #   
 #   cat(sprintf(cite1), "\n")
 #   cat(sprintf(cite2), "\n")
@@ -1368,6 +1448,7 @@ info <- reactive({
 #   cat(sprintf(cite9), "\n")
 #   cat(sprintf(cite10), "\n")
 #   cat(sprintf(cite11), "\n")
+#   cat(sprintf(cite12), "\n")
 # })
 
 ################################################
