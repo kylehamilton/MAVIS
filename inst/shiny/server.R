@@ -1,14 +1,17 @@
-library(shiny)
-library(shinyAce)
-library(meta)
-library(metafor)
-library(MAd)
-library(MAc)
-library(quantreg)
-library(ggplot2)
-library(compute.es)
-library(SCMA)
-library(SCRT)
+library("shiny")
+library("shinyAce")
+library("shinyBS")
+library("meta")
+library("metafor")
+#library("metamisc")
+library("MAd")
+library("MAc")
+library("quantreg")
+library("ggplot2")
+library("compute.es")
+library("SCMA")
+library("SCRT")
+library("weightr")
 
 shinyServer(function(input, output, session) {
 
@@ -778,8 +781,10 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor, ret.fit=input$regtestfullmodel)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
 
-    return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) ' = wfmod,
+                'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
   }
@@ -792,8 +797,10 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
-
-    return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) ' = wfmod,
+                'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
 
@@ -807,8 +814,10 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
-
-    return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995) ' = wfmod,
+                'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
   }
@@ -821,8 +830,10 @@ asy <- reactive({
     regt <- regtest(RE.res, model=input$regtestmodeltype, predictor=input$regtestpredictor)
     rankt <- ranktest(RE.res)
     value <- fsn(y = RE.res$yi, v = RE.res$vi, type=input$filedraweranalysis)
+    #wfmod <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
     
-    return(list('No publication bias if p > .05 (Nonsignificant)' = regt,
+    return(list(#'This is the Vevea and Hedge Weight Funcation Model (1995)' = wfmod,
+                'No publication bias if p > .05 (Nonsignificant)' = regt,
                 'A high correlation would indicate that the funnel plot is asymmetric, which may be a result of publication bias.' = rankt,
                 'File drawer analysis' = value))
   }
@@ -1278,6 +1289,42 @@ divari1 <- reactive({
 
 output$divari1.out <- renderPrint({
   divari1()
+})
+
+################################################
+# Proportions to Effect Size
+################################################
+
+propes1 <- reactive({
+  propes(p1 = input$propp1, p2 = input$propp2, n.ab = input$propnab, n.cd = input$propcd, level = input$proplevel)
+})
+
+output$prop.out <- renderPrint({
+  propes1()
+})
+
+################################################
+# Failure groups to Effect Size
+################################################
+
+# failes1 <- reactive({
+#   failes(input$failB, input$failD, input$failSS, input$failCSS)
+# })
+# 
+# output$fail.out <- renderPrint({
+#   failes1()
+# })
+
+################################################
+# Correlation coefficient (r) to Effect Size
+################################################
+
+corrcoeff1 <- reactive({
+  res(r = input$corrcoeff, n = input$corrcoeffn, level = input$corrcoefflevel)
+})
+
+output$corrcoeff.out <- renderPrint({
+  corrcoeff1()
 })
 
 ################################################
