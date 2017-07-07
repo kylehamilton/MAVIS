@@ -12,6 +12,7 @@ library("compute.es")
 library("SCMA")
 library("SCRT")
 library("weightr")
+library("irr")
 
 shinyServer(function(input, output, session) {
 
@@ -838,6 +839,63 @@ asy <- reactive({
                 'File drawer analysis' = value))
   }
 })
+
+################################################
+# Weight-Function Model for Publication Bias
+# This uses the weightr package
+# https://CRAN.R-project.org/package=weightr
+################################################
+
+wfm <- reactive({
+  
+  dat <- read.csv(text=input$text, sep="\t")
+  
+  
+  if (input$type == "mdms") {
+    
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    
+    return(wfmodel)
+  }
+  
+  
+  else if (input$type == "mdes") {
+    
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    
+    return(wfmodel)
+    
+  }
+  
+  
+  else if (input$type == "cor") {
+    
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    
+    return(wfmodel)
+  }
+  
+  
+  else if (input$type == "or") {
+    
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    
+    return(wfmodel)
+  }
+})
+
+output$wfm.out <- renderPrint({
+  wfm()
+})
+
 
 ################################################
 # Moderator analysis

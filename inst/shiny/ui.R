@@ -1,19 +1,20 @@
+library("shiny")
+library("shinyAce")
+library("shinyBS")
+library("meta")
+library("metafor")
+#library("metamisc")
+library("MAd")
+library("MAc")
+library("quantreg")
+library("ggplot2")
+library("compute.es")
+library("SCMA")
+library("SCRT")
+library("weightr")
+library("irr")
 
-library(shiny)
-library(shinyAce)
-library(shinyBS)
-library(meta)
-library(metafor)
-#library(metamisc)
-library(MAd)
-library(MAc)
-library(quantreg)
-library(ggplot2)
-library(compute.es)
-library(SCMA)
-library(SCRT)
-library(irr)
-shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.1.2",
+shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads/2015/04/mavis1a-e1430059956805.png")), windowTitle="MAVIS v1.1.3",
 #shinyUI(navbarPage("MAVIS: Meta Analysis Via Shiny v1.0.4", windowTitle="MAVIS v1.0.4",
 # If I want to add a theme here is how to do it
 # shinyUI(navbarPage(theme = shinytheme("flatly"),"MAVIS: Meta Analysis Via Shiny v1.0.3",
@@ -126,7 +127,11 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
                p('Fail-safe N is the number of nonsignificant studies necessary to make the result nonsignificant. "When the fail-safe N is high, that is interpreted to mean that even a large number of nonsignificant studies may not influence the statistical significance of meta-analytic results too greatly."',
                  a('(Oswald & Plonsky, 2010, p. 92)', href='http://dx.doi.org/10.1017/S0267190510000115', target="_blank"), '.'),
                br(),
-
+               h3("Weight-Function Model for Publication Bias"),
+               verbatimTextOutput("wfm.out"), # weightr output
+               p('Put some words here to describe the wieght function model"',
+               a('(Vevea & Hedges, 1995)', href='http://dx.doi.org/10.1007/BF02294384', target="_blank"), '.'),
+               br(),
                br(),
 
                # Display this only if "moderator" is checked
@@ -918,8 +923,8 @@ p("MAVIS was designed from the beginning to help users run a meta-analysis as ef
   MAVIS a positive user experience with an easy to use interface along with the power of R to provide 
   the best possible user experience."),
 br(),
-strong("MAVIS Version 1.1.2"),
-p("Last Updated June 21th 2016"),
+strong("MAVIS Version 1.1.3"),
+p("Last Updated July 7th 2017"),
 p("Number of monthly downloads from CRAN"),
 img(src = "http://cranlogs.r-pkg.org/badges/MAVIS", seamless=NA),
 

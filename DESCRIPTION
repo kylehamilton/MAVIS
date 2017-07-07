@@ -1,8 +1,8 @@
 Package: MAVIS
 Type: Package
 Title: Meta Analysis via Shiny
-Version: 1.1.2
-Date: 2016-06-21
+Version: 1.1.3
+Date: 2017-07-07
 Authors@R: c(person("W. Kyle", "Hamilton", role = c("aut", "cre"), email = "kyle.hamilton@gmail.com"),
              person("Burak", "Aydin", role = "aut"),
              person("Atsushi", "Mizumoto", role = "aut"),
@@ -25,6 +25,7 @@ Imports:
     compute.es,
     SCMA,
     SCRT,
+    irr,
     shinyBS,
     weightr
 LazyData: true
