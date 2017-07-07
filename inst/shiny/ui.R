@@ -125,7 +125,7 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
                h3("Publication Bias"),
                verbatimTextOutput("asy.out"), # regression tests for funnel plot asymmetry
                p('Fail-safe N is the number of nonsignificant studies necessary to make the result nonsignificant. "When the fail-safe N is high, that is interpreted to mean that even a large number of nonsignificant studies may not influence the statistical significance of meta-analytic results too greatly."',
-                 a('(Oswald & Plonsky, 2010, p. 92)', href='http://dx.doi.org/10.1017/S0267190510000115', target="_blank"), '.'),
+                 a('(Oswald & Plonsky, 2010)', href='http://dx.doi.org/10.1017/S0267190510000115', target="_blank"), '.'),
                br(),
                h3("Weight-Function Model for Publication Bias"),
                verbatimTextOutput("wfm.out"), # weightr output
