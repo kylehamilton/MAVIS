@@ -853,19 +853,21 @@ wfm <- reactive({
   
   if (input$type == "mdms") {
     
+    steps <- c(as.numeric(input$steps),1.00)
+    
     RE.res <- RE.est()$RE.res
     
-    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
     
     return(wfmodel)
   }
   
   
   else if (input$type == "mdes") {
-    
+    steps <- c(as.numeric(input$steps),1.00)
     RE.res <- RE.est()$RE.res
     
-    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
     
     return(wfmodel)
     
@@ -873,20 +875,20 @@ wfm <- reactive({
   
   
   else if (input$type == "cor") {
-    
+    steps <- c(as.numeric(input$steps),1.00)
     RE.res <- RE.est()$RE.res
     
-    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
     
     return(wfmodel)
   }
   
   
   else if (input$type == "or") {
-    
+    steps <- c(as.numeric(input$steps),1.00)
     RE.res <- RE.est()$RE.res
     
-    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi)
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
     
     return(wfmodel)
   }
@@ -1480,6 +1482,8 @@ info <- reactive({
   })
 })
 
+
+
 ################################################
 # R citation info
 ################################################
@@ -1654,3 +1658,6 @@ output$downloadFunRandPlot <- downloadHandler(
 # That's my Indy and my Ari, they're my cats
 # Whenever I'm trying to work on this at night
 # They fight for lap space and purrr -Kyle
+
+
+

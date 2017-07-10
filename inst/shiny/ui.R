@@ -33,6 +33,7 @@ shinyUI(navbarPage(title=div(img(src="http://kylehamilton.com/wp-content/uploads
        "right", trigger = "click", options = list(container = "body")),
                  helpText("See Dichotomous Model Options, default is set to log odds ratio"),
                  checkboxInput("moderator", label = ("The data contains a categorical moderator (subgroup) variable."), value = T),
+                 #checkboxInput("interactiveplot", label = ("View interactive funnel plots"), value = T),
                  br(),
                  submitButton("Update View"),
                  helpText("Click here to update your results, you need to do this after you change the data, model, or any of the settings"),
@@ -63,7 +64,7 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
      h6("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review", align = "right"),
      
                br(),
-
+               #withMathJax(),
                h3("Effect size and sampling variance"),
 
                verbatimTextOutput("data.out"),
@@ -80,7 +81,7 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
 
                p('[Criteria for checking heterogeneity]',
                  br(),
-                 br(),
+                 
                  'I^2 (How much effect sizes across studies differ)', br(),
                  "25-50: Little different", br(),
                  '50-75: Quite different', br(),
@@ -121,16 +122,46 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
                plotOutput("FunRandPlot"),
                p('Open circles (if any) on the right side show missing NULL studies estimated with the trim-and-fill method, added in the funnel plot.'),
                br(),
+              
                br(),
+     
                h3("Publication Bias"),
                verbatimTextOutput("asy.out"), # regression tests for funnel plot asymmetry
                p('Fail-safe N is the number of nonsignificant studies necessary to make the result nonsignificant. "When the fail-safe N is high, that is interpreted to mean that even a large number of nonsignificant studies may not influence the statistical significance of meta-analytic results too greatly."',
                  a('(Oswald & Plonsky, 2010)', href='http://dx.doi.org/10.1017/S0267190510000115', target="_blank"), '.'),
                br(),
                h3("Weight-Function Model for Publication Bias"),
+               p('The p-value cut points can be changed in the Weight-Function Model settings'),
                verbatimTextOutput("wfm.out"), # weightr output
-               p('Put some words here to describe the wieght function model"',
+               p('If the p-value for the likelihood ratio test is significant then there may be evidence of publication bias',
                a('(Vevea & Hedges, 1995)', href='http://dx.doi.org/10.1007/BF02294384', target="_blank"), '.'),
+     # selectizeInput(inputId = "steps", label="Select at least one p-value cutpoint to include in your model. To include a cutpoint not provided, type it in and press enter.", 
+     #                choices=c(0.001,
+     #                          0.005,
+     #                          0.010,
+     #                          0.020,
+     #                          0.025,
+     #                          0.050,
+     #                          0.100,
+     #                          0.200,
+     #                          0.250,
+     #                          0.300,
+     #                          0.350,
+     #                          0.500,
+     #                          0.600,
+     #                          0.650,
+     #                          0.700,
+     #                          0.750,
+     #                          0.800,
+     #                          0.900,
+     #                          0.950,
+     #                          0.975,
+     #                          0.980,
+     #                          0.990,
+     #                          0.995,
+     #                          0.999),
+     #                multiple=TRUE,
+     #                selected=c(0.025), options=list(create=TRUE,openOnFocus=TRUE)),p(),
                br(),
                br(),
 
@@ -415,7 +446,48 @@ verticalLayout(
 )
 
 ),
-      
+      tabPanel("Weight-Function Model", icon = icon("chevron-right", lib = "font-awesome"),
+               p(strong("Weight-Function Model Options")),
+               p("Select at least one p-value cutpoint to include in your model. To include a cutpoint not provided, type it in and press enter."),
+               p("For a more advanced options with this model see the authors shiny app at https://vevealab.shinyapps.io/WeightFunctionModel/"),
+                selectizeInput(inputId = "steps", label="", 
+                              choices=c(0.001,
+                                        0.005,
+                                        0.010,
+                                        0.020,
+                                        0.025,
+                                        0.050,
+                                        0.100,
+                                        0.200,
+                                        0.250,
+                                        0.300,
+                                        0.350,
+                                        0.500,
+                                        0.600,
+                                        0.650,
+                                        0.700,
+                                        0.750,
+                                        0.800,
+                                        0.900,
+                                        0.950,
+                                        0.975,
+                                        0.980,
+                                        0.990,
+                                        0.995,
+                                        0.999),
+                              multiple=TRUE,
+                              selected=c(0.025), options=list(create=TRUE,openOnFocus=TRUE)
+                              ),
+               h4("References"),
+               p("Coburn, K. M. & Vevea, J. L. (2015). Publication bias as a function of study characteristics. Psychological Methods, 20(3), 310."),
+               p("Vevea, J. L. & Hedges, L. V. (1995). A general linear model for estimating effect size in the presence of publication bias. Psychometrika, 60(3), 419-435."),
+               p("Vevea, J. L. & Woods, C. M. (2005). Publication bias in research synthesis: Sensitivity analysis using a priori weight functions. Psychological Methods, 10(4), 428-443."),
+               p("Coburn, K. M. & Vevea, J. L. (2017). weightr: Estimating Weight-Function Models for Publication Bias. R package version 1.1.2.
+  https://CRAN.R-project.org/package=weightr"),
+               br()
+               
+               ),
+               
       tabPanel("File Drawer Analysis", icon = icon("chevron-right", lib = "font-awesome"),
                
                radioButtons("filedraweranalysis", strong("File Drawer Analysis"),
@@ -970,6 +1042,11 @@ strong('Contributors'),
 HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2015/04/katie80.png" alt="" style="float: left; margin-right:5px" /></div>'),
 p(a("Kathleen Coburn - University of California, Merced", href="http://psychology.ucmerced.edu/content/kathleen-coburn", target="_blank"),br(),
   p("Kathleen Coburn contributed technical advice on how to run a meta-analysis as well as information on publication bias.")
+),
+br(),
+HTML('<div style="clear: left;"><img src="http://kylehamilton.com/wp-content/uploads/2014/11/nicole80.png" alt="" style="float: left; margin-right:5px" /></div>'),
+p(a("Nicole Zelinsky - University of California, Merced", href="http://psychology.ucmerced.edu/content/nicole-zelinsky", target="_blank"),br(),
+  p("Nicole Zelinsky contributed the inter rater reliability module.")
 ),
 br()
            ),

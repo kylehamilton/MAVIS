@@ -2,10 +2,11 @@ Package: MAVIS
 Type: Package
 Title: Meta Analysis via Shiny
 Version: 1.1.3
-Date: 2017-07-07
+Date: 2017-07-09
 Authors@R: c(person("W. Kyle", "Hamilton", role = c("aut", "cre"), email = "kyle.hamilton@gmail.com"),
              person("Burak", "Aydin", role = "aut"),
              person("Atsushi", "Mizumoto", role = "aut"),
+             person("Kathleen", "Coburn", role = "ctb"),
              person("Nicole", "Zelinsky", role = "ctb"))
 Maintainer: W. Kyle Hamilton <kyle.hamilton@gmail.com>
 Description: Interactive shiny application for running a meta-analysis,
