@@ -1,10 +1,10 @@
-MAVIS: Meta Analysis via Shiny v1.1.2 "Smiling Fox"
+MAVIS: Meta Analysis via Shiny v1.1.3 "Smiling Fox"
 =====
 [![CRAN Version](http://www.r-pkg.org/badges/version/MAVIS)](http://cran.rstudio.com/web/packages/MAVIS)
 [![Monthly Downloads](http://cranlogs.r-pkg.org/badges/MAVIS)](http://cranlogs.r-pkg.org/badges/MAVIS)
 [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/MAVIS)](http://cranlogs.r-pkg.org/badges/grand-total/MAVIS)
 
-### Live demo of MAVIS v1.1.2 can be found here http://kylehamilton.net/shiny/MAVIS/
+### Live demo of MAVIS v1.1.3 can be found here http://kylehamilton.net/shiny/MAVIS/
 
 
 June 21, 2016
@@ -16,7 +16,7 @@ August 4, 2015
 * Added one new effect size calculator and included the Turkish version of MAVIS (aRma) to the package.
 
 April 29, 2015
-* Version 1.1 has been sent to CRAN and can be found here http://cran.r-project.org/web/packages/MAVIS/index.html.
+* Version 1.1 has been sent to CRAN and can be found here https://cran.rstudio.com/web/packages/MAVIS/.
 
 
 List of Packages Used 
@@ -57,7 +57,7 @@ Atsushi Mizumoto would like to thank [Dr. Luke Plonsky](http://oak.ucc.nau.edu/l
 
 W. Kyle Hamilton maintains this application and has authored new features.
 
-![alt text](http://oi59.tinypic.com/2mnrcci.jpg "Logo Title Text 1") [Burak Aydin, PhD - Recep Tayyip Erdoğan University](http://akademisyen.erdogan.edu.tr/akademisyen.php?uyeid=827a0e170c32e5ce6e7b31ebda784148)
+![alt text](http://oi59.tinypic.com/2mnrcci.jpg "Logo Title Text 1") [Burak Aydin, PhD - Recep Tayyip Erdoğan University](https://www.aydinburak.net/)
 
 Burak Aydin is working on a Turkish version of MAVIS and contributed the dichotomous data entry feature.
 

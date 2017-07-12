@@ -30,7 +30,5 @@ Imports:
     shinyBS,
     weightr
 LazyData: true
-Packaged: 2014-11-22 13:29:53 UTC; Kyle
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2014-11-22 19:06:45
