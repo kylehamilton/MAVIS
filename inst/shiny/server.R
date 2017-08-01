@@ -360,7 +360,7 @@ data <- reactive({
 
       dat <- read.csv(text=input$text, sep="\t")
 
-      FE.res <- metacor(dat$r, dat$N)
+      FE.res <- meta::metacor(dat$r, dat$N)
       withProgress(message = 'Calculating', detail = 'Fixed effects model', value = 0, {
         for (i in 1:10) {
           incProgress(1/10)
