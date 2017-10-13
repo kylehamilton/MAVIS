@@ -13,6 +13,7 @@ library("SCMA")
 library("SCRT")
 library("weightr")
 library("irr")
+#library("metaSEM")
 
 shinyServer(function(input, output, session) {
   
@@ -629,6 +630,28 @@ output$cont3.out <- renderPrint({
 
 ######################################### NZ stop
 
+####################################### 3DM start
+
+cat3DM  <- reactive({
+  
+  raw3DMdat <- read.csv(text=input$text3DM, sep="\t")
+  res <- rma.mv(yi, vi, random = ~ 1 | D3ID/D2ID, data=raw3DMdat)
+  result3D=summary(res)
+  W <- diag(1/raw3DMdat$vi)
+  X <- model.matrix(res)
+  P <- W - W %*% X %*% solve(t(X) %*% W %*% X) %*% t(X) %*% W
+  Isq=100 * sum(res$sigma2) / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
+  sepIsq=100 * res$sigma2 / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
+  list(result3D = result3D,Isq=Isq,sepIsq=sepIsq ) # To be used later
+})
+
+
+output$cat3DM.out <- renderPrint({
+  cat3DM()
+})
+
+
+######################################### 3DM stop
 
 
 
@@ -1442,6 +1465,7 @@ info <- reactive({
   info6 <- paste("MAd", packageVersion("MAd"))
   info7 <- paste("meta", packageVersion("meta"))
   info8 <- paste("metafor", packageVersion("metafor"))
+#  info8a <- paste("metaSEM", packageVersion("metaSEM"))
   info9 <- paste("quantreg", packageVersion("quantreg"))
   info9a <- paste("SCMA", packageVersion("SCMA"))
   info9b <- paste("SCRT", packageVersion("SCRT"))
@@ -1465,6 +1489,7 @@ info <- reactive({
   cat(sprintf(info6), "\n")
   cat(sprintf(info7), "\n")
   cat(sprintf(info8), "\n")
+#  cat(sprintf(info8a), "\n")
   cat(sprintf(info9), "\n")
   cat(sprintf(info9a), "\n")
   cat(sprintf(info9b), "\n")

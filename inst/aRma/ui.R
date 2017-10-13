@@ -13,6 +13,7 @@ library("SCMA")
 library("SCRT")
 library("weightr")
 library("irr")
+#library("metaSEM")
 
 shinyUI(navbarPage("aRma:Altyapısı R'a dayalı Meta Analiz  ", windowTitle="aRma v1.1.3",
    
@@ -29,8 +30,8 @@ shinyUI(navbarPage("aRma:Altyapısı R'a dayalı Meta Analiz  ", windowTitle="aR
                                                 "İkili veriler"="or"
                                            ),
                               ),
-                              bsTooltip("type", "Analizlerini koşmadan önce araç çubuğunda yer alan seçenekleri kontrol ediniz.",
-                                        "right", trigger = "click", options = list(container = "body")),
+                              bsTooltip("type", "Analizlere başlamadan önce araç çubuğunda yer alan seçenekleri kontrol ediniz.",
+                                        "bottom", trigger = "click", options = list(container = "body")),
                               helpText("İkili veriler seçeneğini kontrol ediniz, varsayılan seçenek logaritmik olasılık oranıdır (log odds ratio)"),
                               checkboxInput("moderator", label = ("Altgrup verisi mevcut ise işaretleyiniz."), value = T),
                               br(),
@@ -60,8 +61,8 @@ Lappalainen ve ark. (2013)\tInternet\t12\t55.73\t6.25\t12\t53.67\t9.6
 Morledge ve ark. (2013)\tInternet\t184\t3.86\t0.82\t184\t3.65\t0.89
 Muto ve ark. (2011)\tKitap\t30\t44.3\t6.67\t31\t43.48\t8.63
 Thorsell ve ark. (2011)\tKitap\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="monokai"),
-h6("Bu örneğin veri seti için bakınız:", align = "right"),
-h6("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review", align = "right"),
+h6("Bu örneğin veri seti için bakınız:", align = "left"),
+h6("Cavanagh, K., Strauss, C., Forder, L., & Jones, F. (2014). Can mindfulness and acceptance be learnt by self-help ?: A systematic review and meta-analysis of mindfulness and acceptance-based self-help interventions. Clinical Psychology Review", align = "left"),
                             
 br(),
                             
@@ -196,7 +197,7 @@ verbatimTextOutput("modAnalysis.out")
                    
                    
                    
-                   tabPanel("Örnek Veriler", icon = icon("table", lib = "font-awesome"),
+                   tabPanel("Örnek Veri", icon = icon("table", lib = "font-awesome"),
                             
                             p('Not: Sutunlar birbirinden tab ile ayrılmalıdır . Daha kolay kullanım için lütfen verileri excel dosyası olarak hazırlayın kopyalayın ve yapıştırın'),
                             
@@ -283,7 +284,9 @@ aceEditor("text4", value="Veri\tModerator\tupoz\tuneg\tNU\tkpoz\tkneg\tNK\nStudy
                    
 
 #########################NZ start
-tabPanel("Puanlayıcılar-arası güvenirlik", icon = icon("bullseye", lib = "font-awesome"),
+tabPanel("PAG", icon = icon("group", lib = "font-awesome"),
+         
+         p('PAG: Puanlayıcılar arası güvenirlik'),
          
          p('Not: Sütünlar birbirinden tab ile ayrılmalıdır.Daha kolay kullanım için lütfen verileri excel dosyası olarak hazırlayın kopyalayın ve yapıştırın.'),
          
@@ -323,7 +326,7 @@ tabPanel("Puanlayıcılar-arası güvenirlik", icon = icon("bullseye", lib = "fo
 
 #########################NZ stop
 
-navbarMenu("Model seçenekleri ve ayarları ", icon = icon("cog", lib = "font-awesome"),
+navbarMenu("Model Ayarları", icon = icon("cog", lib = "font-awesome"),
                               #                       tabPanel("Bayesian Model Options", icon = icon("tasks", lib = "font-awesome"),
                               #                                
                               #                      strong('Bayesian Analysis Options'),
@@ -516,7 +519,7 @@ tabPanel("Eksik çalışma (File Drawer) Analizleri ", icon = icon("chevron-righ
                                        
                                        
                                        )),
-                   navbarMenu("Etki Büyüklüğü Hesaplaması", icon = icon("calculator", lib = "font-awesome"),
+navbarMenu("Etki Büyüklüğü Hesapla", icon = icon("calculator", lib = "font-awesome"),
                               tabPanel("Ortalama, standard sapma(SS) ve örneklem sayısı", icon = icon("chevron-right", lib = "font-awesome"),
                                        
                                        verticalLayout(
@@ -983,6 +986,30 @@ tabPanel("Yüzdelerden etki büyüklüğü", icon = icon("chevron-right", lib = 
                                      
                               )
                               ),
+#########################3LVL
+tabPanel("3DM", icon = icon("th", lib = "font-awesome"),
+         
+         p('3DM: 3 düzeyli model'),
+         
+         p('Not: Sütünlar birbirinden tab ile ayrılmalıdır.Daha kolay kullanım için lütfen verileri excel dosyası olarak hazırlayın kopyalayın ve yapıştırın.'),
+         
+         p("Excel veri dosyasının ilk satırı (başlıkları) örnek verilerin başlıkları ile birebir aynı olmalıdır"),
+         
+         p("Bu örneğin veri seti ve atıf için bakınız:"),
+         a("Wolfgang Viechtbauer", href="http://www.metafor-project.org/doku.php/tips:i2_multilevel_multivariate", target="_blank"),
+         
+         br(),
+         br(),
+         
+         p(strong("D3ID üçüncü düzeyi belirtir,D2ID ikinci düzeyi belirtir ")),
+         aceEditor("text3DM",value="D2ID\tD3ID\tyi\tvi\n1\t11\t-0.18\t0.118\n2\t11\t-0.22\t0.118\n3\t11\t0.23\t0.144\n4\t11\t-0.3\t0.144\n1\t12\t0.13\t0.014\n2\t12\t-0.26\t0.014\n3\t12\t0.19\t0.015\n4\t12\t0.32\t0.024\n1\t18\t0.45\t0.023\n2\t18\t0.38\t0.043\n3\t18\t0.29\t0.012\n1\t27\t0.16\t0.02\n2\t27\t0.65\t0.004\n3\t27\t0.36\t0.004\n4\t27\t0.6\t0.007\n1\t56\t0.08\t0.019\n2\t56\t0.04\t0.007\n3\t56\t0.19\t0.005\n4\t56\t-0.06\t0.004\n1\t58\t-0.18\t0.02\n2\t58\t0\t0.018\n3\t58\t0\t0.019\n4\t58\t-0.28\t0.022\n5\t58\t-0.04\t0.02\n6\t58\t-0.3\t0.021\n7\t58\t0.07\t0.006\n8\t58\t0\t0.007\n9\t58\t0.05\t0.007\n10\t58\t-0.08\t0.007\n11\t58\t-0.09\t0.007\n1\t71\t0.3\t0.015\n2\t71\t0.98\t0.011\n3\t71\t1.19\t0.01\n1\t86\t-0.07\t0.001\n2\t86\t-0.05\t0.001\n3\t86\t-0.01\t0.001\n4\t86\t0.02\t0.001\n5\t86\t-0.03\t0.001\n6\t86\t0\t0.001\n7\t86\t0.01\t0.001\n8\t86\t-0.1\t0.001\n1\t91\t0.5\t0.01\n2\t91\t0.66\t0.011\n3\t91\t0.2\t0.01\n4\t91\t0\t0.009\n5\t91\t0.05\t0.013\n6\t91\t0.07\t0.013\n1\t108\t-0.52\t0.031\n2\t108\t0.7\t0.031\n3\t108\t-0.03\t0.03\n4\t108\t0.27\t0.03\n5\t108\t-0.34\t0.03\n1\t644\t0.12\t0.087\n2\t644\t0.61\t0.082\n3\t644\t0.04\t0.067\n4\t644\t-0.05\t0.067",mode="r",theme="monokai"),
+         verbatimTextOutput("cat3DM.out"),
+         
+         br()
+),
+
+#########################3DM stop
+
                    navbarMenu("Hakkında", icon = icon("tag", lib = "font-awesome"),
                               tabPanel("Hakkında", icon = icon("bookmark", lib = "font-awesome"),
                                        
