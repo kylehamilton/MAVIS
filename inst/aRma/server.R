@@ -1,14 +1,19 @@
-library(shiny)
-library(shinyAce)
-library(meta)
-library(metafor)
-library(MAd)
-library(MAc)
-library(quantreg)
-library(ggplot2)
-library(compute.es)
-library(SCMA)
-library(SCRT)
+library("shiny")
+library("shinyAce")
+library("shinyBS")
+library("meta")
+library("metafor")
+#library("metamisc")
+library("MAd")
+library("MAc")
+library("quantreg")
+library("ggplot2")
+library("compute.es")
+library("SCMA")
+library("SCRT")
+library("weightr")
+library("irr")
+#library("metaSEM")
 
 shinyServer(function(input, output, session) {
   
@@ -313,8 +318,6 @@ shinyServer(function(input, output, session) {
   
   
   
-  
-  
   ################################################
   # FE & RE model result
   ################################################
@@ -392,7 +395,7 @@ shinyServer(function(input, output, session) {
       RE.res <- RE.est()$RE.res
       
       cat("Rassal etkiler modeli, mevcut K sayida çalışmanın","\n")
-      cat(" geniş bir çalışma evreninden örneklemdiğini varsayar (Kovalchik, 2013).","\n")
+      cat(" Geniş bir çalışma evreninden örneklemdiğini varsayar (Kovalchik, 2013).","\n")
       cat("---","\n")
       withProgress(message = 'Hesaplıyor', detail = 'Rassal etkiler modeli', value = 0, {
         for (i in 1:10) {
@@ -545,6 +548,110 @@ output$rePlot <- renderPlot(
 })
 
 
+
+
+####################################### NZ start
+
+cat2  <- reactive({
+  
+  rawirrdat <- read.csv(text=input$text5, sep="\t")
+  irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+  #uyum yüzdesi
+  agree(irrdat) -> agg2
+  
+  #2 puanlayıcı için kappa
+  kappa2(irrdat) -> kap2
+  
+  list(agg2 = agg2, kap2 = kap2) # To be used later
+})
+
+
+output$cat2.out <- renderPrint({
+  cat2()
+})
+
+cat3  <- reactive({
+  
+  rawirrdat <- read.csv(text=input$text6, sep="\t")
+  irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+  
+  #uyum yüzdesi
+  agree(irrdat) -> agg3
+  
+  #Kappa described by Fleiss (1971)
+  kappam.fleiss(irrdat) -> kap3Fleiss
+  
+  #"Light's Kappa equals the average of all possible combinations of bivariate Kappas between raters."
+  kappam.light(irrdat) -> kap3Light
+  
+  list(agg3 = agg3, kap3Fleiss = kap3Fleiss, kap3Light = kap3Light) # To be used later
+})
+
+output$cat3.out <- renderPrint({
+  cat3()
+})
+
+
+cont2  <- reactive({
+  
+  rawirrdat <- read.csv(text=input$text7, sep="\t")
+  irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+  
+  #correlation
+  meancor(irrdat) -> cor2
+  
+  #intraclass correlation of raters
+  icc(irrdat) -> icc2
+  
+  list(cor2 = cor2, icc2 = icc2) # To be used later
+})
+
+output$cont2.out <- renderPrint({
+  cont2()
+})
+
+cont3  <- reactive({
+  
+  rawirrdat <- read.csv(text=input$text8, sep="\t")
+  irrdat <- rawirrdat[,3:dim(rawirrdat)[2]]
+  
+  #correlation
+  meancor(irrdat) -> cor3
+  
+  #intraclass correlation of raters
+  icc(irrdat) -> icc3
+  
+  list(cor3 = cor3, icc3 = icc3) # To be used later
+})
+
+output$cont3.out <- renderPrint({
+  cont3()
+})
+
+######################################### NZ stop
+
+####################################### 3DM start
+
+cat3DM  <- reactive({
+  
+  raw3DMdat <- read.csv(text=input$text3DM, sep="\t")
+  res <- rma.mv(yi, vi, random = ~ 1 | D3ID/D2ID, data=raw3DMdat)
+  result3D=summary(res)
+  W <- diag(1/raw3DMdat$vi)
+  X <- model.matrix(res)
+  P <- W - W %*% X %*% solve(t(X) %*% W %*% X) %*% t(X) %*% W
+  Ikare=100 * sum(res$sigma2) / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
+  payIkare=100 * res$sigma2 / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
+  list(result3D = result3D,Ikare=Ikare,payIkare=payIkare ) # To be used later
+})
+
+
+output$cat3DM.out <- renderPrint({
+  cat3DM()
+})
+
+
+######################################### 3DM stop
 
 
 
@@ -702,7 +809,9 @@ asy <- reactive({
     return(list(' p > .05 ise yayın yanlılığı yok (Nonsignificant)' = regt,
                 'Yüksek bir korelasyon huni grafiğinin simetrik olmadığına işaret eder, bunun sebebi yayın yanlılığı olabilir.' = rankt,
                 'File drawer analizleri' = value))
-  }
+  
+    
+    }
   
   
   else if (input$type == "mdes") {
@@ -717,7 +826,9 @@ asy <- reactive({
                 'Yüksek bir korelasyon huni grafiğinin simetrik olmadığına işaret eder, bunun sebebi yayın yanlılığı olabilir.' = rankt,
                 'File drawer analizleri' = value))
     
-  }
+  
+    
+    }
   
   
   else if (input$type == "cor") {
@@ -731,7 +842,9 @@ asy <- reactive({
     return(list('p > .05 ise yayın yanlılığı yok (Nonsignificant)' = regt,
                 'Yüksek bir korelasyon huni grafiğinin simetrik olmadığına işaret eder, bunun sebebi yayın yanlılığı olabilir.' = rankt,
                 'File drawer analizleri' = value))
-  }
+  
+    
+    }
   
   
   else if (input$type == "or") {
@@ -746,7 +859,68 @@ asy <- reactive({
                 'Yüksek bir korelasyon huni grafiğinin simetrik olmadığına işaret eder, bunun sebebi yayın yanlılığı olabilir.' = rankt,
                 'File drawer analizleri' = value))
   }
+
+  
+  })
+
+################################################
+# Weight-Function Model for Publication Bias
+# This uses the weightr package
+# https://CRAN.R-project.org/package=weightr
+################################################
+
+wfm <- reactive({
+  
+  dat <- read.csv(text=input$text, sep="\t")
+  
+  
+  if (input$type == "mdms") {
+    
+    steps <- c(as.numeric(input$steps),1.00)
+    
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
+    
+    return(wfmodel)
+  }
+  
+  
+  else if (input$type == "mdes") {
+    steps <- c(as.numeric(input$steps),1.00)
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
+    
+    return(wfmodel)
+    
+  }
+  
+  
+  else if (input$type == "cor") {
+    steps <- c(as.numeric(input$steps),1.00)
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
+    
+    return(wfmodel)
+  }
+  
+  
+  else if (input$type == "or") {
+    steps <- c(as.numeric(input$steps),1.00)
+    RE.res <- RE.est()$RE.res
+    
+    wfmodel <- weightfunct(effect = RE.res$yi, v = RE.res$vi, steps=steps)
+    
+    return(wfmodel)
+  }
 })
+
+output$wfm.out <- renderPrint({
+  wfm()
+})
+
 
 ################################################
 # Moderator analysis
@@ -872,8 +1046,6 @@ modAnalysis <- reactive({
     
   }
 })
-
-
 
 
 
@@ -1175,14 +1347,67 @@ output$chisquared.out <- renderPrint({
 ################################################
 
 twobytwogroups <- reactive({
-  escalc(measure=input$twoxtwovalue, ai=input$bune, bi=input$buneb, ci=input$bunec, di=input$buned,
+  escalc(measure=input$twoxtwovalue, ai=input$ai, bi=input$bi, ci=input$ci, di=input$di,
          add=1/2, to="only0", drop00=FALSE, vtype="LS",
-         add.measure=FALSE,
+         var.names=c("Etki büyüklüğü tahmini","Örneklem 
+                     varyansı"), add.measure=FALSE,
          append=TRUE, replace=TRUE, digits=4)
 })
 
 output$twobytwogroups.out <- renderPrint({
   twobytwogroups()
+})
+
+################################################
+# Outcome Measures for Individual Groups
+################################################
+
+divari1 <- reactive({
+  escalc(measure=input$divari1, weights=input$ni, xi=input$xi, ni=input$ni,
+         add=1/2, to="only0", drop00=FALSE, vtype="UB",
+         var.names=c("Etki büyüklüğü tahmini","Örneklem 
+                     varyansı"), add.measure=FALSE,
+         append=TRUE, replace=TRUE, digits=4)
+})
+
+output$divari1.out <- renderPrint({
+  divari1()
+})
+
+################################################
+# Proportions to Effect Size
+################################################
+
+propes1 <- reactive({
+  propes(p1 = input$propp1, p2 = input$propp2, n.ab = input$propnab, n.cd = input$propcd, level = input$proplevel)
+})
+
+output$prop.out <- renderPrint({
+  propes1()
+})
+
+################################################
+# Failure groups to Effect Size
+################################################
+
+# failes1 <- reactive({
+#   failes(input$failB, input$failD, input$failSS, input$failCSS)
+# })
+# 
+# output$fail.out <- renderPrint({
+#   failes1()
+# })
+
+################################################
+# Correlation coefficient (r) to Effect Size
+################################################
+
+corrcoeff1 <- reactive({
+  res(r = input$corrcoeff, n = input$corrcoeffn, level = input$corrcoefflevel)
+})
+
+output$corrcoeff.out <- renderPrint({
+  corrcoeff1()
 })
 
 ################################################
@@ -1240,11 +1465,14 @@ info <- reactive({
   info6 <- paste("MAd", packageVersion("MAd"))
   info7 <- paste("meta", packageVersion("meta"))
   info8 <- paste("metafor", packageVersion("metafor"))
+#  info8a <- paste("metaSEM", packageVersion("metaSEM"))
   info9 <- paste("quantreg", packageVersion("quantreg"))
   info9a <- paste("SCMA", packageVersion("SCMA"))
   info9b <- paste("SCRT", packageVersion("SCRT"))
   info9c <- paste(" ")
   info9d <- paste("Grafik paketleri:")
+  info9z <- paste("irr", packageVersion("irr"))
+  info9x <- paste("weightr", packageVersion("weightr"))
   info10 <- paste("shiny", packageVersion("shiny"))
   info11 <- paste("shinyAce", packageVersion("shinyAce"))
   info12 <- paste("shinyBS", packageVersion("shinyBS"))
@@ -1261,11 +1489,14 @@ info <- reactive({
   cat(sprintf(info6), "\n")
   cat(sprintf(info7), "\n")
   cat(sprintf(info8), "\n")
+#  cat(sprintf(info8a), "\n")
   cat(sprintf(info9), "\n")
   cat(sprintf(info9a), "\n")
   cat(sprintf(info9b), "\n")
   cat(sprintf(info9c), "\n")
   cat(sprintf(info9d), "\n")
+  cat(sprintf(info9z), "\n")
+  cat(sprintf(info9x), "\n")
   cat(sprintf(info10), "\n")
   cat(sprintf(info11), "\n")
   cat(sprintf(info12), "\n")
@@ -1275,6 +1506,8 @@ info <- reactive({
     }
   })
 })
+
+
 
 ################################################
 # R citation info
@@ -1292,6 +1525,8 @@ info <- reactive({
 #   cite9 <- paste("quantreg", citation("quantreg"))
 #   cite10 <- paste("shiny", citation("shiny"))
 #   cite11 <- paste("shinyAce", citation("shinyAce"))
+#   cite12 <- paste("irr", citation("irr"))
+
 #   
 #   cat(sprintf(cite1), "\n")
 #   cat(sprintf(cite2), "\n")
@@ -1304,6 +1539,7 @@ info <- reactive({
 #   cat(sprintf(cite9), "\n")
 #   cat(sprintf(cite10), "\n")
 #   cat(sprintf(cite11), "\n")
+#   cat(sprintf(cite12), "\n")
 # })
 
 ################################################
@@ -1422,30 +1658,3 @@ output$downloadFunRandPlot <- downloadHandler(
   }
 )
 })
-
-#            *     ,MMM8&&&.            *
-#                  MMMM88&&&&&    .
-#                 MMMM88&&&&&&&
-#     *           MMM88&&&&&&&&
-#                 MMM88&&&&&&&&
-#                 'MMM88&&&&&&'
-#                   'MMM8&&&'      *    
-#          |\___/|     /\___/\
-#          )     (     )    ~( .              '
-#         =\     /=   =\~    /=
-#           )===(       ) ~ (
-#          /     \     /     \
-#          |     |     ) ~   (
-#         /       \   /     ~ \
-#         \       /   \~     ~/
-#  jgs_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_
-#  |  |  |  |( (  |  |  | ))  |  |  |  |  |  |
-#  |  |  |  | ) ) |  |  |//|  |  |  |  |  |  |
-#  |  |  |  |(_(  |  |  (( |  |  |  |  |  |  |
-#  |  |  |  |  |  |  |  |\)|  |  |  |  |  |  |
-#  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-# That's Kyle's Indy and Ari, they're his cats
-# Whenever He's trying to work on this at night
-# They fight for lap space and purrr 
-
-# Ill have a dog soon! Burak :)
