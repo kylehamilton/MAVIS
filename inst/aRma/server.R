@@ -640,9 +640,9 @@ cat3DM  <- reactive({
   W <- diag(1/raw3DMdat$vi)
   X <- model.matrix(res)
   P <- W - W %*% X %*% solve(t(X) %*% W %*% X) %*% t(X) %*% W
-  Isq=100 * sum(res$sigma2) / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
-  sepIsq=100 * res$sigma2 / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
-  list(result3D = result3D,Isq=Isq,sepIsq=sepIsq ) # To be used later
+  Ikare=100 * sum(res$sigma2) / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
+  payIkare=100 * res$sigma2 / (sum(res$sigma2) + (res$k-res$p)/sum(diag(P)))
+  list(result3D = result3D,Ikare=Ikare,payIkare=payIkare ) # To be used later
 })
 
 
