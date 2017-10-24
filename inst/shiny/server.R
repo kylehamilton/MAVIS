@@ -279,7 +279,7 @@ data <- reactive({
       print(dat)
     }
 
-    else if (input$type == "cor") {
+    else if (input$type == "cor" && input$cormeasures == "ZCOR") {
 
       dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
       dat$FZ <- round(dat$yi,3)
@@ -294,6 +294,39 @@ data <- reactive({
       print(dat)
 
     }
+  
+  else if (input$type == "cor" && input$cormeasures == "COR") {
+    
+    dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
+    dat$FZ <- round(dat$yi,3)
+    dat$yi <- NULL
+    dat$SV <- round(dat$vi, 3) # SV=sampling variances
+    dat$vi <- NULL
+    
+    cat("\n","FZ = Raw Correlations", "\n",
+        "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n")
+    cat("---","\n")
+    
+    print(dat)
+    
+  }
+  
+  else if (input$type == "cor" && input$cormeasures == "UCOR") {
+    
+    dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
+    dat$FZ <- round(dat$yi,3)
+    dat$yi <- NULL
+    dat$SV <- round(dat$vi, 3) # SV=sampling variances
+    dat$vi <- NULL
+    
+    cat("\n","FZ = U Correlations", "\n",
+        "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n")
+    cat("---","\n")
+    
+    print(dat)
+    
+  }
+  
     
     else if (input$type == "or") {
       
@@ -360,7 +393,7 @@ data <- reactive({
 
       dat <- read.csv(text=input$text, sep="\t")
 
-      FE.res <- meta::metacor(dat$r, dat$N)
+      FE.res <- meta::metacor(dat$r, dat$N, sm=input$cormeasures, method.tau = input$model)
       withProgress(message = 'Calculating', detail = 'Fixed effects model', value = 0, {
         for (i in 1:10) {
           incProgress(1/10)

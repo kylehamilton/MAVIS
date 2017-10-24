@@ -253,10 +253,10 @@ Gallupe-2009\t1143\t0.298\tgirls
 Grossman-2008\t446\t0.498\tmix
 Gutiérrez-2000\t148\t0.14\tboys
 Gutiérrez-2000\t185\t0.29\tgirls
-Guzmán-2003\t34\t0.334\tmix
+Guzmán-2003\t34\t-0.334\tmix
 Harrison-2012\t91\t0.491\tboys
 Harrison-2012\t64\t0.377\tgirls
-Hart-2005\t100\t0.07\tboys
+Hart-2005\t100\t-0.07\tboys
 Magura-1994\t421\t0.4\tboys
 Maxwell-1995\t100\t0\tmix
 Overby-1994\t60\t0.414\tgirls
