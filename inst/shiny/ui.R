@@ -1,7 +1,7 @@
 library("shiny")
 library("shinyAce")
 library("shinyBS")
-library("meta")
+#library("meta")
 library("metafor")
 #library("metamisc")
 library("MAd")

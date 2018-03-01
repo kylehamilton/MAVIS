@@ -1,7 +1,7 @@
 library("shiny")
 library("shinyAce")
 library("shinyBS")
-library("meta")
+#library("meta")
 library("metafor")
 #library("metamisc")
 library("MAd")
@@ -360,7 +360,8 @@ data <- reactive({
 
       dat <- read.csv(text=input$text, sep="\t")
 
-      FE.res <- meta::metacor(dat$r, dat$N)
+      #FE.res <- meta::metacor(dat$r, dat$N)
+      FE.res <- FE.est()$FE.res
       withProgress(message = 'Calculating', detail = 'Fixed effects model', value = 0, {
         for (i in 1:10) {
           incProgress(1/10)
@@ -425,13 +426,25 @@ re <- reactive({
 
     else if (input$type == "cor") {
 
-      cat("Both FE and RE model results are reported above.","\n","\n")
-
-      cat("---","\n")
-
-      cat("The FE model is a description of the K studies.","\n")
+      RE.res <- RE.est()$RE.res
+      
       cat("The RE model regards the K studies as a sample of","\n")
       cat(" a larger universe of studies (Kovalchik, 2013).","\n")
+      cat("---","\n")
+      withProgress(message = 'Calculating', detail = 'Random effects model', value = 0, {
+        for (i in 1:10) {
+          incProgress(1/10)
+          Sys.sleep(0.05)
+        }
+      })
+      RE.res
+      # cat("Both FE and RE model results are reported above.","\n","\n")
+      # 
+      # cat("---","\n")
+      # 
+      # cat("The FE model is a description of the K studies.","\n")
+      # cat("The RE model regards the K studies as a sample of","\n")
+      # cat(" a larger universe of studies (Kovalchik, 2013).","\n")
 
     }
     
@@ -1440,7 +1453,7 @@ info <- reactive({
   info4 <- paste("ggplot2", packageVersion("ggplot2"))
   info5 <- paste("MAc", packageVersion("MAc"))
   info6 <- paste("MAd", packageVersion("MAd"))
-  info7 <- paste("meta", packageVersion("meta"))
+  #info7 <- paste("meta", packageVersion("meta"))
   info8 <- paste("metafor", packageVersion("metafor"))
   info9 <- paste("quantreg", packageVersion("quantreg"))
   info9a <- paste("SCMA", packageVersion("SCMA"))
@@ -1463,7 +1476,7 @@ info <- reactive({
   cat(sprintf(info4), "\n")
   cat(sprintf(info5), "\n")
   cat(sprintf(info6), "\n")
-  cat(sprintf(info7), "\n")
+  #cat(sprintf(info7), "\n")
   cat(sprintf(info8), "\n")
   cat(sprintf(info9), "\n")
   cat(sprintf(info9a), "\n")
