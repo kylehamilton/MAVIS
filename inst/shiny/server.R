@@ -61,7 +61,7 @@ W.data <- reactive({
   else if (input$type == "cor") {
     
     dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
-    dat$FZ <- dat$yi
+    dat$ES <- dat$yi
     dat$yi <- NULL
     dat$SV <- dat$vi # SV=sampling variances
     dat$vi <- NULL
@@ -133,12 +133,12 @@ W.data <- reactive({
       dat <- read.csv(text=input$text, sep="\t")
 
       dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
-      dat$FZ <- dat$yi
+      dat$ES <- dat$yi
       dat$yi <- NULL
       dat$SV <- dat$vi # SV=sampling variances
       dat$vi <- NULL
 
-      FE.res <- rma(FZ, SV, data=dat, method = "FE", slab=paste(Study))
+      FE.res <- rma(ES, SV, data=dat, method = "FE", slab=paste(Study))
 
       list(FE.res = FE.res) # To be used later
     }
@@ -205,12 +205,12 @@ RE.est  <- reactive({
     dat <- read.csv(text=input$text, sep="\t")
     
     dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
-    dat$FZ <- dat$yi
+    dat$ES <- dat$yi
     dat$yi <- NULL
     dat$SV <- dat$vi # SV=sampling variances
     dat$vi <- NULL
     
-    RE.res <- rma(FZ, SV, data=dat, method =input$model, slab=paste(Study))
+    RE.res <- rma(ES, SV, data=dat, method =input$model, slab=paste(Study))
     
     list(RE.res = RE.res) # To be used later
     
@@ -279,15 +279,15 @@ data <- reactive({
       print(dat)
     }
 
-    else if (input$type == "cor") {
+  else if (input$type == "cor" && input$cormeasures == "ZCOR") {
 
       dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
-      dat$FZ <- round(dat$yi,3)
+      dat$ES <- round(dat$yi,3)
       dat$yi <- NULL
       dat$SV <- round(dat$vi, 3) # SV=sampling variances
       dat$vi <- NULL
 
-      cat("\n","FZ = Fisher's Z", "\n",
+      cat("\n","ES = Fisher's Z", "\n",
           "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n")
       cat("---","\n")
 
@@ -295,6 +295,37 @@ data <- reactive({
 
     }
     
+  else if (input$type == "cor" && input$cormeasures == "COR") {
+    
+    dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
+    dat$ES <- round(dat$yi,3)
+    dat$yi <- NULL
+    dat$SV <- round(dat$vi, 3) # SV=sampling variances
+    dat$vi <- NULL
+    
+    cat("\n","ES = Raw Correlations", "\n",
+        "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n")
+    cat("---","\n")
+    
+    print(dat)
+    
+  }
+  
+  else if (input$type == "cor" && input$cormeasures == "UCOR") {
+    
+    dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
+    dat$ES <- round(dat$yi,3)
+    dat$yi <- NULL
+    dat$SV <- round(dat$vi, 3) # SV=sampling variances
+    dat$vi <- NULL
+    
+    cat("\n","ES = U Correlations", "\n",
+        "SV = Sampling variance [sqrt(SV) = Std err]", "\n", "\n")
+    cat("---","\n")
+    
+    print(dat)
+    
+  }
     else if (input$type == "or") {
       
       
@@ -975,7 +1006,7 @@ modAnalysis <- reactive({
     dat <- read.csv(text=input$text, sep="\t")
 
     dat <- escalc(measure=input$cormeasures, ni=N, ri=r, data=dat, append=TRUE)
-    dat$FZ <- dat$yi
+    dat$ES <- dat$yi
     dat$yi <- NULL
     dat$SV <- dat$vi
     dat$vi <- NULL
@@ -984,12 +1015,12 @@ modAnalysis <- reactive({
     dat$var.z <- var_z(dat$N)
 
     # Fixed effects
-    fixed <- MAc::macat(FZ, var.z, mod = Moderator, data=dat, ztor = TRUE, method= "fixed")
-    z.fixed <- MAc::macat(FZ, var.z, mod = Moderator, data=dat, ztor = FALSE, method= "fixed") # Accurate z and p
+    fixed <- MAc::macat(ES, var.z, mod = Moderator, data=dat, ztor = TRUE, method= "fixed")
+    z.fixed <- MAc::macat(ES, var.z, mod = Moderator, data=dat, ztor = FALSE, method= "fixed") # Accurate z and p
 
     # Random effects
-    random <- MAc::macat(FZ, var.z, mod = Moderator, data=dat, ztor = TRUE, method= "random")
-    z.random <- MAc::macat(FZ, var.z, mod = Moderator, data=dat, ztor = FALSE, method= "random") # Accurate z and p
+    random <- MAc::macat(ES, var.z, mod = Moderator, data=dat, ztor = TRUE, method= "random")
+    z.random <- MAc::macat(ES, var.z, mod = Moderator, data=dat, ztor = FALSE, method= "random") # Accurate z and p
 
 
     cat("---", "\n", "Fixed effects model:", "\n")
@@ -1067,7 +1098,7 @@ ModFixGraph <- function(){
 
     dat <- W.data()$dat
 
-    MAd::plotcat(FZ, SV, mod = Moderator, data = dat, method= "fixed", modname= "Moderator")
+    MAd::plotcat(ES, SV, mod = Moderator, data = dat, method= "fixed", modname= "Moderator")
 
   }
   
@@ -1122,7 +1153,7 @@ ModRandGraph <- function(){
 
     dat <- W.data()$dat
 
-    MAd::plotcat(FZ, SV, mod = Moderator, data = dat, method= "random", modname= "Moderator")
+    MAd::plotcat(ES, SV, mod = Moderator, data = dat, method= "random", modname= "Moderator")
 
   }
   
@@ -1131,7 +1162,7 @@ ModRandGraph <- function(){
     
     dat <- W.data()$dat
     
-    MAd::plotcat(FZ, SV, mod = Moderator, data = dat, method= "random", modname= "Moderator")
+    MAd::plotcat(ES, SV, mod = Moderator, data = dat, method= "random", modname= "Moderator")
     
   }
 
