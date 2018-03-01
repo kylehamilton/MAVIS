@@ -228,49 +228,24 @@ Thorsell et al (2011)\tBOOK\t52\t62.3\t20.91\t38\t50\t19.11", mode="r", theme="m
                br(),
                p(strong("Correlations (n, r)")),
                p("Data for this example is from the following study."),
-               p("Widman, L., Noar, S. M., Choukas-Bradley, S., & Francis, D. B. (2014). Adolescent Sexual Health Communication and Condom Use : A Meta-Analysis. Health Psychology."),
+               p("Molloy, G. J., O'Carroll, R. E., & Ferguson, E. (2014). Conscientiousness and medication adherence: A meta-analysis. Annals of Behavioral Medicine"),
                aceEditor("text3", value="Study\tN\tr\tModerator
-Abraham-1992\t351\t0.01\tmix
-Baele-2001\t163\t0.4\tmix
-Barthlow-1995\t328\t0.162\tmix
-Basen-Engquist-1999\t1718\t0.225\tmix
-Brown-2008\t1218\t0.334\tmix
-Bryan-2002\t170\t0.71\tboys
-Bryan-2002\t123\t0.78\tgirls
-Crosby-2002\t522\t0.102\tgirls
-Crosby-2003\t144\t0.218\tgirls
-Crosby-2008\t566\t0.175\tgirls
-Deardorff-2010\t377\t0.15\tboys
-Deardorff-2010\t462\t0.14\tgirls
-DePadilla-2011\t701\t0.535\tmix
-DiClemente-1991\t79\t0.418\tmix
-DiClemente-1996\t116\t0.311\tmix
-DiIorio-2001\t116\t0.177\tmix
-Donald-1994\t395\t0.054\tboys
-Donald-1994\t505\t0.098\tgirls
-Gallupe-2009\t863\t0.112\tboys
-Gallupe-2009\t1143\t0.298\tgirls
-Grossman-2008\t446\t0.498\tmix
-Gutiérrez-2000\t148\t0.14\tboys
-Gutiérrez-2000\t185\t0.29\tgirls
-Guzmán-2003\t34\t0.334\tmix
-Harrison-2012\t91\t0.491\tboys
-Harrison-2012\t64\t0.377\tgirls
-Hart-2005\t100\t0.07\tboys
-Magura-1994\t421\t0.4\tboys
-Maxwell-1995\t100\t0\tmix
-Overby-1994\t60\t0.414\tgirls
-Rickman-1994\t1439\t0.226\tmix
-Roye-1998\t452\t0\tgirls
-Shoop-1994\t45\t0.514\tmix
-Shrier-1999\t22\t0.492\tgirls
-Small-2010\t189\t0.329\tgirls
-Troth-2000\t26\t0.28\tboys
-Troth-2000\t50\t0.23\tgirls
-Tschann-2010\t393\t0.068\tmix
-van Empelen-2006\t108\t0.07\tmix
-Whitaker-1999\t372\t0.077\tmix
-Wilson-1994\t241\t0.012\tboys", mode="r", theme="monokai"),
+Axelsson-2009\t109\t0.187\tself-report
+Axelsson-2011\t749\t0.162\tself-report
+Bruce-2010\t55\t0.34\tother
+Christensen-1999\t107\t0.32\tself-report
+Christensen-1995\t72\t0.27\tother
+Cohen-2004\t65\t0\tother
+Dobbels-2005\t174\t0.175\tself-report
+Ediger-2007\t326\t0.05\tself-report
+Insel-2006\t58\t0.26\tother
+Jerant-2011\t771\t0.01\tother
+Moran-1997\t56\t-0.09\tother
+Ocleirigh-2007\t91\t0.37\tself-report
+Penedo-2003\t116\t0\tself-report
+Quine-2012\t537\t0.15\tself-report
+Stilley-2004\t158\t0.24\tother
+Wiebe-1997\t65\t0.04\tother", mode="r", theme="monokai"),
      
 
                br(),
