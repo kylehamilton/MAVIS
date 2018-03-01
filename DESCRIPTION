@@ -7,7 +7,8 @@ Authors@R: c(person("W. Kyle", "Hamilton", role = c("aut", "cre"), email = "kyle
              person("Burak", "Aydin", role = "aut"),
              person("Atsushi", "Mizumoto", role = "aut"),
              person("Kathleen", "Coburn", role = "ctb"),
-             person("Nicole", "Zelinsky", role = "ctb"))
+             person("Nicole", "Zelinsky", role = "ctb"),
+             person("Emily", "Kothe", role = "ctb"))
 Maintainer: W. Kyle Hamilton <kyle.hamilton@gmail.com>
 Description: Interactive shiny application for running a meta-analysis,
     provides support for both random effects and fixed effects models with the 'metafor' package.
