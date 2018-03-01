@@ -1,4 +1,4 @@
-MAVIS: Meta Analysis via Shiny v1.1.3 "Smiling Fox"
+MAVIS: Meta Analysis via Shiny v1.1.4
 =====
 [![CRAN Version](http://www.r-pkg.org/badges/version/MAVIS)](http://cran.rstudio.com/web/packages/MAVIS)
 [![Monthly Downloads](http://cranlogs.r-pkg.org/badges/MAVIS)](http://cranlogs.r-pkg.org/badges/MAVIS)
@@ -21,26 +21,20 @@ April 29, 2015
 
 List of Packages Used 
 ```
-library(shiny) 
-library(shinyAce) 
-library(shinyBS)
-library(metafor) 
-library(meta) 
-library(MAd) 
-library(MAc) 
-library(quantreg) 
-library(ggplot2)
-library(compute.es)
-library(SCMA)
-library(SCRT)
+library("shiny")
+library("shinyAce")
+library("shinyBS")
+library("metafor")
+library("MAd")
+library("MAc")
+library("quantreg")
+library("ggplot2")
+library("compute.es")
+library("SCMA")
+library("SCRT")
+library("weightr")
+library("irr")
 ```
-The first production release of MAVIS is now available on CRAN! v1.1 has been named "Smiling Fox"
-
-![8505162700_11394c3f6a_z](https://cloud.githubusercontent.com/assets/2274317/7405977/b4a9163e-eeaf-11e4-9f74-1f42c7cbf4f4.jpg)
-
-Photo by https://www.flickr.com/photos/harlequeen/
-
-Image Licensed under https://creativecommons.org/licenses/by/2.0/
 
 ### Acknowledgments and Authors
 
